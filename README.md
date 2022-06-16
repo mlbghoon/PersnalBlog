@@ -8,16 +8,15 @@ git 초기 새팅
 
     ```javascript
     root.render(
-        <React.StrictMode>
-            <Root />
-        </React.StrictMode>
+        <Root />
     );
     ```
 
 * react-router-dom 사용을 위해 Root 추가
 * React SPA(Single Page Application)구현에 가장 많이 사용되는 react-router-dom 
 기존 방식의 a tag 를 사용하면 url 변경시 새로고침이 되어 모드페이지 reload 로드 시간이 오래 걸림 router를 사용시 변경된 소스만 바꿔주기에 속도가 빠름
-
+* react-router-dom 사용을 위해 Root 추가
+* 
 2. Root.tsx => Routes
 
     ```javascript
@@ -158,7 +157,7 @@ git 초기 새팅
 * 기존에 만들어 놨던 Table 컴포넌트 사용
 * 추후에 제대로 된 컴포넌트 개발 예정
 
-### StrictMode 사용시에는 개발 도중 발생하는 문제를 감지하기 위해서 렌더링이 2번됨 따라서 
+### StrictMode 사용시에는 개발 도중 발생하는 문제를 감지하기 위해서 렌더링이 2번됨 따라서 지움 
 ### TypeScript 공부 추가 필요
 
 
