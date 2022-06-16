@@ -3,7 +3,8 @@ import '../common/css/App.css';
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Table } from '../common/components';
+import { MovieDisplay } from '../common/components/MovieDisplay';
+import {Button} from '../common/components/Button';
 
 // TypeScript 라서 타입을 먼저 선언
 // 이방식은 type 방식이고 interface 방식은 따로 공부 필요함
@@ -25,7 +26,7 @@ type MovieType = {
 }
 
 export const Main = () => {  
-  const [movieList, setMovieList] = useState(new Array<MovieType>);  
+  const [movieList, setMovieList] = useState<MovieType[]>([]);  
   const [page, setPage] = useState(1);  
   const [total_pages, setTotal_page] = useState(0);  
   
@@ -49,9 +50,9 @@ export const Main = () => {
 
 
   const loadMovieInfo = () => {
-    let url = "https://api.themoviedb.org/3/discover/movie?api_key=daf67dd834f07e7672eb384184d2ce3a&language=ko-KR&sort_by=release_date.desc&include_video=false&page=";
+    let url:string = "https://api.themoviedb.org/3/discover/movie?api_key=daf67dd834f07e7672eb384184d2ce3a&language=ko-KR&sort_by=release_date.desc&include_video=false&page=";
     
-    if (total_pages != page) {
+    if (total_pages !== page) {
       url += page + 1;
       setPage(page + 1);
 
@@ -71,36 +72,16 @@ export const Main = () => {
     })
     
   }
-
-  const makeTblData = () => { 
-    let test = new Array;
-    for (let i = 0; i < movieList.length; i ++) {
-      test.push(
-        [	
-          {type : 'T', value : movieList[i].id},
-          {type : 'D', value :   
-            <input
-              id       = {'selSchChgDtm'+i}
-              name     = {'selSchChgDtm'+i}
-              readOnly = {true}
-              disabled = {false}
-              width    = {"100%"}
-              value    = {movieList[i].title}
-            />}
-        ]
-      )
-    }
-              
-    return test;
+  const ontest = () => {
+    console.log("@@@")
   }
-
   return (
     <div>
-      <Table
-        id="tblInfo"
-        colGrp = {[{width: '50%'}, {width: '50%'}]}
-        tbData = {makeTblData()}
-      /> 
+      <Button
+        id={"setse"}
+        onClick={ontest}
+      />
+      {movieList.map(movie => <MovieDisplay key={movie.id} movie={movie} />)}
     </div>
   );
 }
