@@ -1,10 +1,5 @@
 import React from 'react';
 
-type ComponentProps<T> = T extends React.ComponentType<infer P> | React.Component<infer P> ?
-							JSX.LibraryManagedAttributes<T, P>
-						: 
-							never;
-
 interface BtnProps {
 	id: string;
 	mt: string;
@@ -38,6 +33,7 @@ const defaultProps = {
 	icon: "",
 	hidden: false,
 };
+//scrm-btn md grey-o
 export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, type, size, color, filled, innerImage, value, icon, hidden, onClick }:BtnProps & typeof defaultProps) => { 
 	let btnClass, iconClass;
 

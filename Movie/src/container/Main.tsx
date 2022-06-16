@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MovieDisplay } from '../common/components/MovieDisplay';
-import {Button} from '../common/components/Button';
+import {  Button } from '../common/components';
+
 
 // TypeScript 라서 타입을 먼저 선언
 // 이방식은 type 방식이고 interface 방식은 따로 공부 필요함
@@ -76,13 +77,15 @@ export const Main = () => {
     console.log("@@@")
   }
   return (
-    <div>
+    <>
       <Button
         id={"setse"}
         onClick={ontest}
+        value={"버튼"}
+        color={"tomato"}
       />
       {movieList.map(movie => <MovieDisplay key={movie.id} movie={movie} />)}
-    </div>
+    </>
   );
 }
 

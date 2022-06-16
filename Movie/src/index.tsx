@@ -4,11 +4,15 @@ import './index.css';
 import Root from './container/Root';
 import reportWebVitals from './reportWebVitals';
 
+import { AppPanel } from './common/components';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <Root /> 
+    <AppPanel>
+      <Root /> 
+    </AppPanel>
 );
 
 // If you want to start measuring performance in your app, pass a function
