@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MovieDisplay } from '../common/components/MovieDisplay';
-import {  Button } from '../common/components';
+import {  Button, Input } from '../common/components';
 
 
 // TypeScript 라서 타입을 먼저 선언
@@ -30,6 +30,7 @@ export const Main = () => {
   const [movieList, setMovieList] = useState<MovieType[]>([]);  
   const [page, setPage] = useState(1);  
   const [total_pages, setTotal_page] = useState(0);  
+  const [iptVal, setIptVal] = useState("");  
   
   // 화면 오픈시 api 연동해서 영화 리스트 가져오기
   useEffect(() => {
@@ -48,7 +49,6 @@ export const Main = () => {
     console.log("total_pages : " , total_pages);
   }, [total_pages]);
   // state 변경시 확인용
-
 
   const loadMovieInfo = () => {
     let url:string = "https://api.themoviedb.org/3/discover/movie?api_key=daf67dd834f07e7672eb384184d2ce3a&language=ko-KR&sort_by=release_date.desc&include_video=false&page=";
@@ -73,18 +73,60 @@ export const Main = () => {
     })
     
   }
-  const ontest = () => {
-    console.log("@@@")
+  const onClick = (e:React.MouseEvent) => {
+    const target = e.target as HTMLButtonElement;
+    console.log(target)
+    console.log(target.id)
   }
+
+  const onChange = (e:React.ChangeEvent) => {
+    const value = (e.target as HTMLInputElement).value;
+    setIptVal(value);
+  }
+
+  const onKeyPress = (e:React.KeyboardEvent) => {
+    const target = e.target as HTMLButtonElement;
+    console.log("onKeyPress")
+    console.log(target.id)
+    console.log(e.key)
+   
+  }
+
+  const onKeyUp = (e:React.KeyboardEvent) => {
+    const target = e.target as HTMLButtonElement;
+    console.log("onKeyUp")
+    console.log(target.id)
+    console.log(e.key)
+  }
+
+  const onBlur = (e:React.FocusEvent) => {
+    const target = e.target as HTMLInputElement;
+    console.log("onBlur")
+    console.log(target)    
+  }
+  
   return (
     <>
       <Button
         id={"setse"}
-        onClick={ontest}
+        onClick={onClick}
         value={"버튼"}
         color={"tomato"}
+        innerImage={true}
+        icon={"save"}
       />
-      {movieList.map(movie => <MovieDisplay key={movie.id} movie={movie} />)}
+      <Input
+        id={"setse"}
+        value={iptVal}
+        color={"tomato"}
+        focusOnRender={true}
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+        onKeyUp={onKeyUp}
+        onBlur={onBlur}
+        alertEmpty={true}
+      />
+      {/* {movieList.map(movie => <MovieDisplay key={movie.id} movie={movie} />)} */}
     </>
   );
 }

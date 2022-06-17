@@ -1,6 +1,6 @@
 
 interface PropTypes {
-	children: any;
+	children: React.ReactNode;
 };
 
 export const AppPanel = ({children}:PropTypes) => {
