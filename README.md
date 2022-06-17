@@ -16,6 +16,7 @@ TypeScript 공부 (Movie)
 * React.ReactNode = string | number | boolean | React.ReactElement&#60any, string | React.JSXElementConstructor&#60any&#62&#62 | React.ReactFragment | React.ReactPortal | null | undefined
 * js파일 일때 : static propTypes = { children: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.array, PropTypes.object]).isRequired }; 선언 하고 사용함
 
+
 2. Button 수정
 
     ```typescript
@@ -62,6 +63,7 @@ TypeScript 공부 (Movie)
 * event 안에 target도 as HTMLButtonElement 사용 안할시 id에서 오류 발생
 * terget의 타입을 지정 안해주면 id가 있는지 없는지 알수 없어 오류 발생 하는거라 보여짐
 
+
 3. Input 추가
 
     ```typescript
@@ -94,7 +96,6 @@ TypeScript 공부 (Movie)
 
 git 초기 새팅(Movie)
 ------------
-
 1. index.tsx => Root.tsx
 
     ```typescript
@@ -110,6 +111,7 @@ git 초기 새팅(Movie)
 기존 방식의 a tag 를 사용하면 url 변경시 새로고침이 되어 모드페이지 reload 로드 시간이 오래 걸림 router를 사용시 변경된 소스만 바꿔주기에 속도가 빠름
 * react-router-dom 사용을 위해 Root 추가
 * layout 컴포넌트 추가
+
 
 2. Root.tsx => Routes
 
@@ -133,6 +135,7 @@ git 초기 새팅(Movie)
 
 * BrowserRouter 사용 추후 Provider, History 추가 예정
 * layout 컴포넌트 추가
+
 
 3. App.tsx
 
@@ -162,6 +165,7 @@ git 초기 새팅(Movie)
 * useNavigate의 push, goBack 으로 페이지 이동 가능
 * webpack을 사용할때는 require를 써서 페이지 로딩전 이미지파일을 가지고 오게 해야함
 * layout 컴포넌트 추가
+
 
 4. routing.jsx
 
