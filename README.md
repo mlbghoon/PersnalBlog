@@ -1,95 +1,81 @@
-2022-06-17 V 0.2
+2022-06-18 V 0.3
 ================
 
 TypeScript 공부 (Movie)
 -------------------
-1. Layout PropsType 변경
 
-    ```typescript
-        interface PropTypes {
-            children: React.ReactNode;
-        };
+1. CheckBox 추가
+
+    ```typescript        
+        export const Checkbox =({id,index, ... }:ChkProps & typeof defaultProps) => {
+            const onClickHandler = (e:React.MouseEvent) => {
+                onClick({id: id, target : e.target as HTMLInputElement, index : index, checked : (e.target as HTMLInputElement).checked });
+            }
+            const onChangeHandler = (e:React.ChangeEvent) => {
+                onChange({id: id, target : e.target as HTMLInputElement, index : index, checked : (e.target as HTMLInputElement).checked });
+            }
+            return (
+                <div className='sh-input-checkbox-div'>
+                    <input	className = "sh-input-checkbox-input" ...
+                        onClick = {onClickHandler}
+                        onChange = {onChangeHandler}/>
+                    ...
+                />
+            )
+        }
+
+        // props : onClick > checkBoxOnClick
+        const checkBoxOnClick = (e:ChkReturnType) => {
+            console.log("checkBoxOnClick");
+            console.log(e);
+        }
     ```
-    
-* 기존 : any
-* 변경 : React.ReactNode
-* React.ReactNode = string | number | boolean | React.ReactElement&#60any, string | React.JSXElementConstructor&#60any&#62&#62 | React.ReactFragment | React.ReactPortal | null | undefined
-* js파일 일때 : static propTypes = { children: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.array, PropTypes.object]).isRequired }; 선언 하고 사용함
+* ChkReturnType custom 제작 
+* eventHandle 추가하여 필요한 정보만 전달(기존 컴포넌트도 모두 변경)
 
-
-2. Button 수정
+2. TypeInterfaces.tsx
 
     ```typescript
-        let buttonRef = useRef<HTMLButtonElement>(null);
-
-        return (
-            <button className={btnClass} ref={buttonRef}  id={id} onClick={onClick} ...>
-                <span className={"button__text"}>{value}</span>
-                {
-                    (innerImage && iconClass !== null) 
-                    ? 
-                        <span className={"button__icon"} onClick={(e) => {e.stopPropagation(); buttonRef.current?.click()}}>
-                            <i className={ iconClass }></i> 
-                        </span>	 
-                    :  
-                        null
-                }
-            </button>
-        );
-    ```
-    
-* 버튼안에 아이콘을 클릭해도 ref 사용하여 버튼의 클릭에 연결된 props의 onClick 작동하게 변경
-* typeScript 이여서 ref도 HTMLButtonElement 선언후 사용
-
-    ```typescript
-        interface BtnProps {
-            id: string;
+        export interface sh_btn_props_type {
             ...
-            onClick: (e:React.MouseEvent) => void;
         };
+
+        export const sh_btn_props_default = {	
+            ...
+        };
+
+        export interface sh_btn_evnt_return {	
+           ...
+        };
+        ...
     ```
-    
-* btnProps 에서 onClick에 타입을 지정해주고 넘겨야지 props로 event 가 넘어감
+
+* 모든 custom type 을 TypeInterfaces에 모아서 관리 하는 방식으로 변경
+
+3. props 가독성 개선
 
     ```typescript
-        const onClick = (e:React.MouseEvent) => {
-            const target = e.target as HTMLButtonElement;
-            console.log(target)
-            console.log(target.id)
+        // 변경전
+        const Button= ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick }:sh_btn_props_type & typeof sh_btn_props_default) => { 
+        
+            ....
+        }
+
+        // 변경후
+        const Button= (props:sh_btn_props_type & typeof sh_btn_props_default) => { 
+            const { id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick } = props;
+            ....
         }
     ```
 
-* Props 쪽에서도 전달받은 event 가 mouseEvent 이다 타입 지정 해줘야 함
-* event 안에 target도 as HTMLButtonElement 사용 안할시 id에서 오류 발생
-* terget의 타입을 지정 안해주면 id가 있는지 없는지 알수 없어 오류 발생 하는거라 보여짐
+* props에서 전달 받을 항목들이 너무 많이 보기 힘들어서 변경함
 
+3. ComponentTest 추가
 
-3. Input 추가
+* 모든 컴포넌트 종류별로 테스트 해보기용 (css 적용 여부, 이벤트 실행여부등 테스트)
 
-    ```typescript
-        interface IptProps {
-            ...
-            onChange: (e:React.ChangeEvent) => void;
-            onKeyPress: (e:React.KeyboardEvent) => void;
-            onBlur: (e:React.FocusEvent) => void;
-            onKeyUp: (e:React.KeyboardEvent) => void;
-        };
-    ```
-* IptProps event 타입지정 
+3. css 정리 
 
-    ```typescript
-        const onKeyUp = (e:React.KeyboardEvent) => {
-            const target = e.target as HTMLButtonElement;
-            console.log("onKeyUp")
-            console.log(target.id)
-            console.log(e.key)
-        }
-    ```
-    
-* KeyboardEvent의 경우 한글 입력시 IME composing 단계를 거친다. 이때 keyEvents 를 처리시 composing 이 완료되지 않았기에 비정상적인 key, keycode 값이 넘어온다
-* 영문에서는 문제 없음, 한글입력시에는 사용못 함
+* css도 기본적인 구조를 싹다 뜯어 고쳐야함
 
-### TypeScript 개념이 슬슬 잡힘, 확실히 기본 javascript 에 비하면 코딩량이 많아 보임
-### 여러 사람이 개발 할때는 타입체크가 되서 에러 발생이 줄어 들거 같신 하나 혼자 개발시에는
-### 아직 모르겟음
 

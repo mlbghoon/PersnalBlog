@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MovieDisplay } from '../common/components/MovieDisplay';
-import {  Button, Input } from '../common/components';
+import { Button, Input } from '../common/components';
+import { Checkbox } from '../common/components/Checkbox';
+import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return } from '../common/components/TypeInterfaces';
 
 
 // TypeScript 라서 타입을 먼저 선언
@@ -31,6 +33,7 @@ export const Main = () => {
   const [page, setPage] = useState(1);  
   const [total_pages, setTotal_page] = useState(0);  
   const [iptVal, setIptVal] = useState("");  
+  const [checked, setChecked] = useState(false);  
   
   // 화면 오픈시 api 연동해서 영화 리스트 가져오기
   useEffect(() => {
@@ -73,43 +76,61 @@ export const Main = () => {
     })
     
   }
-  const onClick = (e:React.MouseEvent) => {
+  // button Event Test //
+  const buttonOnClick = (e:sh_btn_evnt_return) => {
     const target = e.target as HTMLButtonElement;
     console.log(target)
-    console.log(target.id)
+    console.log(e.id)
   }
+  // button Event Test //
 
-  const onChange = (e:React.ChangeEvent) => {
+  // input Event Test //
+  const inputOnChange = (e:sh_ipt_event_return) => {
     const value = (e.target as HTMLInputElement).value;
+    //console.log(e)
     setIptVal(value);
   }
 
-  const onKeyPress = (e:React.KeyboardEvent) => {
-    const target = e.target as HTMLButtonElement;
-    console.log("onKeyPress")
-    console.log(target.id)
-    console.log(e.key)
+  const inputOnKeyPress = (e:sh_ipt_event_return) => {
+    const target = e.target as HTMLInputElement;
+    // console.log("onKeyPress")
+    // console.log(target.id)
+    // console.log(e.key)
    
   }
 
-  const onKeyUp = (e:React.KeyboardEvent) => {
-    const target = e.target as HTMLButtonElement;
-    console.log("onKeyUp")
-    console.log(target.id)
-    console.log(e.key)
+  const inputOnKeyUp = (e:sh_ipt_event_return) => {
+    const target = e.target as HTMLInputElement;
+    // console.log("onKeyUp")
+    // console.log(target.id)
+    // console.log(e.key)
   }
 
-  const onBlur = (e:React.FocusEvent) => {
+  const inputOnBlur = (e:sh_ipt_event_return) => {
     const target = e.target as HTMLInputElement;
-    console.log("onBlur")
-    console.log(target)    
+    // console.log("onBlur")
+    // console.log(target)    
   }
-  
+  // input Event Test //
+
+  // checkBox Event Test //
+  const checkBoxOnChange = (e:sh_chk_evnt_return) => {
+    console.log("checkBoxOnChange");
+    console.log(e);
+    setChecked(prev=>!prev)
+  }
+  // 컴포넌트에서 만든 custom type을 export import 가능
+  const checkBoxOnClick = (e:sh_chk_evnt_return) => {
+    console.log("checkBoxOnClick");
+    console.log(e);
+  }
+  // checkBox Event Test //
+
   return (
     <>
       <Button
         id={"setse"}
-        onClick={onClick}
+        onClick={buttonOnClick}
         value={"버튼"}
         color={"tomato"}
         innerImage={true}
@@ -120,11 +141,20 @@ export const Main = () => {
         value={iptVal}
         color={"tomato"}
         focusOnRender={true}
-        onChange={onChange}
-        onKeyPress={onKeyPress}
-        onKeyUp={onKeyUp}
-        onBlur={onBlur}
+        onChange={inputOnChange}
+        onKeyPress={inputOnKeyPress}
+        onKeyUp={inputOnKeyUp}
+        onBlur={inputOnBlur}
         alertEmpty={true}
+      />
+      <Checkbox
+        id={"Checkbox"}
+        keyProp={"keyProp"}
+        index={1}
+        value={"value"}
+        onChange={checkBoxOnChange}
+        onClick={checkBoxOnClick}
+        checked={checked}
       />
       {/* {movieList.map(movie => <MovieDisplay key={movie.id} movie={movie} />)} */}
     </>

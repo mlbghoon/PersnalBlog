@@ -1,39 +1,12 @@
 import React, { useRef } from 'react';
+import { sh_btn_props_type, sh_btn_props_default } from '../TypeInterfaces';
 
-interface BtnProps {
-	id: string;
-	mt: string;
-	mr: string;
-	mb: string;
-	ml: string;
-	disabled: boolean;
-	onlyDisplay: boolean;
-	size: string;	
-	color: string;
-	filled: boolean;
-	innerImage: boolean;
-	icon: string;
-	onClick: (e:React.MouseEvent) => void;
-};
-
-const defaultProps = {	
-	mt: '0px',
-	mr: '0px',
-	mb: '0px',
-	ml: '0px',
-	disabled: false,
-	onlyDisplay: false,
-	size : 'md',
-	color : 'grey',
-	filled : false,
-	innerImage : false,
-	value: "",
-	icon: "",
-	hidden: false,
-};
-
-export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick }:BtnProps & typeof defaultProps) => { 
+const Button= (props:sh_btn_props_type & typeof sh_btn_props_default) => { 
+	const {id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick } = props;
+	
 	let btnClass, iconClass;
+	let buttonRef = useRef<HTMLButtonElement>(null);
+	let strMargin = mt + " " + mr + " " + mb + " " + ml;
 
 	btnClass =  (value) ?
 				 	'button ' + size + ' ' + color + (filled  ? '' : '-o') + (onlyDisplay? ' display-only' : '')
@@ -46,7 +19,6 @@ export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color,
 			case "add"     : iconClass = 'xi-plus xi-x';     break;
 			case "del"     : iconClass = 'xi-minus xi-x';    break;
 			case "check"   : iconClass = 'xi-check xi-x';    break;
-			case "trash"   : iconClass = 'xi-trash-o xi-x';  break;
 			case "info"	   : iconClass = 'xi-info-o xi-x';   break;
 			case "undo"    : iconClass = 'xi-undo';          break;
 			case "redo"    : iconClass = 'xi-redo';          break;
@@ -57,22 +29,30 @@ export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color,
 			case "close"   : iconClass = 'xi-close';         break;
 			case "play"    : iconClass = 'xi-play xi-x';     break;
 			case "pause"   : iconClass = 'xi-pause xi-x';    break;
+			case "srch"    : iconClass = 'xi-search xi-x';   break;
 			case "left"    : iconClass = 'xi-arrow-left xi-x c-grey-6';   break;
 			case "right"   : iconClass = 'xi-arrow-right xi-x c-grey-6';  break;
-			case "copy"    : iconClass = filled ? 'xi-documents xi-x'  : 'xi-documents-o xi-x'; break;
-			case "down"    : iconClass = filled ? 'xi-download xi-x'   : 'xi-download-o xi-x';  break;
-			case "srch"    : iconClass = filled ? 'xi-search xi-x'     : 'xi-search-o xi-x';    break;
+			case "trash"   : iconClass = filled ? 'xi-trash xi-x'     : 'xi-trash-o xi-x';     break;
+			case "copy"    : iconClass = filled ? 'xi-documents xi-x' : 'xi-documents-o xi-x'; break;
+			case "down"    : iconClass = filled ? 'xi-download xi-x'  : 'xi-download-o xi-x';  break;
+			
 			default : iconClass = null; break;
 		}
 	}
-
-	let buttonRef = useRef<HTMLButtonElement>(null);
 	
+	const onClickHandler = (e:React.MouseEvent) => {
+		onClick({id: id, target : e.target as HTMLButtonElement});
+	}
+
 	return (
-		<button className={btnClass} ref={buttonRef} id={id} onClick={onClick} disabled={disabled }
-				style={{ marginTop: mt, marginRight: mr, marginBottom: mb, marginLeft: ml, visibility : hidden ? 'hidden' :  'visible'}}
+		<button 
+			id       = {id} 
+			ref      = {buttonRef} 
+			onClick  = {onClickHandler} 
+			className= {btnClass} 
+			disabled = {disabled}
+			style    = {{ margin: strMargin, visibility : hidden ? 'hidden' :  'visible'}}
 		>	
-			<span className={"button__text"}>{value}</span>
 			{
 				(innerImage && iconClass !== null) 
 				? 	
@@ -82,8 +62,10 @@ export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color,
 				:  
 					null
 			}
-			
+			<span className={"button__text"}>{value}</span>			
 		</button>
 	);
 }
-Button.defaultProps = defaultProps;
+Button.defaultProps = sh_btn_props_default;
+
+export {Button}

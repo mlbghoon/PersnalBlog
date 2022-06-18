@@ -1,27 +1,9 @@
-.App-logo-div {
-  text-align: center;
-  margin: 0 auto;
-}
+@import url('xeicon.css');
 
 .App-logo {
   cursor: pointer;
 }
 
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 .button {
   display: flex;
   padding: 0;
@@ -48,57 +30,75 @@
   height: 100%;
 }
 
-.button  .xi-x {padding-right:5px;}
-.button.xs {height:24px; line-height: 22px; font-size:12px; padding:0 5px;}
-.button.s {height:28px; line-height: 28px; font-size:14px; min-width:43px; padding:0 6px;}
-.button.m {height:30px;line-height: 30px; font-size:14px; min-width:60px; padding:0 6px;}
-.button.md {height:33px;line-height: 33px; font-size:14px; min-width:60px; padding:0 8px;}
-.button.lg {height:48px;line-height: 46px; font-size:18px; min-width:140px; padding:0 10px; font-weight: bold;}
-.button.w100 {width:100%;}
+.button .xi-x   {padding-right:5px;}
 .button.i .xi-x {padding-right:0px;}
-.button.xs.i {min-width:24px;max-width:24px;}
-.button.md.i {min-width:32px;max-width:32px;width:32px;}
-.button.lg.i {min-width:48px;max-width:48px;}
-.button.grid-btn {height:33px;line-height: 33px; min-width:60px; }
+
+.button.xs {height: 24px; line-height: 22px; font-size: 12px; padding: 0 5px;}
+.button.s  {height: 28px; line-height: 28px; font-size: 14px; padding: 0 6px;  min-width: 43px;}
+.button.m  {height: 30px; line-height: 30px; font-size: 14px; padding: 0 6px;  min-width: 60px;}
+.button.md {height: 33px; line-height: 33px; font-size: 14px; padding: 0 8px;  min-width: 60px;}
+.button.lg {height: 48px; line-height: 46px; font-size: 18px; padding: 0 10px; min-width: 100px; font-weight: bold;}
+ 
+.button.xs.i {min-width: 24px; max-width: 24px;}
+.button.s.i  {min-width: 24px; max-width: 28px;}
+.button.m.i  {min-width: 24px; max-width: 32px;}
+.button.md.i {min-width: 32px; max-width: 35px;}
+.button.lg.i {min-width: 45px; max-width: 48px;}
+
+.button.grid-btn   {height:33px;line-height: 33px; min-width:60px; }
 .button.grid-btn.i {min-width:32px;max-width:32px;width:32px;}
+
 .button.xs.i .xi-x {font-size:1em;}
-.button.white {background-color: #F8F9FA; border-color:#CED4DA; color:#343A40; border: none;}
-.button.white:hover, .button.white:focus, .button.white:active {background-color: #F1F3F5;}
-.button.purple {background-color: #3B5BDB; color:#fff;}
-.button.purple:hover, .button.purple:focus, .button.purple:active {background-color: #364FC7;}
-.button.purple-o {border:1px solid #3B5BDB; color:#3B5BDB;}
-.button.purple-o:hover, .button.purple-o:focus, .button.purple-o:active {background-color: #3B5BDB; color:#fff;}
-.button.yellow {background-color: #ffcc33; color:#212529;}
-.button.yellow:hover, .button.yellow:focus, .button.yellow:active {background-color: #FFD75F;}
-.button.grey {background: #bdc1c7; border:1px solid #bac1c9; color:#fff;}
-.button.grey:hover, .button.grey:focus, .button.grey:active {background: #7b828a; color:#fff;}
-.button.grey-o {background: #F8F9FA; border:1px solid #CED4DA; color:#949DA8;}
-.button.grey-o:hover, .button.grey-o:focus, .button.grey-o:active {background: #CED4DA; color:#212529;}
-.button.red  {color: #fff; background: #E03131;}
-.button.red:hover, .button.red:focus, .button.red:active{  background-color: #e03131;}
-.button.red-o {border:1px solid #E03131; color:#E03131; background-color: #FFF5F5;}
-.button.red-o:hover, .button.red-o:focus, .button.red-o:active {color: #fff; background: #E03131;}
-.button.tomato  {color: #fff; background: #ffb68d;}
-.button.tomato:hover, .button.red:focus, .button.red:active{  background-color: #ffb68d;}
-.button.new_green {color: #7ADE87; background-color: #F2FFF4;border:1px solid #7ADE87;}
-.button.tomato-o {border:1px solid #ffb68d; color:#ffb68d; background-color: #FFF5F5;}
-.button.tomato-o:hover, .button.red-o:focus, .button.red-o:active {color: #fff; background: #ffb68d;}
-.button.lightgreen {color: #146b51; background: #79e7c6b0;} 
-.button.green:hover, .button.green:focus, .button.green:active {background-color: #79e7c6b0; }
-.button.green {color: #ffffff; background: #0CA678;} 
-.button.green:hover, .button.green:focus, .button.green:active {background-color: #099268; }
-.button.green-o {border:1px solid #0CA678; color:#0CA678; background-color: #EBFBEE; }
-.button.green-o:hover, .button.green-o:focus, .button.green-o:active {color: #ffffff; background: #0CA678;}
-.button.blue {color: #fff; background: #1C7ED6;}
-.button.blue:hover, .button.blue:focus, .button.blue:active {background:#1971C2; }
-.button.blue-o {border:1px solid #228BE6; color:#228BE6; background-color: #EDF2FF;}
-.button.blue-o:hover, .button.blue-o:focus, .button.blue-o:active {color: #fff; background: #228BE6;}
+
+.button.white      {background: #F8F9FA; color: #212529;}
+.button.purple     {background: #3B5BDB; color: #ffffff;}
+.button.yellow     {background: #ffcc33; color: #212529;}
+.button.grey       {background: #404144; color: #ffffff;}
+.button.red        {background: #E03131; color: #ffffff;}
+.button.tomato     {background: #ffb68d; color: #212529;}
+.button.new_green  {background: #0CA678; color: #ffffff;}
+.button.lightgreen {background: #7ADE87; color: #212529;} 
+.button.green      {background: #146b51; color: #ffffff;} 
+.button.blue       {background: #1C7ED6; color: #ffffff;}
+
+.button.white-o      {border:1px solid #F8F9FA; color: #F8F9FA;}
+.button.purple-o     {border:1px solid #3B5BDB; color: #3B5BDB;}
+.button.yellow-o     {border:1px solid #ffcc33; color: #ffcc33;}
+.button.grey-o       {border:1px solid #404144; color: #404144;}
+.button.red-o        {border:1px solid #E03131; color: #E03131;}
+.button.tomato-o     {border:1px solid #ffb68d; color: #ffb68d;}
+.button.new_green-o  {border:1px solid #0CA678; color: #0CA678;}
+.button.lightgreen-o {border:1px solid #7ADE87; color: #7ADE87;} 
+.button.green-o      {border:1px solid #146b51; color: #146b51;} 
+.button.blue-o       {border:1px solid #1C7ED6; color: #1C7ED6;}
+
+.button.white:hover,.button.white:focus,.button.white:active                {background: #dadada;}
+.button.purple:hover,.button.purple:focus,.button.purple:active             {background: #364FC7;}
+.button.yellow:hover,.button.yellow:focus,.button.yellow:active             {background: #FFD75F;}
+.button.grey:hover,.button.grey:focus,.button.grey:active                   {background: #7b828a;}
+.button.red:hover,.button.red:focus,.button.red:active                      {background: #b72626;}
+.button.tomato:hover,.button.tomato:focus,.button.tomato:active             {background: #cf9573;}
+.button.new_green:hover,.button.new_green:focus,.button.new_green:active    {background: #0a8a63;}
+.button.lightgreen:hover,.button.lightgreen:focus,.button.lightgreen:active {background: #67ba72;} 
+.button.green:hover,.button.green:focus,.button.green:active                {background: #0f513e;} 
+.button.blue:hover,.button.blue:focus,.button.blue:active                   {background: #1767ad;}
+
+.button.white-o:hover,.button.white-o:focus,.button.white-o:active                {color: #dadada;border:1px solid #dadada;}
+.button.purple-o:hover,.button.purple-o:focus,.button.purple-o:active             {color: #364FC7;border:1px solid #364FC7;}
+.button.yellow-o:hover,.button.yellow-o:focus,.button.yellow-o:active             {color: #FFD75F;border:1px solid #FFD75F;}
+.button.grey-o:hover,.button.grey-o:focus,.button.grey-o:active                   {color: #7b828a;border:1px solid #7b828a;}
+.button.red-o:hover,.button.red-o:focus,.button.red-o:active                      {color: #b72626;border:1px solid #b72626;}
+.button.tomato-o:hover,.button.tomato-o:focus,.button.tomato-o:active             {color: #cf9573;border:1px solid #cf9573;}
+.button.new_green-o:hover,.button.new_green-o:focus,.button.new_green-o:active    {color: #0a8a63;border:1px solid #0a8a63;}
+.button.lightgreen-o:hover,.button.lightgreen-o:focus,.button.lightgreen-o:active {color: #67ba72;border:1px solid #67ba72;} 
+.button.green-o:hover,.button.green-o:focus,.button.green-o:active                {color: #0f513e;border:1px solid #0f513e;} 
+.button.blue-o:hover,.button.blue-o:focus,.button.blue-o:active                   {color: #1767ad;border:1px solid #1767ad;}
 
 
-.app-panel {width: 100%; height: 100vh; position: relative; display: block; overflow: hidden;}
-.head-panel {height: 40px}
+.app-panel    {height: 100vh; width: 100%; display: block; overflow: hidden;}
+.head-panel   {height: 40px}
 .middle-panel {width: 100%; display: flex; height: calc(100% - 40px);}
-.side-panel { position:relative;
+.side-panel   {position:relative;
   height: 100%;
   width: 17vw;
   display: flex;

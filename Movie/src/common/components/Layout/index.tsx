@@ -34,13 +34,13 @@ export const SubFullPanel = ({children}:PropTypes) => {
 	return ( <div className = "subfull-panel"> {children} </div>)
 }
 export const LFloatPanel = ({children}:PropTypes) => {
-	return ( <div className = "rfloat-panel"> {children} </div>)
+	return ( <div className = "lfloat-panel"> {children} </div>)
 }
 export const RFloatPanel = ({children}:PropTypes) => {
-	return ( <div className = "relative-panel"> {children} </div>)
+	return ( <div className = "rfloat-panel"> {children} </div>)
 }
 export const RelativePanel = ({children}:PropTypes) => {
-	return ( <div className = "app-panel"> {children} </div>)
+	return ( <div className = "relative-panel"> {children} </div>)
 }
 export const TrayPanel = ({children}:PropTypes) => {
 	return ( <div className = "tray-panel"> {children} </div>)
