@@ -70,11 +70,13 @@ TypeScript 공부 (Movie)
 
 * props에서 전달 받을 항목들이 너무 많이 보기 힘들어서 변경함
 
-3. ComponentTest 추가
+
+4. ComponentTest 추가
 
 * 모든 컴포넌트 종류별로 테스트 해보기용 (css 적용 여부, 이벤트 실행여부등 테스트)
 
-3. css 정리 
+
+5. css 정리 
 
 * css도 기본적인 구조를 싹다 뜯어 고쳐야함
 
