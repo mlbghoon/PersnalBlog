@@ -37,16 +37,15 @@ export const Input =(props:sh_ipt_props_type & typeof sh_ipt_props_default) => {
 	}
 	
 	let inputDIvClass = "sh-input-div";
+	let inputClass = "";
 
 	if (alertEmpty) {
-		inputDIvClass += " border_red";
+		if (value === "") {
+			inputClass += "border_red ";
+
+		}
 
 	} 
-
-	if (color === "grey") {
-		inputDIvClass += " textfield_color";
-
-	}
 
 	const onChangeHandler = (e:React.ChangeEvent) => {
 		onChange({id: id, target : e.target as HTMLInputElement});
@@ -79,7 +78,7 @@ export const Input =(props:sh_ipt_props_type & typeof sh_ipt_props_default) => {
 				value       = {rtnVal(value)}
 				readOnly    = {readOnly}
 				disabled    = {disabled}
-				className   = {size === 'h1' ? "sh-input-h1" : "sh-input-text"}
+				className   = {inputClass + (size === 'h1' ? "sh-input-h1" : "")}
 				minLength   = {minLength}
 				maxLength   = {maxLength}
 				placeholder = {placeholder}

@@ -1,5 +1,8 @@
 @import url('xeicon.css');
 
+
+
+
 .App-logo {
   cursor: pointer;
 }
@@ -126,3 +129,28 @@
 .rfloat-panel > button {margin-left: 5px !important;}
 .rfloat-panel > button:first-child {margin-left: 0px;}
 .center-panel { text-align: center; }
+
+
+input[type='text'], input[type='password'] {font-size: 14px; line-height: 16px; position: relative; z-index: 9; height: 15px; padding: 8px 0 6px; color: #000; border: 1px solid #DEE2E6; background: #fff; outline: none; border-radius:3px;} 
+input[type='text']::placeholder, input[type='password']::placeholder {color:#ADB5BD;}
+
+.sh-input-div {overflow:hidden; width: 100%; height: 33.33px}
+.scrm-input-h1 {
+	font-weight: bold; font-size: 1.5em !important;
+}
+.sh-input-div > input[type='text']:focus , input[type='password']:focus { outline: none; }
+.sh-input-div > input[type='text']:disabled , input[type='password']:disabled {background-color: #ced4da; color:#777; cursor: not-allowed;}
+.sh-input-div > input[type='text']:disabled::placeholder , input[type='password']:disabled::placeholder {color:#777; }
+.sh-input-div > input[type='radio'] {height: 20px; outline: none;width: 100%;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+
+.border_red {
+	border: 1px solid #ff0000 !important;
+}
+
+/* checkbox */
+.sh-input-checkbox-div { display: inline; cursor: pointer;}
+.sh-input-checkbox-div > label {position:relative; font-size:14px; height:27px; line-height: 33px; display: inline-block;}
+.sh-input-checkbox-div > input[type='checkbox'] {margin:0; margin-left: 4px; align-content: center;position: relative;width: 24px;height: 24px; opacity: 0; z-index: 2; cursor:pointer;}
+.sh-input-checkbox-div > input[type='checkbox'] + label:before {content: ''; margin-top:8px; box-sizing:border-box; display: inline-block; width:16px; height:16px; position:absolute; border:1px solid #748FFC; border-radius:2px; margin-left: -21px;}
+.sh-input-checkbox-div > input[type="checkbox"]:checked + label:before {border:none; background-color: #748FFC; background-image: url('../image/check.png'); background-size:65%; background-repeat: no-repeat; background-position: 50% 50%;}
+.sh-input-checkbox-div > input[type="checkbox"]:disabled + label:before { border:1px solid #ced4da; background: #e9ecef; cursor: not-allowed;}

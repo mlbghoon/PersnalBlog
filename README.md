@@ -1,83 +1,11 @@
-2022-06-18 V 0.3
+2022-06-19 V 0.3
 ================
 
-TypeScript 공부 (Movie)
+TypeScript로 Dataset구현
 -------------------
 
-1. CheckBox 추가
+서버에서 매번 쿼리로 조회해 오는 데이터가 다른데....
+기존에 바닐라 자바 스크립트 일떄는 문제 없이 그냥 dateset에 집어 넣고 관리 햇는데...
+흠.......
 
-    ```typescript        
-        export const Checkbox =({id,index, ... }:ChkProps & typeof defaultProps) => {
-            const onClickHandler = (e:React.MouseEvent) => {
-                onClick({id: id, target : e.target as HTMLInputElement, index : index, checked : (e.target as HTMLInputElement).checked });
-            }
-            const onChangeHandler = (e:React.ChangeEvent) => {
-                onChange({id: id, target : e.target as HTMLInputElement, index : index, checked : (e.target as HTMLInputElement).checked });
-            }
-            return (
-                <div className='sh-input-checkbox-div'>
-                    <input	className = "sh-input-checkbox-input" ...
-                        onClick = {onClickHandler}
-                        onChange = {onChangeHandler}/>
-                    ...
-                />
-            )
-        }
-
-        // props : onClick > checkBoxOnClick
-        const checkBoxOnClick = (e:ChkReturnType) => {
-            console.log("checkBoxOnClick");
-            console.log(e);
-        }
-    ```
-* ChkReturnType custom 제작 
-* eventHandle 추가하여 필요한 정보만 전달(기존 컴포넌트도 모두 변경)
-
-2. TypeInterfaces.tsx
-
-    ```typescript
-        export interface sh_btn_props_type {
-            ...
-        };
-
-        export const sh_btn_props_default = {	
-            ...
-        };
-
-        export interface sh_btn_evnt_return {	
-           ...
-        };
-        ...
-    ```
-
-* 모든 custom type 을 TypeInterfaces에 모아서 관리 하는 방식으로 변경
-
-3. props 가독성 개선
-
-    ```typescript
-        // 변경전
-        const Button= ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick }:sh_btn_props_type & typeof sh_btn_props_default) => { 
-        
-            ....
-        }
-
-        // 변경후
-        const Button= (props:sh_btn_props_type & typeof sh_btn_props_default) => { 
-            const { id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick } = props;
-            ....
-        }
-    ```
-
-* props에서 전달 받을 항목들이 너무 많이 보기 힘들어서 변경함
-
-
-4. ComponentTest 추가
-
-* 모든 컴포넌트 종류별로 테스트 해보기용 (css 적용 여부, 이벤트 실행여부등 테스트)
-
-
-5. css 정리 
-
-* css도 기본적인 구조를 싹다 뜯어 고쳐야함
-
-
+# Dataset 을 Typescript로 관리하는 방법을 모르겟음....
