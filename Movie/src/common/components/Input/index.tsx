@@ -1,51 +1,7 @@
 import React, { useEffect, useRef } from 'react';
+import { sh_ipt_props_default, sh_ipt_props_type } from '../TypeInterfaces';
 
-
-interface IptProps {
-	type:string;
-	id: string; 
-	mt: string; 
-	mr: string; 
-	mb: string; 
-	ml: string; 
-	width: string;
-	disabled: boolean; 
-	readOnly: boolean; 
-	size: string; 
-	color: string; 
-	value: string; 
-	placeholder: string; 
-	minLength: number; 
-	maxLength: number; 	
-	onChange: (e:React.ChangeEvent) => void;
-	onKeyPress: (e:React.KeyboardEvent) => void;
-	onBlur: (e:React.FocusEvent) => void;
-	onKeyUp: (e:React.KeyboardEvent) => void;
-};
-
-const defaultProps = {
-	type: "",
-	mt: '0px',
-	mr: '0px',
-	mb: '0px',
-	ml: '0px',
-	width: "",
-	disabled: false, 
-	readOnly: false, 
-	size   : "",
-	color  : "",
-	value  : "",
-	placeholder: "",
-	minLength: 1,
-	maxLength: 100,	
-	onKeyPress: (e:React.KeyboardEvent) => {return;},
-	onBlur: (e:React.FocusEvent) => {return;},
-	onKeyUp: (e:React.KeyboardEvent) => {return;},
-	tooltip : false,
-	focusOnRender : false,
-	alertEmpty: false,
-};
-export const Input =({ alertEmpty,type,id,mt,mr,mb,ml,disabled,readOnly,width,size,color,value,placeholder,minLength,maxLength,onChange,onKeyPress,onBlur,onKeyUp,focusOnRender }:IptProps & typeof defaultProps) => { 
+export const Input =({ alertEmpty,type,id,mt,mr,mb,ml,disabled,readOnly,width,size,color,value,placeholder,minLength,maxLength,onChange,onKeyPress,onBlur,onKeyUp,focusOnRender }:sh_ipt_props_type & typeof sh_ipt_props_default) => { 
 	let inputRef = useRef<HTMLInputElement>(null);
 	useEffect(() => {
 		if (focusOnRender) {
@@ -82,6 +38,30 @@ export const Input =({ alertEmpty,type,id,mt,mr,mb,ml,disabled,readOnly,width,si
 	if (color === "grey") {
 		inputClass += " textfield_color";
 	}
+	// id    : string;   
+	// target: HTMLInputElement;
+	// key?  : string;
+	// code? : string;
+	// type? : string;
+
+	const onChangeHandler = (e:React.ChangeEvent) => {
+		const target = e.target as HTMLInputElement;
+		onChange({id: id, target : target});
+	}
+	const onKeyPressHandler = (e:React.KeyboardEvent) => {
+		const target = e.target as HTMLInputElement;
+		console.log(e)
+		onKeyPress({id: id, target : target});
+	}
+	const onBlurHandler = (e:React.FocusEvent) => {
+		const target = e.target as HTMLInputElement;
+		onBlur({id: id, target : target});
+	}
+	const onKeyUpHandler = (e:React.KeyboardEvent) => {
+		const target = e.target as HTMLInputElement;
+		console.log(e)
+		onKeyUp({id: id, target : target});
+	}
 
 	return (
 		<div className={inputClass} style={{width: width, marginLeft: ml, marginRight: mr, marginTop: mt, marginBottom: mb}}>
@@ -94,14 +74,14 @@ export const Input =({ alertEmpty,type,id,mt,mr,mb,ml,disabled,readOnly,width,si
 					maxLength = {maxLength}
 					readOnly = {readOnly}
 					disabled = {disabled}
-					onChange = {onChange}
-					onKeyPress= {onKeyPress}
-					onBlur = {onBlur}
-					onKeyUp = {onKeyUp}
+					onChange = {onChangeHandler}
+					onKeyPress= {onKeyPressHandler}
+					onBlur = {onBlurHandler}
+					onKeyUp = {onKeyUpHandler}
 					autoComplete  = 'off'
 					ref={inputRef} 
 			/>
 		</div>
 	);
 }
-Input.defaultProps = defaultProps;
+Input.defaultProps = sh_ipt_props_default;

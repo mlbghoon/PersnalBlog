@@ -1,38 +1,8 @@
 import React, { useRef } from 'react';
+import { sh_btn_props_default, sh_btn_props_type, sh_ipt_event_return } from '../TypeInterfaces';
 
-interface BtnProps {
-	id: string;
-	mt: string;
-	mr: string;
-	mb: string;
-	ml: string;
-	disabled: boolean;
-	onlyDisplay: boolean;
-	size: string;	
-	color: string;
-	filled: boolean;
-	innerImage: boolean;
-	icon: string;
-	onClick: (e:React.MouseEvent) => void;
-};
 
-const defaultProps = {	
-	mt: '0px',
-	mr: '0px',
-	mb: '0px',
-	ml: '0px',
-	disabled: false,
-	onlyDisplay: false,
-	size : 'md',
-	color : 'grey',
-	filled : false,
-	innerImage : false,
-	value: "",
-	icon: "",
-	hidden: false,
-};
-
-export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick }:BtnProps & typeof defaultProps) => { 
+export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick }:sh_btn_props_type & typeof sh_btn_props_default) => { 
 	let btnClass, iconClass;
 
 	btnClass =  (value) ?
@@ -67,9 +37,13 @@ export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color,
 	}
 
 	let buttonRef = useRef<HTMLButtonElement>(null);
-	
+
+	const onClickHandler = (e:React.MouseEvent) => {
+		const target = e.target as HTMLButtonElement;
+		onClick({id: id, target : target});
+	}
 	return (
-		<button className={btnClass} ref={buttonRef} id={id} onClick={onClick} disabled={disabled }
+		<button className={btnClass} ref={buttonRef} id={id} onClick={onClickHandler} disabled={disabled }
 				style={{ marginTop: mt, marginRight: mr, marginBottom: mb, marginLeft: ml, visibility : hidden ? 'hidden' :  'visible'}}
 		>	
 			<span className={"button__text"}>{value}</span>
@@ -86,4 +60,4 @@ export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color,
 		</button>
 	);
 }
-Button.defaultProps = defaultProps;
+Button.defaultProps = sh_btn_props_default;

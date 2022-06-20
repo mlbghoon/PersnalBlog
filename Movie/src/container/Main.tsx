@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MovieDisplay } from '../common/components/MovieDisplay';
 import {  Button, Input } from '../common/components';
+import { sh_btn_evnt_return, sh_ipt_event_return } from '../common/components/TypeInterfaces';
 
 
 // TypeScript 라서 타입을 먼저 선언
@@ -73,18 +74,18 @@ export const Main = () => {
     })
     
   }
-  const onClick = (e:React.MouseEvent) => {
+  const onClick = (e:sh_btn_evnt_return) => {
     const target = e.target as HTMLButtonElement;
     console.log(target)
     console.log(target.id)
   }
 
-  const onChange = (e:React.ChangeEvent) => {
+  const onChange = (e:sh_ipt_event_return) => {
     const value = (e.target as HTMLInputElement).value;
     setIptVal(value);
   }
 
-  const onKeyPress = (e:React.KeyboardEvent) => {
+  const onKeyPress = (e:sh_ipt_event_return) => {
     const target = e.target as HTMLButtonElement;
     console.log("onKeyPress")
     console.log(target.id)
@@ -92,14 +93,14 @@ export const Main = () => {
    
   }
 
-  const onKeyUp = (e:React.KeyboardEvent) => {
+  const onKeyUp = (e:sh_ipt_event_return) => {
     const target = e.target as HTMLButtonElement;
     console.log("onKeyUp")
     console.log(target.id)
     console.log(e.key)
   }
 
-  const onBlur = (e:React.FocusEvent) => {
+  const onBlur = (e:sh_ipt_event_return) => {
     const target = e.target as HTMLInputElement;
     console.log("onBlur")
     console.log(target)    
