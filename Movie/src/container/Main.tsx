@@ -150,7 +150,6 @@ export const Main = () => {
       <Checkbox
         id={"Checkbox"}
         keyProp={"keyProp"}
-        index={1}
         value={"value"}
         onChange={checkBoxOnChange}
         onClick={checkBoxOnClick}

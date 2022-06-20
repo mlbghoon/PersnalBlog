@@ -1,9 +1,7 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { sh_ipt_props_default, sh_ipt_props_type } from '../TypeInterfaces';
 
-export const Input =(props:sh_ipt_props_type & typeof sh_ipt_props_default) => { 
-	const { alertEmpty,type,id,mt,mr,mb,ml,disabled,readOnly,width,size,color,value,placeholder,minLength,maxLength,onChange,onKeyPress,onBlur,onKeyUp,focusOnRender } = props
-	
+export const Input =({ alertEmpty,type,id,mt,mr,mb,ml,disabled,readOnly,width,size,color,value,placeholder,minLength,maxLength,onChange,onKeyPress,onBlur,onKeyUp,focusOnRender }:sh_ipt_props_type & typeof sh_ipt_props_default) => { 
 	let inputRef = useRef<HTMLInputElement>(null);
 	let strMargin = mt + "" + mr + "" + mb + "" + ml;
 
@@ -66,6 +64,7 @@ export const Input =(props:sh_ipt_props_type & typeof sh_ipt_props_default) => {
 		onBlur({id: id, target : e.target as HTMLInputElement, type: e.type});
 
 	}
+
 
 	return (
 		<div 

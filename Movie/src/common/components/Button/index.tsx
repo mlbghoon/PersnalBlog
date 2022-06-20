@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
-import { sh_btn_props_type, sh_btn_props_default } from '../TypeInterfaces';
+import { sh_btn_props_default, sh_btn_props_type } from '../TypeInterfaces';
 
-const Button= (props:sh_btn_props_type & typeof sh_btn_props_default) => { 
-	const {id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick } = props;
-	
+
+export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick }:sh_btn_props_type & typeof sh_btn_props_default) => { 
 	let btnClass, iconClass;
 	let buttonRef = useRef<HTMLButtonElement>(null);
 	let strMargin = mt + " " + mr + " " + mb + " " + ml;
@@ -68,4 +67,3 @@ const Button= (props:sh_btn_props_type & typeof sh_btn_props_default) => {
 }
 Button.defaultProps = sh_btn_props_default;
 
-export {Button}

@@ -1,9 +1,9 @@
 import React from 'react';
 import '../common/css/App.css';
 import { useEffect, useState } from 'react';
-import { Button, ComponentPanel, FlexPanel, FullPanel, Input, LFloatPanel, RelativePanel, RFloatPanel, SubFullPanel } from '../common/components';
-import { Checkbox } from '../common/components/Checkbox';
-import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return } from '../common/components/TypeInterfaces';
+import { ComponentPanel, FlexPanel, FullPanel, LFloatPanel, RelativePanel, RFloatPanel, SubFullPanel } from '../common/components';
+import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../common/components';
+import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return, sh_rdo_evnt_return } from '../common/components/TypeInterfaces';
 
 
 
@@ -11,7 +11,8 @@ import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return } from '../
 export const ComponentTest = () => {  
   const [iptVal, setIptVal] = useState("");  
   const [checked, setChecked] = useState(false);  
-  
+  const [multiChecked, setMultiChecked] = useState([{keyProp:"1_key", value:"1", checked: false},{keyProp:"2_key", value:"2", checked: false}]);
+  const [selected, setSelected] = useState("2_key");  
 
   // button Event Test //
   const buttonOnClick = (e:sh_btn_evnt_return) => {
@@ -53,16 +54,42 @@ export const ComponentTest = () => {
 
   // checkBox Event Test //
   const checkBoxOnChange = (e:sh_chk_evnt_return) => {
-    console.log("checkBoxOnChange");
-    console.log(e);
-    setChecked(prev=>!prev)
+    switch (e.id) {
+      case "Checkbox":
+        setChecked(prev=>!prev)
+        break;
+      case "MultiCheckbox":
+        let newmultiChecked = [...multiChecked];
+
+        for (let i = 0; i < newmultiChecked.length; i ++) {
+          if (newmultiChecked[i].keyProp === e.key) {
+            newmultiChecked[i].checked = !multiChecked[i].checked;
+
+            break;
+          }
+        }
+
+        setMultiChecked(newmultiChecked);
+        break;
+      default: break;
+    }
   }
-  // 컴포넌트에서 만든 custom type을 export import 가능
+
   const checkBoxOnClick = (e:sh_chk_evnt_return) => {
     console.log("checkBoxOnClick");
     console.log(e);
   }
   // checkBox Event Test //
+
+
+  // radio Event Test //
+  const radioOnChange = (e:sh_rdo_evnt_return) => {
+    //setSelected(prev=>!prev)
+    console.log("radioOnChange")
+    setSelected(e.key)
+  }
+  
+  // radio Event Test //
 
   return (
     <FullPanel>
@@ -558,16 +585,52 @@ export const ComponentTest = () => {
         </ComponentPanel>
       </SubFullPanel>
       <ComponentPanel>
-        <Checkbox
-          id={"Checkbox"}
-          keyProp={"keyProp"}
-          index={1}
-          value={"value"}
-          onChange={checkBoxOnChange}
-          onClick={checkBoxOnClick}
-          checked={checked}
-        />
+        <RelativePanel>
+          <LFloatPanel>
+            <FlexPanel>
+              <Checkbox
+                id={"Checkbox"}
+                keyProp={"keyProp"}
+                value={"value"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+              />
+              <MultiCheckBox
+                id={"MultiCheckbox"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+                dataset={multiChecked}
+                disabled={true}
+              />
+              <MultiCheckBox
+                id={"MultiCheckbox"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+                dataset={multiChecked}
+              />
+           </FlexPanel>
+          </LFloatPanel>
+        </RelativePanel>
       </ComponentPanel>
+      <ComponentPanel>
+        <RelativePanel>
+          <LFloatPanel>
+            <FlexPanel>
+              <Radio
+                id={"Radio"}
+                onChange={radioOnChange}
+                selected={selected}
+                dataset={[{keyProp:"1_key", value:"1"},{keyProp:"2_key", value:"2"}]}
+              />
+           </FlexPanel>
+          </LFloatPanel>
+        </RelativePanel>
+      </ComponentPanel>
+
+      
       {/* {movieList.map(movie => <MovieDisplay key={movie.id} movie={movie} />)} */}
     </FullPanel>
   );

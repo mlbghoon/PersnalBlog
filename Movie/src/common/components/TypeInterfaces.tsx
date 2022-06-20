@@ -107,22 +107,52 @@ export interface sh_chk_props_type {
 	id     : string;
 	value  : string;
 	keyProp: string;
-	index  : number;
 	checked : boolean;
-	readOnly: boolean;
+	disabled: boolean;
 	onClick : (arg: sh_chk_evnt_return) => void;
-	onChange: (arg: sh_chk_evnt_return) => void;	
+	onChange: (arg: sh_chk_evnt_return) => void;
+};
+
+export interface sh_multi_chk_props_type {
+	id     : string;
+	disabled: boolean;
+	onClick : (arg: sh_chk_evnt_return) => void;
+	onChange: (arg: sh_chk_evnt_return) => void;
+	dataset :{keyProp: string, value: string, checked: boolean}[]	
 };
 
 export interface sh_chk_evnt_return {
 	id     : string;
-	index  : number; 
+	key    : string; 
 	target : HTMLInputElement; 
 	checked: boolean; 
 }
 
 export const sh_chk_props_default = {
 	checked : false,
-	readOnly: false,
+	disabled: false,
 	onClick : (arg: sh_chk_evnt_return) => {return;}
 };
+
+
+export interface sh_rdo_props_type {
+	id     : string;
+	onClick : (arg: sh_rdo_evnt_return) => void;
+	onChange: (arg: sh_rdo_evnt_return) => void;
+	dataset :{keyProp: string, value: string}[]	
+	selected: string | null
+}
+
+export const sh_rdo_props_default = {
+	readOnly: false,
+	disabled: false,
+	width   : '',
+	defaultSelected: 1,
+	onClick : (arg: sh_rdo_evnt_return) => {return;}
+};
+export interface sh_rdo_evnt_return {
+	id     : string;
+	key    : string; 
+	target : HTMLInputElement; 
+	checked: boolean; 
+}
