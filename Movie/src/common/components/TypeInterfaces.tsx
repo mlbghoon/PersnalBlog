@@ -150,7 +150,8 @@ export const sh_rdo_props_default = {
 	width   : 200,
 	defaultSelected: 1,
 	perRow : 1,
-	onClick : (arg: sh_rdo_evnt_return) => {return;}
+	onClick : (arg: sh_rdo_evnt_return) => {return;},
+	onChange : (arg: sh_rdo_evnt_return) => {return;}
 }
 
 export interface sh_rdo_evnt_return {
@@ -174,8 +175,6 @@ export const sh_label_props_default = {
 	req   : false
 }
 
-
-
 export interface sh_Table_props_type {
 	id     : string
 	colGrp : {width : string}[]
@@ -187,4 +186,25 @@ export interface sh_Table_props_type {
 
 export const sh_Table_props_default = {
 	width: "100%"
+}
+
+export interface sh_sel_props_type {
+	id     : string;
+	dataset: {keyProp: string, value: string, name: string}[];
+	onChange: (arg: sh_sel_evnt_return) => void;
+}
+
+
+export const sh_sel_props_default = {
+	selected : 0,
+	width: '100%',
+	disabled:false,
+	color: '',
+	onChange : (arg:sh_sel_evnt_return) => {return;},
+	tooltip : false
+}
+
+export interface sh_sel_evnt_return {
+	id     : string;
+	target : HTMLSelectElement; 
 }

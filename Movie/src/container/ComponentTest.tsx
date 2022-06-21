@@ -1,9 +1,9 @@
 import React from 'react';
 import '../common/css/App.css';
 import { useEffect, useState } from 'react';
-import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, RFloatPanel, SubFullPanel, Table } from '../common/components';
+import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, RFloatPanel, SelectBox, SubFullPanel, Table } from '../common/components';
 import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../common/components';
-import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return, sh_rdo_evnt_return } from '../common/components/TypeInterfaces';
+import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return, sh_rdo_evnt_return, sh_sel_evnt_return } from '../common/components/TypeInterfaces';
 
 
 
@@ -83,13 +83,17 @@ export const ComponentTest = () => {
 
 
   // radio Event Test //
-  const radioOnChange = (e:sh_rdo_evnt_return) => {
+  const radioOnClick = (e:sh_rdo_evnt_return) => {
     //setSelected(prev=>!prev)
-    console.log("radioOnChange")
+    
     setSelected(e.key)
   }
-  
   // radio Event Test //
+
+  const selBoxOnChange = (e:sh_sel_evnt_return) => {
+    console.log(e)
+    
+  }
 
   return (
     <FullPanel>
@@ -678,9 +682,42 @@ export const ComponentTest = () => {
               />
               <Radio
                 id={"Radio"}
-                onChange={radioOnChange}
+                onChange={radioOnClick}
                 selected={selected}
                 dataset={[{keyProp:"1_key", value:"1"},{keyProp:"2_key", value:"2"}]}
+                perRow ={1}
+              />
+              
+              <Radio
+                id={"Radio2"}
+                onChange={radioOnClick}
+                selected={selected}
+                disabled={true}
+                dataset={[{keyProp:"1_key", value:"1"},{keyProp:"2_key", value:"2"}]}
+                perRow ={1}
+              />
+           </FlexPanel>
+          </LFloatPanel>
+          <LFloatPanel>
+            <FlexPanel>
+              <SelectBox
+                id={"selBox"}
+                dataset={[{keyProp:"1_key", value:"1", name:"일"},{keyProp:"2_key", value:"2", name:"이"}]}
+                onChange={selBoxOnChange}
+              />
+              <SelectBox
+                id={"selBox2"}
+                dataset={[{keyProp:"1_key", value:"1", name:"일"},{keyProp:"2_key", value:"2", name:"이"}]}
+                onChange={selBoxOnChange}
+                disabled={true}
+                color={"darkRed"}
+              />
+              
+              <SelectBox
+                id={"selBox3"}
+                dataset={[{keyProp:"1_key", value:"1", name:"일"},{keyProp:"2_key", value:"2", name:"이"}]}
+                onChange={selBoxOnChange}
+                color={"dodgerBlue"}
               />
            </FlexPanel>
           </LFloatPanel>

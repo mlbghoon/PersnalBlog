@@ -9,4 +9,11 @@
 
 3. Radio 변경
 
-* css 적용후 css 정상적이지 않아서 div 구조 변경 필요
+* css 수정 완료
+* each radio id 유니크 하게 변경
+
+4. SelectBox 추가
+
+### 1차 목표 Tab, TextArea, Tray, Switch 추가
+### 2차 목표 Dialog 추가
+### 3차 목표 공통 코드(dataset) 추가

@@ -170,6 +170,28 @@ input[type='text']::placeholder, input[type='password']::placeholder {color:#ADB
 .sh-input-radio-div > input[type='radio'] {float: left; align-content: center; position: relative;width: 14px;height: 14px; top: 7px; }
 .sh-input-radio-div > input + label:before {content:""; display: inline-block; position:absolute; background:#fff; border-radius:50%; box-sizing:border-box; left:-15px; top:7px;width:16px; height: 16px; border:2px solid #DEE2E6; }
 .sh-input-radio-div > input:checked + label:before { border:5px solid #748FFC;}
-.sh-input-radio-div > input:disabled + label:before { border:2px solid #ced4da; background: #e9ecef; cursor: not-allowed;}
+.sh-input-radio-div > input:disabled + label:before { border:2px solid #dacece; background: #e9ecef; cursor: not-allowed;}
 .sh-input-radio-div > label {float: left; display:inline-block; font-size: 14px; height:33px;line-height: 33px; position: relative; padding-left:5px;}
-.sh-input-radio-input {margin: 0px 0px 0px 0px}
+.sh-input-radio-input {margin: 0px 0px 0px 0px; cursor: pointer;}
+.sh-input-radio-label {cursor: pointer;}
+
+/* select */
+select {border-radius:4px; border:1px solid #DEE2E6; padding:7px 0 7px 4px; outline: none; width: 100%; box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box; }
+
+.sh-select-div { overflow: hidden; width: 100%;}
+.sh-select-div:hover { cursor:pointer;}
+.sh-select-div > select {outline: none;transition:all 0.2s;width: 100%;cursor:pointer;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+
+.sh-select-div > select:hover {background-color: #fff;;}
+.sh-select-div > select:disabled {background-color: #ced4da; color:#868e96; cursor: not-allowed;}
+
+.sh-selectbox.darkRed {color: darkRed; background-color: lightPink; font-weight: bold;}
+.sh-selectbox.darkRed:hover {background-color: lightPink !important;}
+.sh-selectbox.grey {color: rgb(247, 247, 255); background-color:dodgerBlue; font-weight: bold;}
+.sh-selectbox.grey:hover {background-color: dodgerBlue !important;}
+.sh-selectbox.dodgerBlue {color: rgb(5, 114, 99);  background-color:#dff0d8; font-weight: bold;}
+.sh-selectbox.dodgerBlue:hover {background-color: #dff0d8  !important;}
+.sh-selectbox.darkCyan {color: rgb(248, 248, 248);  background-color:rgb(162, 58, 247); font-weight: bold;}
+.sh-selectbox.darkCyan:hover {background-color: rgb(162, 58, 247) !important;}
+.sh-selectbox.darkGreen {color: rgb(44, 44, 44);  background-color:#FFCA39; font-weight: bold;}
+.sh-selectbox.darkGreen:hover {background-color: #FFCA39 !important;}

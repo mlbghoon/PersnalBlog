@@ -54,9 +54,9 @@ export const Radio =({id,readOnly,disabled,onChange,onClick,width,dataset, defau
 		let rowData: { type: string; value: JSX.Element; }[] = [];		
 		
 		dataset.map((item: {keyProp: string, value: string}, i) => {			
-			rowData.push({ type: 'D', value: <div key={'radio_div_' + i} className ='sh-input-radio-div' style={{width: width/perRow + "px"}}>								
+			rowData.push({ type: 'D', value: <div key={'radio_div_' + i} className ='sh-input-radio-div'>								
 								<input	
-									id       = {id}
+									id       = {id + "_radio_" + item.keyProp}
 									key      = {"key_" + id + "_radio_" + item.keyProp}
 									name     = {id}
 									type     = {"radio"}
@@ -73,7 +73,7 @@ export const Radio =({id,readOnly,disabled,onChange,onClick,width,dataset, defau
 								<label	
 									key       = {"key_" + id + "_labal_" + item.keyProp}
 									className ='sh-input-radio-label'
-									htmlFor={id}
+									htmlFor={id + "_radio_" + item.keyProp}
 								>
 									{item.value}
 								</label>	
@@ -100,7 +100,7 @@ export const Radio =({id,readOnly,disabled,onChange,onClick,width,dataset, defau
 
 
 	return (
-		<div className= {'sh-input-div'}  style={{width: width}}>
+		<div style={{width: width}}>
 			{setRadio() }
 		</div>
 	);

@@ -19,6 +19,7 @@ import { Checkbox, MultiCheckBox } from './Checkbox'
 import { Radio } from './Radio'
 import { Label } from './Label'
 import { Table } from './Table'
+import { SelectBox } from './SelectBox'
 
 
 export {
@@ -28,5 +29,6 @@ export {
     Checkbox, MultiCheckBox,
     Radio,
     Label,
-    Table
+    Table,
+    SelectBox
 }
