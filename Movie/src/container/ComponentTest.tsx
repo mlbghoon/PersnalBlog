@@ -1,7 +1,7 @@
 import React from 'react';
 import '../common/css/App.css';
 import { useEffect, useState } from 'react';
-import { ComponentPanel, FlexPanel, FullPanel, LFloatPanel, RelativePanel, RFloatPanel, SubFullPanel } from '../common/components';
+import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, RFloatPanel, SubFullPanel, Table } from '../common/components';
 import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../common/components';
 import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return, sh_rdo_evnt_return } from '../common/components/TypeInterfaces';
 
@@ -98,156 +98,209 @@ export const ComponentTest = () => {
           <RelativePanel>
             <LFloatPanel>
               <FlexPanel>
-                <Button
-                  id   = {"btn0"}
-                  mr   = {"5px"}
-                  value= {"btn0"}
-                  color= {"white"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn1"}
-                  mr   = {"5px"}
-                  value= {"btn1"}
-                  color= {"white"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn2"}
-                  mr   = {"5px"}
-                  value= {"btn2"}
-                  color= {"purple"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn3"}
-                  mr   = {"5px"}
-                  value= {"btn3"}
-                  color= {"purple"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn4"}
-                  mr   = {"5px"}
-                  value= {"btn4"}
-                  color= {"yellow"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn5"}
-                  mr   = {"5px"}
-                  value= {"btn5"}
-                  color= {"yellow"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn6"}
-                  mr   = {"5px"}
-                  value= {"btn6"}
-                  color= {"grey"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn7"}
-                  mr   = {"5px"}
-                  value= {"btn7"}
-                  color= {"grey"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn8"}
-                  mr   = {"5px"}
-                  value= {"btn8"}
-                  color= {"red"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn9"}
-                  mr   = {"5px"}
-                  value= {"btn9"}
-                  color= {"red"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn10"}
-                  mr   = {"5px"}
-                  value= {"btn10"}
-                  color= {"tomato"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn11"}
-                  mr   = {"5px"}
-                  value= {"btn11"}
-                  color= {"tomato"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn12"}
-                  mr   = {"5px"}
-                  value= {"btn12"}
-                  color= {"new_green"}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn13"}
-                  mr   = {"5px"}
-                  value= {"btn13"}
-                  color= {"new_green"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn14"}
-                  mr   = {"5px"}
-                  value= {"btn14"}
-                  color= {"lightgreen"}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn15"}
-                  mr   = {"5px"}
-                  value= {"btn15"}
-                  color= {"lightgreen"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn16"}
-                  mr   = {"5px"}
-                  value= {"btn16"}
-                  color= {"green"}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn17"}
-                  mr   = {"5px"}
-                  value= {"btn17"}
-                  color= {"green"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn18"}
-                  mr   = {"5px"}
-                  value= {"btn18"}
-                  color= {"blue"}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn19"}
-                  mr   = {"5px"}
-                  value= {"btn19"}
-                  color= {"blue"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                />  
+                <Table 
+                  footer={undefined} 
+                  head={undefined} 
+                  id={''} 
+                  colGrp={[{width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}]} 
+                  tbData={[
+                    [	
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn0"}
+                          mr   = {"5px"}
+                          value= {"btn0"}
+                          color= {"white"}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn1"}
+                          mr   = {"5px"}
+                          value= {"btn1"}
+                          color= {"white"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn2"}
+                          mr   = {"5px"}
+                          value= {"btn2"}
+                          color= {"purple"}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn3"}
+                          mr   = {"5px"}
+                          value= {"btn3"}
+                          color= {"purple"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn4"}
+                          mr   = {"5px"}
+                          value= {"btn4"}
+                          color= {"yellow"}
+                          onClick   = {buttonOnClick}
+                        />
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn5"}
+                          mr   = {"5px"}
+                          value= {"btn5"}
+                          color= {"yellow"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn6"}
+                          mr   = {"5px"}
+                          value= {"btn6"}
+                          color= {"grey"}
+                          onClick   = {buttonOnClick}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn7"}
+                          mr   = {"5px"}
+                          value= {"btn7"}
+                          color= {"grey"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn8"}
+                          mr   = {"5px"}
+                          value= {"btn8"}
+                          color= {"red"}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn9"}
+                          mr   = {"5px"}
+                          value= {"btn9"}
+                          color= {"red"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        />
+                      },
+                    ],
+                    [	
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn10"}
+                          mr   = {"5px"}
+                          value= {"btn10"}
+                          color= {"tomato"}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn11"}
+                          mr   = {"5px"}
+                          value= {"btn11"}
+                          color= {"tomato"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn12"}
+                          mr   = {"5px"}
+                          value= {"btn12"}
+                          color= {"new_green"}
+                          onClick   = {buttonOnClick}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn13"}
+                          mr   = {"5px"}
+                          value= {"btn13"}
+                          color= {"new_green"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn14"}
+                          mr   = {"5px"}
+                          value= {"btn14"}
+                          color= {"lightgreen"}
+                          onClick   = {buttonOnClick}
+                        />
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn15"}
+                          mr   = {"5px"}
+                          value= {"btn15"}
+                          color= {"lightgreen"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn16"}
+                          mr   = {"5px"}
+                          value= {"btn16"}
+                          color= {"green"}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn17"}
+                          mr   = {"5px"}
+                          value= {"btn17"}
+                          color= {"green"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn18"}
+                          mr   = {"5px"}
+                          value= {"btn18"}
+                          color= {"blue"}
+                          onClick   = {buttonOnClick}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id   = {"btn19"}
+                          mr   = {"5px"}
+                          value= {"btn19"}
+                          color= {"blue"}
+                          filled    = {false}
+                          onClick   = {buttonOnClick}
+                        />
+                      },
+                    ]
+                  ]}
+                />
+
               </FlexPanel>
             </LFloatPanel> 
           </RelativePanel>
@@ -619,6 +672,10 @@ export const ComponentTest = () => {
         <RelativePanel>
           <LFloatPanel>
             <FlexPanel>
+              <Label
+                value= {"라디오"}
+                req  = {true}
+              />
               <Radio
                 id={"Radio"}
                 onChange={radioOnChange}

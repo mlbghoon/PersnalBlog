@@ -135,7 +135,7 @@ input[type='text'], input[type='password'] {font-size: 14px; line-height: 16px; 
 input[type='text']::placeholder, input[type='password']::placeholder {color:#ADB5BD;}
 
 .sh-input-div {overflow:hidden; width: 100%; height: 33.33px}
-.scrm-input-h1 {
+.sh-input-h1 {
 	font-weight: bold; font-size: 1.5em !important;
 }
 .sh-input-div > input[type='text']:focus , input[type='password']:focus { outline: none; }
@@ -154,3 +154,22 @@ input[type='text']::placeholder, input[type='password']::placeholder {color:#ADB
 .sh-input-checkbox-div > input[type='checkbox'] + label:before {content: ''; margin-top:8px; box-sizing:border-box; display: inline-block; width:16px; height:16px; position:absolute; border:1px solid #748FFC; border-radius:2px; margin-left: -21px;}
 .sh-input-checkbox-div > input[type="checkbox"]:checked + label:before {border:none; background-color: #748FFC; background-image: url('../image/check.png'); background-size:65%; background-repeat: no-repeat; background-position: 50% 50%;}
 .sh-input-checkbox-div > input[type="checkbox"]:disabled + label:before { border:1px solid #ced4da; background: #e9ecef; cursor: not-allowed;}
+
+
+/* label */
+.sh-label-div {display: inline-block; position: relative; margin-right: 5px; margin-left: 5px;}
+.sh-label-div > span {display: inline-block; position: relative; margin-top: 6px; color:#495057; font-variant: small-caps; font-weight: bold; font-size: 14px }
+
+.flex-panel > .sh-label-div  {margin-left: 15px;}
+.flex-panel > .react-date-picker + .sh-label-div  {margin-left: 5px;}
+.flex-panel > .sh-label-div:first-child  {margin-left: 0px;}
+
+/* Radio */
+.sh-input-radio-div {display: inline-block; box-sizing: border-box; align-items: center; position:relative; margin-right: 12px;}
+.sh-input-radio-div:after {content:""; display: block; float: none; }
+.sh-input-radio-div > input[type='radio'] {float: left; align-content: center; position: relative;width: 14px;height: 14px; top: 7px; }
+.sh-input-radio-div > input + label:before {content:""; display: inline-block; position:absolute; background:#fff; border-radius:50%; box-sizing:border-box; left:-15px; top:7px;width:16px; height: 16px; border:2px solid #DEE2E6; }
+.sh-input-radio-div > input:checked + label:before { border:5px solid #748FFC;}
+.sh-input-radio-div > input:disabled + label:before { border:2px solid #ced4da; background: #e9ecef; cursor: not-allowed;}
+.sh-input-radio-div > label {float: left; display:inline-block; font-size: 14px; height:33px;line-height: 33px; position: relative; padding-left:5px;}
+.sh-input-radio-input {margin: 0px 0px 0px 0px}

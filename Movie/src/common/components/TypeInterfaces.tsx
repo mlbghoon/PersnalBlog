@@ -141,18 +141,50 @@ export interface sh_rdo_props_type {
 	onChange: (arg: sh_rdo_evnt_return) => void;
 	dataset :{keyProp: string, value: string}[]	
 	selected: string | null
+
 }
 
 export const sh_rdo_props_default = {
 	readOnly: false,
 	disabled: false,
-	width   : '',
+	width   : 200,
 	defaultSelected: 1,
+	perRow : 1,
 	onClick : (arg: sh_rdo_evnt_return) => {return;}
-};
+}
+
 export interface sh_rdo_evnt_return {
 	id     : string;
 	key    : string; 
 	target : HTMLInputElement; 
 	checked: boolean; 
+}
+
+
+export interface sh_label_props_type {
+	value: string
+}
+
+export const sh_label_props_default = {
+	color : 'black',
+	mt    : "0px",
+	mr    : "0px",
+	mb    : "0px",
+	ml    : "0px",
+	req   : false
+}
+
+
+
+export interface sh_Table_props_type {
+	id     : string
+	colGrp : {width : string}[]
+	tbData : {type  : string, value: React.ReactNode, colSpan?: number, rowSpan?: number}[][]
+	head   : React.ReactNode | null
+	footer : React.ReactNode | null
+
+}
+
+export const sh_Table_props_default = {
+	width: "100%"
 }

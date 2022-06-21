@@ -1,7 +1,8 @@
 import React from 'react';
+import { Table } from '../Table';
 import { sh_rdo_props_default, sh_rdo_props_type } from '../TypeInterfaces';
 
-export const Radio =({id,readOnly,disabled,onChange,onClick,width,dataset, defaultSelected, selected}:sh_rdo_props_type & typeof sh_rdo_props_default) => { 
+export const Radio =({id,readOnly,disabled,onChange,onClick,width,dataset, defaultSelected, selected, perRow}:sh_rdo_props_type & typeof sh_rdo_props_default) => { 
 	const onChangeHandler = (e:React.ChangeEvent) => {
 		const target = e.target as HTMLInputElement;
 		let key = "";
@@ -27,38 +28,80 @@ export const Radio =({id,readOnly,disabled,onChange,onClick,width,dataset, defau
 		onClick({id: id, target : target, key: key, checked : target.checked });
 	}
 
-	return (
-		<div className='scrm-input-radio-div' style={{width: width}} key = {"key_" + id + "_radio_div"}>
-			{
-				dataset?.map(({keyProp, value}, i) => {
-					return (
-						<>
-							<input		
-								id       = {id}
-								key      = {"key_" + id + "_radio_" + keyProp}
-								name     = {id}
-								type     = {"radio"}
-								value    = {value}
-								checked  = {(selected === null)
-									? defaultSelected === i
-									: selected === keyProp}					
-								readOnly = {readOnly}
-								disabled = {disabled}
-								className ='scrm-input-radio-input'
-								onChange = {onChangeHandler}
-								onClick  = {onClickHandler}
-							/>
-							<label	
-								key       = {"key_" + id + "_labal_" + keyProp}
-								className ='scrm-input-radio-label'
-								htmlFor={id}
-							>
-								{value}
-							</label>	
-						</>
-					)
-				})
+
+
+	const setRadio = () => {
+		let colGrp = [];
+
+		if (perRow === 1) {
+			colGrp = [{ width: '100%' }];
+
+		} else if (perRow === 2) {
+			colGrp = [{ width: '50%' }, { width: '50%' }];
+
+		} else if (perRow === 3) {
+			colGrp = [{ width: '33%' }, { width: '33%' }, { width: '33%' }];
+
+		} else if (perRow === 4) {
+			colGrp = [{ width: '25%' }, { width: '25%' }, { width: '25%' }, { width: '25%' }];
+
+		} else {
+			colGrp = [{ width: '20%' }, { width: '20%' }, { width: '20%' }, { width: '20%' }, { width: '20%' }];
+			
+		}
+	
+		let tbData: any[][] = [];
+		let rowData: { type: string; value: JSX.Element; }[] = [];		
+		
+		dataset.map((item: {keyProp: string, value: string}, i) => {			
+			rowData.push({ type: 'D', value: <div key={'radio_div_' + i} className ='sh-input-radio-div' style={{width: width/perRow + "px"}}>								
+								<input	
+									id       = {id}
+									key      = {"key_" + id + "_radio_" + item.keyProp}
+									name     = {id}
+									type     = {"radio"}
+									value    = {item.value}
+									checked  = {(selected === null)
+										? defaultSelected === i
+										: selected === item.keyProp}					
+									readOnly = {readOnly}
+									disabled = {disabled}
+									className ='sh-input-radio-input'
+									onChange = {onChangeHandler}
+									onClick  = {onClickHandler}
+								/>
+								<label	
+									key       = {"key_" + id + "_labal_" + item.keyProp}
+									className ='sh-input-radio-label'
+									htmlFor={id}
+								>
+									{item.value}
+								</label>	
+							</div>
+					})
+			if ((i+1)%perRow === 0) {
+				tbData.push(rowData)
+				rowData = [];
+			} else if (i === dataset.length - 1) {
+				tbData.push(rowData)
 			}
+			return null;
+		})
+
+		return (
+			<Table
+				id={id + "_table"}
+				colGrp={colGrp}
+				tbData={tbData} 
+				footer={undefined} 
+				head={undefined}/>
+		);
+	}
+
+
+	return (
+		<div className= {'sh-input-div'}  style={{width: width}}>
+			{setRadio() }
 		</div>
 	);
 }

@@ -16,8 +16,9 @@ import { AppPanel
 import { Button } from './Button'
 import { Input } from './Input'
 import { Checkbox, MultiCheckBox } from './Checkbox'
-
 import { Radio } from './Radio'
+import { Label } from './Label'
+import { Table } from './Table'
 
 
 export {
@@ -25,5 +26,7 @@ export {
     Button,
     Input,
     Checkbox, MultiCheckBox,
-    Radio
+    Radio,
+    Label,
+    Table
 }
