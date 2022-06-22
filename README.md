@@ -1,19 +1,14 @@
-2022-06-21 V 0.5
+2022-06-22 V 0.6
 ================
 
 컴포넌트 계속추가
 -------------------
-1. Label 추가
+1. Switch 추가
 
-2. Table 추가
+2. TextArea 추가중
 
-3. Radio 변경
-
-* css 수정 완료
-* each radio id 유니크 하게 변경
-
-4. SelectBox 추가
-
-### 1차 목표 Tab, TextArea, Tray, Switch 추가
+### 타입 정리 필요(모든 return 타입 하나로 통일하고 ? 로 옵션으로 해도 될듯, 디폴트와 기본프롭 중복제거 필요)
+### margin 합처서 props에서 던지도록 변경 필요
+### 1차 목표 Tab, TextArea, Tray 추가
 ### 2차 목표 Dialog 추가
 ### 3차 목표 공통 코드(dataset) 추가

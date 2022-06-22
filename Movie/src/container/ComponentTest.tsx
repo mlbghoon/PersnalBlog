@@ -1,9 +1,9 @@
 import React from 'react';
 import '../common/css/App.css';
 import { useEffect, useState } from 'react';
-import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, RFloatPanel, SelectBox, SubFullPanel, Table } from '../common/components';
+import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, RFloatPanel, SelectBox, SubFullPanel, Switch, Table } from '../common/components';
 import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../common/components';
-import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return, sh_rdo_evnt_return, sh_sel_evnt_return } from '../common/components/TypeInterfaces';
+import { sh_btn_evnt_return, sh_chk_evnt_return, sh_ipt_event_return, sh_rdo_evnt_return, sh_sel_evnt_return, sh_switch_evnt_return } from '../common/components/TypeInterfaces';
 
 
 
@@ -51,6 +51,14 @@ export const ComponentTest = () => {
     // console.log(target)    
   }
   // input Event Test //
+
+
+  
+  // switch Event Test //
+  const onSwitchChange = (e:sh_switch_evnt_return) => {
+    setChecked(prev=>!prev)
+  }
+  // switch Event Test //
 
   // checkBox Event Test //
   const checkBoxOnChange = (e:sh_chk_evnt_return) => {
@@ -694,7 +702,15 @@ export const ComponentTest = () => {
                 selected={selected}
                 disabled={true}
                 dataset={[{keyProp:"1_key", value:"1"},{keyProp:"2_key", value:"2"}]}
-                perRow ={1}
+                perRow ={2}
+              />              
+              <Radio
+                id={"Radio3"}
+                onChange={radioOnClick}
+                selected={selected}
+                disabled={true}
+                dataset={[{keyProp:"1_key", value:"1"},{keyProp:"2_key", value:"2"},{keyProp:"3_key", value:"3"},{keyProp:"4_key", value:"4"}]}
+                perRow ={2}
               />
            </FlexPanel>
           </LFloatPanel>
@@ -720,6 +736,12 @@ export const ComponentTest = () => {
                 color={"dodgerBlue"}
               />
            </FlexPanel>
+           
+           <Switch
+                id={"switch"}
+                checked={checked}
+                onChange={onSwitchChange}
+              />
           </LFloatPanel>
         </RelativePanel>
       </ComponentPanel>

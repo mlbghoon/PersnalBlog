@@ -195,3 +195,12 @@ select {border-radius:4px; border:1px solid #DEE2E6; padding:7px 0 7px 4px; outl
 .sh-selectbox.darkCyan:hover {background-color: rgb(162, 58, 247) !important;}
 .sh-selectbox.darkGreen {color: rgb(44, 44, 44);  background-color:#FFCA39; font-weight: bold;}
 .sh-selectbox.darkGreen:hover {background-color: #FFCA39 !important;}
+
+/* switch */
+.sh-switch-label {position: relative; display: inline-block; width: 40px; height: 24px; top:-2px; margin-left: 10px;}
+.sh-switch-input {opacity: 0; width: 0; height: 0; }
+.sh-switch-input:checked + .sh-switch-span {background-color: #12b886;} 
+.sh-switch-input:checked + .sh-switch-span:before {-webkit-transform: translateX(14px); -ms-transform: translateX(14px); transform: translateX(14px);}
+.sh-switch-span {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #dee2e6; -webkit-transition: .4s; transition: .4s; border-radius: 34px;}
+.sh-switch-span:before {position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 3px; background-color: white; -webkit-transition: .4s; transition: .4s; border-radius: 50%;}
+

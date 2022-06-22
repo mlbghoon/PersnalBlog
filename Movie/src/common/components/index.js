@@ -20,6 +20,9 @@ import { Radio } from './Radio'
 import { Label } from './Label'
 import { Table } from './Table'
 import { SelectBox } from './SelectBox'
+import { Switch } from './Switch'
+import { TextArea } from './TextArea'
+
 
 
 export {
@@ -30,5 +33,7 @@ export {
     Radio,
     Label,
     Table,
-    SelectBox
+    SelectBox,
+    Switch,
+    TextArea
 }

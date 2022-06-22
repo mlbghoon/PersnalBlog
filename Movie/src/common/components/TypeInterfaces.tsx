@@ -208,3 +208,47 @@ export interface sh_sel_evnt_return {
 	id     : string;
 	target : HTMLSelectElement; 
 }
+
+export interface sh_switch_props_type {
+	id     : string;
+	checked: boolean;
+	onChange: (arg: sh_switch_evnt_return) => void;
+}
+
+export interface sh_switch_evnt_return {
+	id     : string;
+	target : HTMLInputElement; 
+}
+
+
+export interface sh_textarea_props_type {
+	id         : string;
+    onChange  : (e:sh_ipt_event_return) => void;
+};
+
+export const sh_textarea_props_default = {
+	mt         : "0px",
+	mr         : "0px",
+	mb         : "0px",
+	ml         : "0px",
+	type       : "",
+	size       : "",
+	color      : "",
+	value      : "",
+	width      : "",
+	placeholder: "",
+	rows     : 10,
+	minLength: 1,
+	maxLength: 100,	
+
+    tooltip      : false,
+	disabled     : false, 
+	readOnly     : false, 
+	alertEmpty   : false,
+	focusOnRender: false,
+
+	onKeyPress: (e:sh_ipt_event_return) => {return;},
+	onKeyUp   : (e:sh_ipt_event_return) => {return;},
+	onBlur    : (e:sh_ipt_event_return) => {return;},
+	
+};
