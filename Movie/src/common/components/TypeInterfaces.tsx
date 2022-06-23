@@ -70,6 +70,7 @@ export interface sh_sel_pt extends html_base_pt {
 }
 
 export interface sh_chk_pt extends html_base_pt {
+	size?  : string;
 	value  : string;
 	keyProp: string;
 	checked : boolean;
@@ -78,6 +79,7 @@ export interface sh_chk_pt extends html_base_pt {
 };
 
 export interface sh_multi_chk_pt extends html_base_pt {
+	size?    : string;
 	onClick  : (arg: sh_evnt_return) => void;
 	onChange : (arg: sh_evnt_return) => void;
 	dataset  :{cd: string, nm: string, checked: boolean}[]	
@@ -102,6 +104,7 @@ export interface sh_textarea_pt extends html_base_pt {
 	value       : string;
 	width?      : string;
 	placeholder?: string;
+	size?       : string;
 	rows      : number;
 	minLength?: number;
 	maxLength?: number;

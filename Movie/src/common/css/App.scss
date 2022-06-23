@@ -1,8 +1,5 @@
 @import url('xeicon.css');
 
-
-
-
 .App-logo {
   cursor: pointer;
 }
@@ -37,10 +34,10 @@
 .button.i .xi-x {padding-right:0px;}
 
 .button.xs {height: 24px; line-height: 22px; font-size: 12px; padding: 0 5px;}
-.button.s  {height: 28px; line-height: 28px; font-size: 14px; padding: 0 6px;  min-width: 43px;}
-.button.m  {height: 30px; line-height: 30px; font-size: 14px; padding: 0 6px;  min-width: 60px;}
-.button.md {height: 33px; line-height: 33px; font-size: 14px; padding: 0 8px;  min-width: 60px;}
-.button.lg {height: 48px; line-height: 46px; font-size: 18px; padding: 0 10px; min-width: 100px; font-weight: bold;}
+.button.s  {height: 29px; line-height: 26px; font-size: 14px; padding: 0 6px; min-width: 43px;}
+.button.m  {height: 34px; line-height: 32px; font-size: 16px; padding: 0 6px; min-width: 60px;}
+.button.md {height: 39px; line-height: 37px; font-size: 18px; padding: 0 7px; min-width: 60px;}
+.button.lg {height: 44px; line-height: 42px; font-size: 21px; padding: 0 8px; min-width: 100px; font-weight: bold;}
  
 .button.xs.i {min-width: 24px; max-width: 24px;}
 .button.s.i  {min-width: 24px; max-width: 28px;}
@@ -53,7 +50,7 @@
 
 .button.xs.i .xi-x {font-size:1em;}
 
-.button.white      {background: #F8F9FA; color: #212529;}
+.button.white      {background: #cfcfcf; color: #212529;}
 .button.purple     {background: #3B5BDB; color: #ffffff;}
 .button.yellow     {background: #ffcc33; color: #212529;}
 .button.grey       {background: #404144; color: #ffffff;}
@@ -64,7 +61,7 @@
 .button.green      {background: #146b51; color: #ffffff;} 
 .button.blue       {background: #1C7ED6; color: #ffffff;}
 
-.button.white-o      {border:1px solid #F8F9FA; color: #F8F9FA;}
+.button.white-o      {border:1px solid #cfcfcf; color: #cfcfcf;}
 .button.purple-o     {border:1px solid #3B5BDB; color: #3B5BDB;}
 .button.yellow-o     {border:1px solid #ffcc33; color: #ffcc33;}
 .button.grey-o       {border:1px solid #404144; color: #404144;}
@@ -75,27 +72,27 @@
 .button.green-o      {border:1px solid #146b51; color: #146b51;} 
 .button.blue-o       {border:1px solid #1C7ED6; color: #1C7ED6;}
 
-.button.white:hover,.button.white:focus,.button.white:active                {background: #dadada;}
-.button.purple:hover,.button.purple:focus,.button.purple:active             {background: #364FC7;}
-.button.yellow:hover,.button.yellow:focus,.button.yellow:active             {background: #FFD75F;}
-.button.grey:hover,.button.grey:focus,.button.grey:active                   {background: #7b828a;}
-.button.red:hover,.button.red:focus,.button.red:active                      {background: #b72626;}
-.button.tomato:hover,.button.tomato:focus,.button.tomato:active             {background: #cf9573;}
-.button.new_green:hover,.button.new_green:focus,.button.new_green:active    {background: #0a8a63;}
-.button.lightgreen:hover,.button.lightgreen:focus,.button.lightgreen:active {background: #67ba72;} 
-.button.green:hover,.button.green:focus,.button.green:active                {background: #0f513e;} 
-.button.blue:hover,.button.blue:focus,.button.blue:active                   {background: #1767ad;}
+.button.white:hover,.button.white:focus,.button.white:active                {background: #8f8f8f;}
+.button.purple:hover,.button.purple:focus,.button.purple:active             {background: #2a3c97;}
+.button.yellow:hover,.button.yellow:focus,.button.yellow:active             {background: #b39743;}
+.button.grey:hover,.button.grey:focus,.button.grey:active                   {background: #4b5055;}
+.button.red:hover,.button.red:focus,.button.red:active                      {background: #751818;}
+.button.tomato:hover,.button.tomato:focus,.button.tomato:active             {background: #805c48;}
+.button.new_green:hover,.button.new_green:focus,.button.new_green:active    {background: #065e43;}
+.button.lightgreen:hover,.button.lightgreen:focus,.button.lightgreen:active {background: #427449;} 
+.button.green:hover,.button.green:focus,.button.green:active                {background: #07251c;} 
+.button.blue:hover,.button.blue:focus,.button.blue:active                   {background: #0d3a62;}
 
-.button.white-o:hover,.button.white-o:focus,.button.white-o:active                {color: #dadada;border:1px solid #dadada;}
-.button.purple-o:hover,.button.purple-o:focus,.button.purple-o:active             {color: #364FC7;border:1px solid #364FC7;}
-.button.yellow-o:hover,.button.yellow-o:focus,.button.yellow-o:active             {color: #FFD75F;border:1px solid #FFD75F;}
-.button.grey-o:hover,.button.grey-o:focus,.button.grey-o:active                   {color: #7b828a;border:1px solid #7b828a;}
-.button.red-o:hover,.button.red-o:focus,.button.red-o:active                      {color: #b72626;border:1px solid #b72626;}
-.button.tomato-o:hover,.button.tomato-o:focus,.button.tomato-o:active             {color: #cf9573;border:1px solid #cf9573;}
-.button.new_green-o:hover,.button.new_green-o:focus,.button.new_green-o:active    {color: #0a8a63;border:1px solid #0a8a63;}
-.button.lightgreen-o:hover,.button.lightgreen-o:focus,.button.lightgreen-o:active {color: #67ba72;border:1px solid #67ba72;} 
-.button.green-o:hover,.button.green-o:focus,.button.green-o:active                {color: #0f513e;border:1px solid #0f513e;} 
-.button.blue-o:hover,.button.blue-o:focus,.button.blue-o:active                   {color: #1767ad;border:1px solid #1767ad;}
+.button.white-o:hover,.button.white-o:focus,.button.white-o:active                {color: #8f8f8f;border:1px solid #8f8f8f;}
+.button.purple-o:hover,.button.purple-o:focus,.button.purple-o:active             {color: #2a3c97;border:1px solid #2a3c97;}
+.button.yellow-o:hover,.button.yellow-o:focus,.button.yellow-o:active             {color: #b39743;border:1px solid #b39743;}
+.button.grey-o:hover,.button.grey-o:focus,.button.grey-o:active                   {color: #4b5055;border:1px solid #4b5055;}
+.button.red-o:hover,.button.red-o:focus,.button.red-o:active                      {color: #751818;border:1px solid #751818;}
+.button.tomato-o:hover,.button.tomato-o:focus,.button.tomato-o:active             {color: #805c48;border:1px solid #805c48;}
+.button.new_green-o:hover,.button.new_green-o:focus,.button.new_green-o:active    {color: #065e43;border:1px solid #065e43;}
+.button.lightgreen-o:hover,.button.lightgreen-o:focus,.button.lightgreen-o:active {color: #427449;border:1px solid #427449;} 
+.button.green-o:hover,.button.green-o:focus,.button.green-o:active                {color: #07251c;border:1px solid #07251c;} 
+.button.blue-o:hover,.button.blue-o:focus,.button.blue-o:active                   {color: #0d3a62;border:1px solid #0d3a62;}
 
 
 .app-panel    {height: 100vh; width: 100%; display: block; overflow: hidden;}
@@ -131,13 +128,22 @@
 .center-panel { text-align: center; }
 
 
-input[type='text'], input[type='password'] {font-size: 14px; line-height: 16px; position: relative; z-index: 9; height: 15px; padding: 8px 0 6px; color: #000; border: 1px solid #DEE2E6; background: #fff; outline: none; border-radius:3px;} 
+input[type='text'], input[type='password'] { position: relative; z-index: 9; color: #000; border: 1px solid #DEE2E6; background: #fff; outline: none; border-radius:3px;} 
 input[type='text']::placeholder, input[type='password']::placeholder {color:#ADB5BD;}
 
-.sh-input-div {overflow:hidden; width: 100%; height: 33.33px}
-.sh-input-h1 {
-	font-weight: bold; font-size: 1.5em !important;
-}
+.sh-input-div {overflow:hidden; width: 100%; }
+.sh-input-div.xs {height: 24px}
+.sh-input-div.s  {height: 29px}
+.sh-input-div.m  {height: 34px}
+.sh-input-div.md {height: 39px}
+.sh-input-div.lg {height: 44px}
+
+input.xs { width: 99%; line-height: 12px; font-size: 12px; padding: 3px 0 3px; }
+input.s  { width: 99%; line-height: 14px; font-size: 14px; padding: 5px 0 5px; }
+input.m  { width: 99%; line-height: 16px; font-size: 16px; padding: 6px 0 6px; }
+input.md { width: 99%; line-height: 18px; font-size: 18px; padding: 7px 0 7px; } 
+input.lg { width: 99%; line-height: 21px; font-size: 21px; font-weight: bold; padding: 8px 0 8px; }
+
 .sh-input-div > input[type='text']:focus , input[type='password']:focus { outline: none; }
 .sh-input-div > input[type='text']:disabled , input[type='password']:disabled {background-color: #ced4da; color:#777; cursor: not-allowed;}
 .sh-input-div > input[type='text']:disabled::placeholder , input[type='password']:disabled::placeholder {color:#777; }
@@ -149,12 +155,19 @@ input[type='text']::placeholder, input[type='password']::placeholder {color:#ADB
 
 /* checkbox */
 .sh-input-checkbox-div { display: inline; cursor: pointer;}
-.sh-input-checkbox-div > label {position:relative; font-size:14px; height:27px; line-height: 33px; display: inline-block;}
-.sh-input-checkbox-div > input[type='checkbox'] {margin:0; margin-left: 4px; align-content: center;position: relative;width: 24px;height: 24px; opacity: 0; z-index: 2; cursor:pointer;}
+
+.sh-input-checkbox-div > label {position:relative; display: inline-block;}
+
+.sh-input-checkbox-div > label.xs { font-size:12px; height:27px; line-height: 12px; }
+.sh-input-checkbox-div > label.s  { font-size:14px; height:27px; line-height: 14px; }
+.sh-input-checkbox-div > label.m  { font-size:16px; height:27px; line-height: 16px; }
+.sh-input-checkbox-div > label.md { font-size:18px; height:27px; line-height: 18px; }
+.sh-input-checkbox-div > label.lg { font-size:21px; height:27px; line-height: 21px; }
+
+.sh-input-checkbox-div > input[type='checkbox'] {margin:0; margin-left: 4px; align-content: center; position: relative; width: 24px; opacity: 0; z-index: 2; cursor:pointer;}
 .sh-input-checkbox-div > input[type='checkbox'] + label:before {content: ''; margin-top:8px; box-sizing:border-box; display: inline-block; width:16px; height:16px; position:absolute; border:1px solid #748FFC; border-radius:2px; margin-left: -21px;}
 .sh-input-checkbox-div > input[type="checkbox"]:checked + label:before {border:none; background-color: #748FFC; background-image: url('../image/check.png'); background-size:65%; background-repeat: no-repeat; background-position: 50% 50%;}
 .sh-input-checkbox-div > input[type="checkbox"]:disabled + label:before { border:1px solid #ced4da; background: #e9ecef; cursor: not-allowed;}
-
 
 /* label */
 .sh-label-div {display: inline-block; position: relative; margin-right: 5px; margin-left: 5px;}
@@ -171,7 +184,7 @@ input[type='text']::placeholder, input[type='password']::placeholder {color:#ADB
 .sh-input-radio-div > input + label:before {content:""; display: inline-block; position:absolute; background:#fff; border-radius:50%; box-sizing:border-box; left:-15px; top:7px;width:16px; height: 16px; border:2px solid #DEE2E6; }
 .sh-input-radio-div > input:checked + label:before { border:5px solid #748FFC;}
 .sh-input-radio-div > input:disabled + label:before { border:2px solid #dacece; background: #e9ecef; cursor: not-allowed;}
-.sh-input-radio-div > label {float: left; display:inline-block; font-size: 14px; height:33px;line-height: 33px; position: relative; padding-left:5px;}
+.sh-input-radio-div > label {float: left; display:block; font-size: 14px; height:33px;line-height: 33px; position: relative; padding-left:5px;}
 .sh-input-radio-input {margin: 0px 0px 0px 0px; cursor: pointer;}
 .sh-input-radio-label {cursor: pointer;}
 
@@ -209,9 +222,14 @@ select {border-radius:4px; border:1px solid #DEE2E6; padding:7px 0 7px 4px; outl
   resize: none;
 }
 .scrm-textarea-div { width:auto;}
-.scrm-textarea-div > textarea { width:100%; padding: 0px; margin: 0px; box-sizing: border-box; padding:8px; font-size: 14px !important;}
+.scrm-textarea-div > textarea { width:100%; padding: 0px; margin: 0px; box-sizing: border-box; padding:8px; }
 .scrm-textarea-div > textarea:disabled {background: #e9ecef !important; color:#adb5bd !important; cursor: not-allowed;}
 
 textarea { height: auto;}
+textarea.xs { line-height: 12px; font-size: 12px; }
+textarea.s  { line-height: 14px; font-size: 14px; }
+textarea.m  { line-height: 16px; font-size: 16px; }
+textarea.md { line-height: 18px; font-size: 18px; } 
+textarea.lg { line-height: 21px; font-size: 21px; font-weight: bold;}
 
 .scrm-textarea-div > .scrm-textarea-input-auto {overflow:auto !important; padding: 0px; }

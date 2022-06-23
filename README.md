@@ -51,4 +51,6 @@
 ### 3차 목표 공통 코드(dataset) 추가
 
 ### default porps 수정이유 https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/default_props/ 
-
+### scss사용법 공부 https://blog.logrocket.com/the-definitive-guide-to-scss/
+### 컬러코드 https://www.quackit.com/css/css_color_codes.cfm
+### 스타일쪽 scss로 리팩토링 필요 

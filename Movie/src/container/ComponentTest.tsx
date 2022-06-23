@@ -319,7 +319,6 @@ export const ComponentTest = () => {
                     ]
                   ]}
                 />
-
               </FlexPanel>
             </LFloatPanel> 
           </RelativePanel>
@@ -629,6 +628,67 @@ export const ComponentTest = () => {
               </FlexPanel>
             </LFloatPanel>
           </RelativePanel>
+          <RelativePanel>
+            <LFloatPanel>
+              <FlexPanel>
+                <Input
+                  id={"allxs"}
+                  value={iptVal}
+                  focusOnRender={true}
+                  onChange={inputOnChange}
+                  onKeyPress={inputOnKeyPress}
+                  onKeyUp={inputOnKeyUp}
+                  onBlur={inputOnBlur}
+                  alertEmpty={true}
+                  size={"xs"}
+                />
+                <Input
+                  id={"alls"}
+                  value={iptVal}
+                  focusOnRender={true}
+                  onChange={inputOnChange}
+                  onKeyPress={inputOnKeyPress}
+                  onKeyUp={inputOnKeyUp}
+                  onBlur={inputOnBlur}
+                  alertEmpty={true}
+                  size={"s"}
+                />
+                <Input
+                  id={"allm"}
+                  value={iptVal}
+                  focusOnRender={true}
+                  onChange={inputOnChange}
+                  onKeyPress={inputOnKeyPress}
+                  onKeyUp={inputOnKeyUp}
+                  onBlur={inputOnBlur}
+                  alertEmpty={true}
+                  size={"m"}
+                />
+                <Input
+                  id={"allmd"}
+                  value={iptVal}
+                  focusOnRender={true}
+                  onChange={inputOnChange}
+                  onKeyPress={inputOnKeyPress}
+                  onKeyUp={inputOnKeyUp}
+                  onBlur={inputOnBlur}
+                  alertEmpty={true}
+                  size={"md"}
+                />
+                <Input
+                  id={"allla"}
+                  value={iptVal}
+                  focusOnRender={true}
+                  onChange={inputOnChange}
+                  onKeyPress={inputOnKeyPress}
+                  onKeyUp={inputOnKeyUp}
+                  onBlur={inputOnBlur}
+                  alertEmpty={true}
+                  size={"lg"}
+                />
+              </FlexPanel>
+            </LFloatPanel>
+          </RelativePanel>
         </ComponentPanel>
       </SubFullPanel>
       <ComponentPanel>
@@ -642,6 +702,43 @@ export const ComponentTest = () => {
                 onChange={checkBoxOnChange}
                 onClick={checkBoxOnClick}
                 checked={checked}
+                size={"xs"}
+              />
+              <Checkbox
+                id={"Checkbox"}
+                keyProp={"keyProp"}
+                value={"value"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+                size={"s"}
+              />
+              <Checkbox
+                id={"Checkbox"}
+                keyProp={"keyProp"}
+                value={"value"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+                size={"m"}
+              />
+              <Checkbox
+                id={"Checkbox"}
+                keyProp={"keyProp"}
+                value={"value"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+                size={"md"}
+              />
+              <Checkbox
+                id={"Checkbox"}
+                keyProp={"keyProp"}
+                value={"value"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+                size={"lg"}
               />
               <MultiCheckBox
                 id={"MultiCheckbox"}
@@ -734,6 +831,7 @@ export const ComponentTest = () => {
                 onChange={onTextAreaChanged} 
                 value={textAreaValue}
                 id={'textArea'}
+                size={"xs"}
               />
               <TextArea 
                 rows={4} 
@@ -747,6 +845,7 @@ export const ComponentTest = () => {
                 value={textAreaValue}
                 id={'textArea2'}
                 resize={true}
+                size={"lg"}
               />
             </FlexPanel>
           </LFloatPanel>

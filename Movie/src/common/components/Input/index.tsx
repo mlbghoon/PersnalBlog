@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { sh_evnt_return, sh_ipt_pt } from '../TypeInterfaces';
 
-export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width,size="",color,value,placeholder,minLength,maxLength,onChange,onKeyPress=(e:sh_evnt_return)=>{return;},onBlur=(e:sh_evnt_return)=>{return;},onKeyUp=(e:sh_evnt_return)=>{return;},focusOnRender=false}:sh_ipt_pt) => { 
+export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width,size="md",color,value,placeholder,minLength,maxLength,onChange,onKeyPress=(e:sh_evnt_return)=>{return;},onBlur=(e:sh_evnt_return)=>{return;},onKeyUp=(e:sh_evnt_return)=>{return;},focusOnRender=false}:sh_ipt_pt) => { 
 	let inputRef = useRef<HTMLInputElement>(null);	
 
 	useEffect(() => {
@@ -29,18 +29,18 @@ export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width,si
 		}
 	}
 	
-	let inputDIvClass = "sh-input-div";
-	let inputClass = "";
+	let inputDIvClass = "sh-input-div " + size;
+	let inputClass = size;
 
 	if (alertEmpty) {
 		if (value === "") {
-			inputClass += "border_red ";
+			inputClass += " border_red ";
 
 		}
 
 	} 
 
-	const onChangeHandler = (e:React.ChangeEvent) => {
+	const onChangeHandler = (e:React.ChangeEvent) => {		
 		onChange({id: id, target : e.target as HTMLInputElement});
 		
 	}
@@ -68,11 +68,13 @@ export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width,si
 		>
 			<input	
 				id          = {id}
+				ref         = {inputRef} 
 				type        = {"text"}
 				value       = {rtnVal(value)}
+				style       = {{color: color}}
 				readOnly    = {readOnly}
 				disabled    = {disabled}
-				className   = {inputClass + (size === 'h1' ? "sh-input-h1" : "")}
+				className   = {inputClass}
 				minLength   = {minLength}
 				maxLength   = {maxLength}
 				placeholder = {placeholder}
@@ -81,8 +83,6 @@ export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width,si
 				onKeyDown = {onKeyPressHandler}
 				onKeyUp   = {onKeyUpHandler}
 				onBlur    = {onBlurHandler}
-				ref= {inputRef} 
-				style    = {{color: color}}
 			/>
 		</div>
 	);
