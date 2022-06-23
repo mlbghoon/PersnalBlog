@@ -204,3 +204,14 @@ select {border-radius:4px; border:1px solid #DEE2E6; padding:7px 0 7px 4px; outl
 .sh-switch-span {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #dee2e6; -webkit-transition: .4s; transition: .4s; border-radius: 34px;}
 .sh-switch-span:before {position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 3px; background-color: white; -webkit-transition: .4s; transition: .4s; border-radius: 50%;}
 
+/* textarea */
+.no_resize{
+  resize: none;
+}
+.scrm-textarea-div { width:auto;}
+.scrm-textarea-div > textarea { width:100%; padding: 0px; margin: 0px; box-sizing: border-box; padding:8px; font-size: 14px !important;}
+.scrm-textarea-div > textarea:disabled {background: #e9ecef !important; color:#adb5bd !important; cursor: not-allowed;}
+
+textarea { height: auto;}
+
+.scrm-textarea-div > .scrm-textarea-input-auto {overflow:auto !important; padding: 0px; }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { sh_chk_evnt_return, sh_chk_props_default, sh_chk_props_type, sh_multi_chk_props_type } from '../TypeInterfaces';
+import { sh_chk_pt, sh_evnt_return, sh_multi_chk_pt } from '../TypeInterfaces';
 
-export const Checkbox =({id,keyProp,disabled,checked,value,onChange,onClick }:sh_chk_props_type & typeof sh_chk_props_default) => { 
+export const Checkbox =({id,keyProp,disabled,checked,value,onChange,onClick }:sh_chk_pt) => { 
 	const onClickHandler = (e:React.MouseEvent) => {
 		const target = e.target as HTMLInputElement;
 		onClick({id: id, target : target, key: target.value, checked : target.checked });
@@ -37,28 +37,27 @@ export const Checkbox =({id,keyProp,disabled,checked,value,onChange,onClick }:sh
 		</div>
 	);
 }
-Checkbox.defaultProps = sh_chk_props_default;
 
 
-export const MultiCheckBox =({id,disabled,onChange,onClick, dataset }:sh_multi_chk_props_type & typeof sh_chk_props_default) => { 
-	const onClickHandler = (e:sh_chk_evnt_return) => {
-		const target = e.target;
+export const MultiCheckBox =({id,disabled,onChange,onClick,dataset }:sh_multi_chk_pt) => { 
+	const onClickHandler = (e:sh_evnt_return) => {
+		const target = e.target as HTMLInputElement;
 		onClick({id: id, target: target, key: target.value, checked : target.checked});
 	}
-	const onChangeHandler = (e:sh_chk_evnt_return) => {
-		const target = e.target;
+	const onChangeHandler = (e:sh_evnt_return) => {
+		const target = e.target as HTMLInputElement;
 		onChange({id: id, target: target, key: target.value, checked : target.checked });
 	}
 	return (
 		<React.Fragment>
 		{			
-			dataset?.map(({keyProp, value, checked}, i) => {
+			dataset?.map(({cd, nm, checked}, i:number) => {
 				return (
 					<Checkbox
 						id       = {id + "_" + i}
 						key      = {'checkbox_' + id + "_"+ i}
-						value    = {value}
-						keyProp  = {keyProp}
+						value    = {nm}
+						keyProp  = {cd}
 						checked  = {checked}
 						disabled = {disabled}
 						onChange = {onChangeHandler}
@@ -70,4 +69,4 @@ export const MultiCheckBox =({id,disabled,onChange,onClick, dataset }:sh_multi_c
 		</React.Fragment>
 	);
 }
-MultiCheckBox.defaultProps = sh_chk_props_default;
+

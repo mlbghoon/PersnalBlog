@@ -1,10 +1,8 @@
-import { sh_label_props_default, sh_label_props_type } from '../TypeInterfaces';
+import { sh_label_pt } from '../TypeInterfaces';
 
-export const Label =({color,value,req,mt,mr,mb,ml,}:sh_label_props_type & typeof sh_label_props_default) => { 
-	let strMargin = mt + "" + mr + "" + mb + "" + ml;
-	
+export const Label =({color,value,req,margin}:sh_label_pt) => { 
 	return (
-		<div className="sh-label-div" style={{margin: strMargin}}>					
+		<div className="sh-label-div" style={{margin: margin}}>					
 			<span style={{color : color}}>{value}</span>
 			{
 				(req)
@@ -14,4 +12,3 @@ export const Label =({color,value,req,mt,mr,mb,ml,}:sh_label_props_type & typeof
 		</div>
 	);
 }
-Label.defaultProps = sh_label_props_default;

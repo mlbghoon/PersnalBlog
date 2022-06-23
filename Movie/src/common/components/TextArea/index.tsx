@@ -1,17 +1,27 @@
 import React, { useEffect, useRef } from 'react';
-import { sh_textarea_props_default, sh_textarea_props_type } from '../TypeInterfaces';
+import { sh_evnt_return, sh_textarea_pt } from '../TypeInterfaces';
 
-export const TextArea =({rows,type,id,disabled,readOnly,width,value,placeholder,minLength,maxLength,onChange,onKeyPress,onBlur,onKeyUp,focusOnRender }:sh_textarea_props_type & typeof sh_textarea_props_default) => { 
+export const TextArea =({margin,alertEmpty,rows,type,id,disabled,readOnly,width,value,placeholder,minLength,maxLength,onChange,onKeyPress=(e:sh_evnt_return)=>{return;},onBlur=(e:sh_evnt_return)=>{return;},onKeyUp=(e:sh_evnt_return)=>{return;},focusOnRender,resize=false }:sh_textarea_pt) => { 
 	let inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		if (focusOnRender) {
 			inputRef.current?.focus();	
 		}
-	}, []);
-	
+	}, [focusOnRender]);
+
+	let inputClass = "";
+
+	if (alertEmpty) {
+		if (value === "") {
+			inputClass += "border_red ";
+
+		}
+
+	} 
+
 	const rtnVal = (value:string) => {		
-		if (type !== undefined) {
+		if (type) {
 			switch (type) {
 			case 'onlyNum' :
 				return value.replace(/[^0-9]/g,"");
@@ -34,29 +44,29 @@ export const TextArea =({rows,type,id,disabled,readOnly,width,value,placeholder,
 	}
 	
 	const onChangeHandler = (e:React.ChangeEvent) => {
-		onChange({id: id, target : e.target as HTMLInputElement});
+		onChange({id: id, target : e.target as HTMLTextAreaElement});
 		
 	}
 
 	const onKeyPressHandler = (e:React.KeyboardEvent) => {
-		onKeyPress({id: id, target : e.target as HTMLInputElement, key: e.key, code: e.code});
+		onKeyPress({id: id, target : e.target as HTMLTextAreaElement, key: e.key, code: e.code});
 	
 	}
 
 	const onKeyUpHandler = (e:React.KeyboardEvent) => {
-		onKeyUp({id: id, target : e.target as HTMLInputElement, key: e.key, code: e.code});
+		onKeyUp({id: id, target : e.target as HTMLTextAreaElement, key: e.key, code: e.code});
 	
 	}
 
 	const onBlurHandler = (e:React.FocusEvent) => {
-		onBlur({id: id, target : e.target as HTMLInputElement, type: e.type});
+		onBlur({id: id, target : e.target as HTMLTextAreaElement, type: e.type});
 
 	}
 
 
 	return (
-		<div className='scrm-textarea-div' style={{width: width}}>
-			<textarea className="scrm-textarea-input"
+		<div className={'scrm-textarea-div' + inputClass} style={{width: width, margin: margin}}>
+			<textarea className={(resize ? "" : "no_resize")}
 				id			= {id}
 				value		= {rtnVal(value)}
 				placeholder	= {placeholder}
@@ -73,4 +83,3 @@ export const TextArea =({rows,type,id,disabled,readOnly,width,value,placeholder,
 		</div>
 	);
 }
-TextArea.defaultProps = sh_textarea_props_default;

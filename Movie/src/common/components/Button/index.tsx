@@ -1,16 +1,16 @@
 import React, { useRef } from 'react';
-import { sh_btn_props_default, sh_btn_props_type } from '../TypeInterfaces';
+import { sh_btn_pt } from '../TypeInterfaces';
 
-
-export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color, filled, innerImage, value, icon, hidden, onClick }:sh_btn_props_type & typeof sh_btn_props_default) => { 
+//const Greet = ({ age = 21 }: GreetProps) => // etc
+export const Button = ({id,margin,disabled,size="md",color="tomato",filled=true,value,icon="",onClick}:sh_btn_pt) => { 
 	let btnClass, iconClass;
 	let buttonRef = useRef<HTMLButtonElement>(null);
-	let strMargin = mt + " " + mr + " " + mb + " " + ml;
+	let innerImage = icon === "" ? false : true;
 
 	btnClass =  (value) ?
-				 	'button ' + size + ' ' + color + (filled  ? '' : '-o') + (onlyDisplay? ' display-only' : '')
+				 	'button ' + size + ' ' + color + (filled  ? '' : '-o') 
 				: 
-					'button ' + size + ' ' + color + (filled  ? '' : '-o') + (innerImage ? ' i' : '') + (onlyDisplay? ' display-only' : '');
+					'button ' + size + ' ' + color + (filled  ? '' : '-o') + (innerImage ? ' i' : '');
 
 	if (innerImage) {
 		switch (icon) {
@@ -50,7 +50,7 @@ export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color,
 			onClick  = {onClickHandler} 
 			className= {btnClass} 
 			disabled = {disabled}
-			style    = {{ margin: strMargin, visibility : hidden ? 'hidden' :  'visible'}}
+			style    = {{ margin: margin}}
 		>	
 			{
 				(innerImage && iconClass !== null) 
@@ -65,5 +65,4 @@ export const Button = ({ id, mt, mr, mb, ml, disabled, onlyDisplay, size, color,
 		</button>
 	);
 }
-Button.defaultProps = sh_btn_props_default;
 

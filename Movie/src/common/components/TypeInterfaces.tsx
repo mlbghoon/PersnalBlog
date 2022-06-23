@@ -1,254 +1,118 @@
-export interface sh_btn_props_type {
-	id   : string;
-    mt   : string;
-	mr   : string;
-	mb   : string;
-	ml   : string;
-	icon : string;
-    size : string;
-	value: string;
-    color: string;
 
-	filled     : boolean;
-	hidden     : boolean;
-	disabled   : boolean;
-	innerImage : boolean;
-	onlyDisplay: boolean;
+interface html_base_pt {
+	id       : string;
+    margin?  : string;
+	disabled?: boolean;
+}
 
-	onClick    : (e:sh_btn_evnt_return) => void;
+export interface sh_evnt_return {	
+	id      : string;   
+	target  : HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+	key?    : string;
+	code?   : string;
+	type?   : string;
+	checked?: boolean; 
 };
 
-export const sh_btn_props_default = {	
-	mt   : "0px",
-	mr   : "0px",
-	mb   : "0px",
-	ml   : "0px",
-	icon : "",
-    size : "md",
-	value: "",
-    color: "tomato",
-
-	filled     : true,
-	hidden     : false,
-	disabled   : false,
-	innerImage : false,
-	onlyDisplay: false
+export interface sh_btn_pt extends html_base_pt {	
+	icon?   : string;
+    size?   : string;
+	value?  : string;
+    color?  : string;
+	filled? : boolean;
+	onClick : (e:sh_evnt_return) => void;
 };
 
-export interface sh_btn_evnt_return {	
-	id    : string;   
-	target: HTMLButtonElement;
+export interface sh_ipt_pt extends html_base_pt {
+	type?       : string;
+	size?       : string; 
+	color?      : string; 
+	value       : string; 
+	width?      : string;
+	placeholder?: string;     
+	minLength?: number; 
+	maxLength?: number; 	
+    tooltip?      : boolean; 
+	readOnly?     : boolean; 
+	alertEmpty?   : boolean; 
+	focusOnRender?: boolean; 
+	onChange   : (e:sh_evnt_return) => void;
+	onKeyPress?: (e:sh_evnt_return) => void;
+	onKeyUp?   : (e:sh_evnt_return) => void;
+	onBlur?    : (e:sh_evnt_return) => void;
 };
 
-export interface sh_ipt_props_type {
-	id         : string; 
-	mt         : string; 
-	mr         : string; 
-	mb         : string; 
-	ml         : string; 
-	type       : string;
-	size       : string; 
-	color      : string; 
-	value      : string; 
-	width      : string;
-	placeholder: string; 
-    
-	minLength: number; 
-	maxLength: number; 	
 
-    tooltip      : boolean; 
-	disabled     : boolean; 
-	readOnly     : boolean; 
-	alertEmpty   : boolean; 
-	focusOnRender: boolean; 
+export interface sh_label_pt {
+	color? : 'black';
+	value  : string;
+	margin?: string;
+	req?   : boolean;
+}
 
-	onChange  : (e:sh_ipt_event_return) => void;
-	onKeyPress: (e:sh_ipt_event_return) => void;
-	onKeyUp   : (e:sh_ipt_event_return) => void;
-	onBlur    : (e:sh_ipt_event_return) => void;
-};
+export interface sh_rdo_pt extends html_base_pt {
+	onClick?: (e: sh_evnt_return) => void;
+	onChange: (e: sh_evnt_return) => void;
+	dataset :{cd: string, nm: string}[];
+	selected: string | null;	
+	readOnly?: false,
+	width?   : number,
+	perRow?  : number,
+	defaultSelected?: number,
+}
 
-export const sh_ipt_props_default = {
-	mt         : "0px",
-	mr         : "0px",
-	mb         : "0px",
-	ml         : "0px",
-	type       : "",
-	size       : "",
-	color      : "",
-	value      : "",
-	width      : "",
-	placeholder: "",
 
-	minLength: 1,
-	maxLength: 100,	
+export interface sh_sel_pt extends html_base_pt {
+	dataset: {cd: string, nm: string}[];
+	onChange: (arg: sh_evnt_return) => void;
+	width?:  string;
+	color?:  string;
+}
 
-    tooltip      : false,
-	disabled     : false, 
-	readOnly     : false, 
-	alertEmpty   : false,
-	focusOnRender: false,
-
-	onKeyPress: (e:sh_ipt_event_return) => {return;},
-	onKeyUp   : (e:sh_ipt_event_return) => {return;},
-	onBlur    : (e:sh_ipt_event_return) => {return;},
-	
-};
-
-export interface sh_ipt_event_return {	
-	id    : string;   
-	target: HTMLInputElement;
-	key?  : string;
-	code? : string;
-	type? : string;
-};
-
-export interface sh_chk_props_type {
-	id     : string;
+export interface sh_chk_pt extends html_base_pt {
 	value  : string;
 	keyProp: string;
 	checked : boolean;
-	disabled: boolean;
-	onClick : (arg: sh_chk_evnt_return) => void;
-	onChange: (arg: sh_chk_evnt_return) => void;
+	onClick : (arg: sh_evnt_return) => void;
+	onChange: (arg: sh_evnt_return) => void;
 };
 
-export interface sh_multi_chk_props_type {
-	id     : string;
-	disabled: boolean;
-	onClick : (arg: sh_chk_evnt_return) => void;
-	onChange: (arg: sh_chk_evnt_return) => void;
-	dataset :{keyProp: string, value: string, checked: boolean}[]	
+export interface sh_multi_chk_pt extends html_base_pt {
+	onClick  : (arg: sh_evnt_return) => void;
+	onChange : (arg: sh_evnt_return) => void;
+	dataset  :{cd: string, nm: string, checked: boolean}[]	
 };
 
-export interface sh_chk_evnt_return {
-	id     : string;
-	key    : string; 
-	target : HTMLInputElement; 
-	checked: boolean; 
-}
-
-export const sh_chk_props_default = {
-	checked : false,
-	disabled: false,
-	onClick : (arg: sh_chk_evnt_return) => {return;}
-};
-
-
-export interface sh_rdo_props_type {
-	id     : string;
-	onClick : (arg: sh_rdo_evnt_return) => void;
-	onChange: (arg: sh_rdo_evnt_return) => void;
-	dataset :{keyProp: string, value: string}[]	
-	selected: string | null
-
-}
-
-export const sh_rdo_props_default = {
-	readOnly: false,
-	disabled: false,
-	width   : 200,
-	defaultSelected: 1,
-	perRow : 1,
-	onClick : (arg: sh_rdo_evnt_return) => {return;},
-	onChange : (arg: sh_rdo_evnt_return) => {return;}
-}
-
-export interface sh_rdo_evnt_return {
-	id     : string;
-	key    : string; 
-	target : HTMLInputElement; 
-	checked: boolean; 
-}
-
-
-export interface sh_label_props_type {
-	value: string
-}
-
-export const sh_label_props_default = {
-	color : 'black',
-	mt    : "0px",
-	mr    : "0px",
-	mb    : "0px",
-	ml    : "0px",
-	req   : false
-}
-
-export interface sh_Table_props_type {
-	id     : string
-	colGrp : {width : string}[]
-	tbData : {type  : string, value: React.ReactNode, colSpan?: number, rowSpan?: number}[][]
-	head   : React.ReactNode | null
-	footer : React.ReactNode | null
-
-}
-
-export const sh_Table_props_default = {
-	width: "100%"
-}
-
-export interface sh_sel_props_type {
-	id     : string;
-	dataset: {keyProp: string, value: string, name: string}[];
-	onChange: (arg: sh_sel_evnt_return) => void;
-}
-
-
-export const sh_sel_props_default = {
-	selected : 0,
-	width: '100%',
-	disabled:false,
-	color: '',
-	onChange : (arg:sh_sel_evnt_return) => {return;},
-	tooltip : false
-}
-
-export interface sh_sel_evnt_return {
-	id     : string;
-	target : HTMLSelectElement; 
-}
-
-export interface sh_switch_props_type {
-	id     : string;
+export interface sh_switch_pt extends html_base_pt {
 	checked: boolean;
-	onChange: (arg: sh_switch_evnt_return) => void;
+	onChange: (arg: sh_evnt_return) => void;
 }
 
-export interface sh_switch_evnt_return {
-	id     : string;
-	target : HTMLInputElement; 
+export interface sh_Table_pt {
+	colGrp : {width : string}[];
+	tbData : {type  : string, value: React.ReactNode, colSpan?: number, rowSpan?: number}[][];
+	head?  : React.ReactNode;
+	footer?: React.ReactNode;
+	width? : string;
 }
 
-
-export interface sh_textarea_props_type {
-	id         : string;
-    onChange  : (e:sh_ipt_event_return) => void;
+export interface sh_textarea_pt extends html_base_pt {
+	type?       : string;
+	color?      : string;
+	value       : string;
+	width?      : string;
+	placeholder?: string;
+	rows      : number;
+	minLength?: number;
+	maxLength?: number;
+    tooltip?      : boolean;
+	readOnly?     : boolean; 
+	alertEmpty?   : boolean;
+	focusOnRender?: boolean;
+	resize?       : boolean;
+	onKeyPress?: (e:sh_evnt_return) => void;
+	onKeyUp?   : (e:sh_evnt_return) => void;
+	onBlur?    : (e:sh_evnt_return) => void;
+    onChange   : (e:sh_evnt_return) => void;
 };
 
-export const sh_textarea_props_default = {
-	mt         : "0px",
-	mr         : "0px",
-	mb         : "0px",
-	ml         : "0px",
-	type       : "",
-	size       : "",
-	color      : "",
-	value      : "",
-	width      : "",
-	placeholder: "",
-	rows     : 10,
-	minLength: 1,
-	maxLength: 100,	
-
-    tooltip      : false,
-	disabled     : false, 
-	readOnly     : false, 
-	alertEmpty   : false,
-	focusOnRender: false,
-
-	onKeyPress: (e:sh_ipt_event_return) => {return;},
-	onKeyUp   : (e:sh_ipt_event_return) => {return;},
-	onBlur    : (e:sh_ipt_event_return) => {return;},
-	
-};

@@ -19,7 +19,6 @@ function App() {
         {/* 화면 설명 문구 추가 예정 */}
         <Button
           id   = {"test"}
-          mr   = {"5px"}
           value= {"테스트페이지"}
           color= {"green"}
           onClick   = {() => push('/ComponentTest')}

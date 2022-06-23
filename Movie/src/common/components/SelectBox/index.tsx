@@ -1,11 +1,17 @@
 import React from 'react';
-import { sh_sel_props_default, sh_sel_props_type } from '../TypeInterfaces';
+import { sh_sel_pt } from '../TypeInterfaces';
 
-export const SelectBox =({id,disabled,onChange,width,dataset,color}:sh_sel_props_type & typeof sh_sel_props_default) => { 
+export const SelectBox =({id,disabled,onChange,width,dataset,color}:sh_sel_pt) => { 
 	const onChangeHandler = (e:React.ChangeEvent) => {
 		const target = e.target as HTMLSelectElement;
-
-		onChange({target : target, id : id});
+		let key = "";
+		for (let i = 0; i < dataset.length; i ++) {
+			if (dataset[i].cd === target.value) {
+				key = dataset[i].cd;
+				break;
+			}
+		}
+		onChange({target : target, id : id, key: key});
 	}
 
 	return (
@@ -18,11 +24,10 @@ export const SelectBox =({id,disabled,onChange,width,dataset,color}:sh_sel_props
 			> 
 				{
 					dataset.map((data, key) => {
-						return (<option value={data.value} key={data.value + '_' + key} >{data.name}</option>);
+						return (<option value={data.cd} key={data.cd + '_' + key} >{data.nm}</option>);
 					})
 				}
 			</select>
 		</div>
 	);
 }
-SelectBox.defaultProps = sh_sel_props_default;

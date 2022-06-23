@@ -1,7 +1,7 @@
-import { sh_Table_props_default, sh_Table_props_type } from '../TypeInterfaces';
+import { sh_Table_pt } from '../TypeInterfaces';
 
 
-export const Table =({id,colGrp,tbData,head,footer,width}:sh_Table_props_type & typeof sh_Table_props_default) => { 
+export const Table =({colGrp,tbData,head,footer,width}:sh_Table_pt) => { 
 	const setColGroup = (colGrp: { width: string }[]) => {
 	
 	
@@ -30,16 +30,15 @@ export const Table =({id,colGrp,tbData,head,footer,width}:sh_Table_props_type & 
 		});
 	}
 	return (
-		<table className = 'scrm-table' id = {id} style={{width: width}}>
+		<table className = 'scrm-table' style={{width: width}}>
 			<colgroup>
 				{ setColGroup(colGrp) }
 			</colgroup>
-			{ (head === null || head === undefined) ? <thead>{head}</thead> : <thead/> }
+			{ (head) ? <thead>{head}</thead> : <thead/> }
 			<tbody>
 				{ setBody(tbData) }
 			</tbody>
-			{ (footer === null || footer === undefined) ? <tfoot>{footer}</tfoot> : <tfoot></tfoot> }
+			{ (footer) ? <tfoot>{footer}</tfoot> : <tfoot></tfoot> }
 		</table>
 	);
 }
-Table.defaultProps = sh_Table_props_default;
