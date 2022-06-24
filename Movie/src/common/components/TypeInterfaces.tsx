@@ -1,7 +1,9 @@
 
 interface html_base_pt {
 	id       : string;
-    margin?  : string;
+    margin?  : string;	
+	color?   : string;
+	size?    : string;
 	disabled?: boolean;
 }
 
@@ -16,17 +18,13 @@ export interface sh_evnt_return {
 
 export interface sh_btn_pt extends html_base_pt {	
 	icon?   : string;
-    size?   : string;
 	value?  : string;
-    color?  : string;
 	filled? : boolean;
 	onClick : (e:sh_evnt_return) => void;
 };
 
 export interface sh_ipt_pt extends html_base_pt {
 	type?       : string;
-	size?       : string; 
-	color?      : string; 
 	value       : string; 
 	width?      : string;
 	placeholder?: string;     
@@ -45,43 +43,37 @@ export interface sh_ipt_pt extends html_base_pt {
 
 export interface sh_label_pt {
 	color? : string;
-	size?  : string;
+	size?  : string;	
 	value  : string;
 	margin?: string;
 	req?   : boolean;
 }
 
 export interface sh_rdo_pt extends html_base_pt {
-	onClick?: (e: sh_evnt_return) => void;
+	selected: string | null;	
 	onChange: (e: sh_evnt_return) => void;
 	dataset :{cd: string, nm: string}[];
-	selected: string | null;	
-	readOnly?: false,
-	width?   : number,
-	perRow?  : number,
-	defaultSelected?: number,
+	readOnly?: false;
+	width?   : number;
+	perRow?  : number;
+	defaultSelected?: number;
 }
 
 
 export interface sh_sel_pt extends html_base_pt {
 	dataset: {cd: string, nm: string}[];
 	onChange: (arg: sh_evnt_return) => void;
-	width?:  string;
-	color?:  string;
+	width?: string;
 }
 
 export interface sh_chk_pt extends html_base_pt {
-	size?  : string;
 	value  : string;
-	color? : string;
 	checked : boolean;
 	onClick : (arg: sh_evnt_return) => void;
 	onChange: (arg: sh_evnt_return) => void;
 };
 
 export interface sh_multi_chk_pt extends html_base_pt {
-	size?    : string;
-	color?   : string;
 	onClick  : (arg: sh_evnt_return) => void;
 	onChange : (arg: sh_evnt_return) => void;
 	dataset  :{cd: string, nm: string, checked: boolean}[]	
@@ -102,11 +94,9 @@ export interface sh_Table_pt {
 
 export interface sh_textarea_pt extends html_base_pt {
 	type?       : string;
-	color?      : string;
 	value       : string;
 	width?      : string;
 	placeholder?: string;
-	size?       : string;
 	rows      : number;
 	minLength?: number;
 	maxLength?: number;

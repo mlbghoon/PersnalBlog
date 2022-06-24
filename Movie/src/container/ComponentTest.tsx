@@ -96,7 +96,7 @@ export const ComponentTest = () => {
 
 
   // radio Event Test //
-  const radioOnClick = (e:sh_evnt_return) => {
+  const radioOnChange = (e:sh_evnt_return) => {
     //setSelected(prev=>!prev)
     console.log(e)
     console.log(e.key)
@@ -314,6 +314,7 @@ export const ComponentTest = () => {
                           color= {"blue"}
                           filled    = {false}
                           onClick   = {buttonOnClick}
+                          disabled  = {true}
                         />
                       },
                     ]
@@ -321,177 +322,7 @@ export const ComponentTest = () => {
                 />
               </FlexPanel>
             </LFloatPanel> 
-          </RelativePanel>
-          <RelativePanel>
-            <LFloatPanel>
-              <FlexPanel>
-              <Button
-                  id   = {"btn20"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  icon = {"save"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn21"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn21"}
-                  icon = {"add"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn22"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn22"}
-                  icon = {"del"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn23"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn23"}
-                  icon = {"check"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn24"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn24"}
-                  icon = {"info"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn25"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn25"}
-                  icon = {"undo"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn26"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn26"}
-                  icon = {"redo"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn27"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn27"}
-                  icon = {"arrowUp"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn28"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn28"}
-                  icon = {"arrowDn"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn29"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn29"}
-                  icon = {"arrowL"}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn30"}
-                  margin= {"0px 5px 0px 0px"}
-                  size = {"xs"}
-                  color= {"purple"}
-                  icon = {"arrowR"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn31"}
-                  margin= {"0px 5px 0px 0px"}
-                  size = {"xs"}
-                  color= {"purple"}
-                  icon = {"close"}
-                  value= {"btn31"}
-                  onClick   = {buttonOnClick}
-                />  
-                <Button
-                  id   = {"btn32"}
-                  margin= {"0px 5px 0px 0px"}
-                  size = {"sm"}
-                  color= {"purple"}
-                  icon = {"play"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn33"}
-                  margin= {"0px 5px 0px 0px"}
-                  size = {"sm"}
-                  color= {"purple"}
-                  value= {"btn33"}
-                  icon = {"pause"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn34"}
-                  margin= {"0px 5px 0px 0px"}
-                  size = {"md"}
-                  color= {"purple"}
-                  icon = {"left"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn35"}
-                  margin= {"0px 5px 0px 0px"}
-                  size = {"md"}
-                  color= {"purple"}
-                  value= {"btn35"}
-                  icon = {"right"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn36"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  icon = {"trash"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn37"}
-                  margin= {"0px 5px 0px 0px"}
-                  color= {"purple"}
-                  value= {"btn37"}
-                  icon = {"trash"}
-                  onClick   = {buttonOnClick}
-                /> 
-                <Button
-                  id    = {"btn38"}
-                  margin= {"0px 5px 0px 0px"}
-                  size  = {"lg"}
-                  color = {"purple"}
-                  icon  = {"trash"}
-                  filled  = {false}
-                  onClick = {buttonOnClick}
-                /> 
-                <Button
-                  id   = {"btn39"}
-                  margin= {"0px 5px 0px 0px"}
-                  size = {"lg"}
-                  color= {"purple"}
-                  value= {"btn39"}
-                  icon = {"trash"}
-                  filled    = {false}
-                  onClick   = {buttonOnClick}
-                />                               
-              </FlexPanel>
-            </LFloatPanel>  
-          </RelativePanel>
+          </RelativePanel>          
           <RelativePanel>
             <LFloatPanel>
               <FlexPanel>
@@ -795,29 +626,59 @@ export const ComponentTest = () => {
               />
               <Radio
                 id={"Radio"}
-                onChange={radioOnClick}
+                onChange={radioOnChange}
                 selected={selected}
                 dataset={[{cd:"1_key", nm:"1"},{cd:"2_key", nm:"2"}]}
                 perRow ={1}
-              />              
+                size={"xs"}
+              /> 
+            </FlexPanel>
+          </LFloatPanel>  
+          <LFloatPanel>
+            <FlexPanel>               
               <Label
                 value={"라디오2"}      
               />
               <Radio
                 id={"Radio2"}
-                onChange={radioOnClick}
+                onChange={radioOnChange}
                 selected={selected}
                 disabled={true}
                 dataset={[{cd:"1_key", nm:"1"},{cd:"2_key", nm:"2"}]}
                 perRow ={2}
-              />              
+              />    
+            </FlexPanel>
+          </LFloatPanel>  
+          <LFloatPanel>
+            <FlexPanel>           
+              <Label
+                value={"라디오3"} 
+                color={"red"}     
+              />         
               <Radio
                 id={"Radio3"}
-                onChange={radioOnClick}
+                onChange={radioOnChange}
+                selected={selected}
+                dataset={[{cd:"1_key", nm:"1"},{cd:"2_key", nm:"2"},{cd:"3_key", nm:"3"},{cd:"4_key", nm:"4"}]}
+                perRow ={4}
+                size={"lg"}
+              />   
+            </FlexPanel>
+          </LFloatPanel>  
+          <LFloatPanel>
+            <FlexPanel>               
+              <Label
+                value={"라디오4"}   
+                color={"darkorchid"}   
+              />             
+              <Radio
+                id={"Radio4"}
+                onChange={radioOnChange}
                 selected={selected}
                 disabled={true}
                 dataset={[{cd:"1_key", nm:"1"},{cd:"2_key", nm:"2"},{cd:"3_key", nm:"3"},{cd:"4_key", nm:"4"}]}
                 perRow ={2}
+                size={"xl"}
               />
            </FlexPanel>
           </LFloatPanel>
@@ -833,39 +694,121 @@ export const ComponentTest = () => {
                 dataset={[{cd:"1", nm:"일"},{cd:"2", nm:"이"}]}
                 onChange={selBoxOnChange}
                 disabled={true}
-                color={"darkRed"}
-              />
-              
+                color={"aquamarine"}
+              />   
               <SelectBox
                 id={"selBox3"}
                 dataset={[{cd:"1", nm:"일"},{cd:"2", nm:"이"}]}
                 onChange={selBoxOnChange}
-                color={"dodgerBlue"}
+                color={"aquamarine"}
+                size={"xs"}
+              />   
+              <SelectBox
+                id={"selBox4"}
+                dataset={[{cd:"1", nm:"일"},{cd:"2", nm:"이"}]}
+                onChange={selBoxOnChange}
+                disabled={true}
+                color={"red"}
+                size={"sm"}
+              />              
+              <SelectBox
+                id={"selBox5"}
+                dataset={[{cd:"1", nm:"일"},{cd:"2", nm:"이"}]}
+                onChange={selBoxOnChange}
+                color={"darkorchid"}
+                size={"lg"}
+              />           
+              <SelectBox
+                id={"selBox5"}
+                dataset={[{cd:"1", nm:"일"},{cd:"2", nm:"이"}]}
+                onChange={selBoxOnChange}
+                color={"blue"}
+                size={"xl"}
               />
            </FlexPanel>
-           
-           <Switch
-                id={"switch"}
-                checked={checked}
-                onChange={onSwitchChange}
-              />
           </LFloatPanel>
         </RelativePanel>
         <RelativePanel>
           <LFloatPanel>
             <FlexPanel>
+              <Switch
+                id={"switch"}
+                checked={checked}
+                onChange={onSwitchChange}
+                size={"xs"}
+                color={"red"}
+              />
+              <Switch
+                id={"switch"}
+                checked={checked}
+                onChange={onSwitchChange}
+                size={"sm"}
+                color={"red"}
+              />
+              <Switch
+                id={"switch"}
+                checked={checked}
+                onChange={onSwitchChange}
+              />
+              <Switch
+                id={"switch"}
+                checked={checked}
+                onChange={onSwitchChange}
+                size={"lg"}
+                color={"indigo"}
+              />
+              <Switch
+                id={"switch"}
+                checked={checked}
+                onChange={onSwitchChange}
+                size={"xl"}
+                color={"blue"}
+              />
+              </FlexPanel>
+             </LFloatPanel>
+           </RelativePanel>
+           <RelativePanel>
+             <LFloatPanel>
+               <FlexPanel>
               <TextArea 
                 rows={2} 
                 onChange={onTextAreaChanged} 
                 value={textAreaValue}
                 id={'textArea'}
                 size={"xs"}
+                color={"mediumaquamarine"}
               />
               <TextArea 
                 rows={4} 
                 onChange={onTextAreaChanged} 
                 value={textAreaValue}
                 id={'textArea2'}
+                size={"sm"}
+                color={"paleturquoise"}
+              />
+              <TextArea 
+                rows={4} 
+                onChange={onTextAreaChanged} 
+                value={textAreaValue}
+                id={'textArea2'}
+                color={"darkorchid"}
+              />
+              <TextArea 
+                rows={4} 
+                onChange={onTextAreaChanged} 
+                value={textAreaValue}
+                id={'textArea2'}
+                size={"lg"}
+                color={"aquamarine"}
+              />
+              <TextArea 
+                rows={4} 
+                onChange={onTextAreaChanged} 
+                value={textAreaValue}
+                id={'textArea2'}
+                size={"xl"}
+                color={"aquamarine"}
+                disabled={true}
               />
               <TextArea 
                 rows={5} 

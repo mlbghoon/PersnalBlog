@@ -41,8 +41,9 @@ css => scss
 
 3. ButtonTest, CheckTest, InputTest페이지 추가
 
-4. labal 변경
+4. labal, Radio SelectBox, switch, TextArea 변경
 * size porps추가
+
 
 ### 1차 목표 Tab, Tray 추가
 ### 2차 목표 Dialog 추가

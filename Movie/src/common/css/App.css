@@ -178,15 +178,15 @@ input.lg { width: 99%; line-height: 21px; font-size: 21px; font-weight: bold; pa
 .flex-panel > .sh-label-div:first-child  {margin-left: 0px;}
 
 /* Radio */
-.sh-input-radio-div {display: inline-block; box-sizing: border-box; align-items: center; position:relative; margin-right: 12px;}
-.sh-input-radio-div:after {content:""; display: block; float: none; }
-.sh-input-radio-div > input[type='radio'] {float: left; align-content: center; position: relative;width: 14px;height: 14px; top: 7px; }
-.sh-input-radio-div > input + label:before {content:""; display: inline-block; position:absolute; background:#fff; border-radius:50%; box-sizing:border-box; left:-15px; top:7px;width:16px; height: 16px; border:2px solid #DEE2E6; }
-.sh-input-radio-div > input:checked + label:before { border:5px solid #748FFC;}
-.sh-input-radio-div > input:disabled + label:before { border:2px solid #dacece; background: #e9ecef; cursor: not-allowed;}
-.sh-input-radio-div > label {float: left; display:block; font-size: 14px; height:33px;line-height: 33px; position: relative; padding-left:5px;}
-.sh-input-radio-input {margin: 0px 0px 0px 0px; cursor: pointer;}
-.sh-input-radio-label {cursor: pointer;}
+.sh-radio-div {display: inline-block; box-sizing: border-box; align-items: center; position:relative; margin-right: 12px;}
+.sh-radio-div:after {content:""; display: block; float: none; }
+.sh-radio-div > input[type='radio'] {float: left; align-content: center; position: relative;width: 14px;height: 14px; top: 7px; }
+.sh-radio-div > input + label:before {content:""; display: inline-block; position:absolute; background:#fff; border-radius:50%; box-sizing:border-box; left:-15px; top:7px;width:16px; height: 16px; border:2px solid #DEE2E6; }
+.sh-radio-div > input:checked + label:before { border:5px solid #748FFC;}
+.sh-radio-div > input:disabled + label:before { border:2px solid #dacece; background: #e9ecef; cursor: not-allowed;}
+.sh-radio-div > label {float: left; display:block; font-size: 14px; height:33px;line-height: 33px; position: relative; padding-left:5px;}
+.sh-radio-input {margin: 0px 0px 0px 0px; cursor: pointer;}
+.sh-radio-label {cursor: pointer;}
 
 /* select */
 select {border-radius:4px; border:1px solid #DEE2E6; padding:7px 0 7px 4px; outline: none; width: 100%; box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box; }

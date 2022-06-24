@@ -2,33 +2,21 @@ import React from 'react';
 import { Table } from '../Table';
 import { sh_evnt_return, sh_rdo_pt } from '../TypeInterfaces';
 
-export const Radio =({id,readOnly,disabled,onChange,onClick=(e:sh_evnt_return)=>{return;},width,dataset,defaultSelected,selected,perRow=1}:sh_rdo_pt) => { 
+export const Radio =({id,readOnly,disabled,onChange,width,dataset,defaultSelected,selected,perRow=1,color="black",size="md"}:sh_rdo_pt) => { 
 	const onChangeHandler = (e:React.ChangeEvent) => {
-		const target = e.target as HTMLInputElement;
-		let key = "";
-		for (let i = 0; i < dataset.length; i ++) {
-			if (dataset[i].cd === target.value) {
-				key = dataset[i].cd;
-				break;
+		if (!disabled) {
+			const target = e.target as HTMLInputElement;
+			let key = "";
+			for (let i = 0; i < dataset.length; i ++) {
+				if (dataset[i].cd === target.value) {
+					key = dataset[i].cd;
+					break;
+				}
 			}
-		}
-		
-		onChange({id: id, target : target, key: key, checked: target.checked });
-		
+			
+			onChange({id: id, target : target, key: key, checked: target.checked });			
+		}		
 	}
-	const onClickHandler = (e:React.MouseEvent) => {
-		const target = e.target as HTMLInputElement;
-		let key = "";
-		for (let i = 0; i < dataset.length; i ++) {
-			if (dataset[i].cd === target.value) {
-				key = dataset[i].cd;
-				break;
-			}
-		}
-		onClick({id: id, target : target, key: key, checked : target.checked });
-	}
-
-
 
 	const setRadio = () => {
 		let colGrp = [];
@@ -54,7 +42,7 @@ export const Radio =({id,readOnly,disabled,onChange,onClick=(e:sh_evnt_return)=>
 		let rowData: { type: string; value: JSX.Element; }[] = [];		
 		
 		dataset.map((item: {cd: string, nm: string}, i) => {			
-			rowData.push({ type: 'D', value: <div key={'radio_div_' + i} className ='sh-input-radio-div'>								
+			rowData.push({ type: 'D', value: <div key={'radio_div_' + i} className ='sh-radio-div'>								
 								<input	
 									id       = {id + "_radio_" + item.cd}
 									key      = {"key_" + id + "_radio_" + item.cd}
@@ -66,13 +54,12 @@ export const Radio =({id,readOnly,disabled,onChange,onClick=(e:sh_evnt_return)=>
 										: selected === item.cd}					
 									readOnly = {readOnly}
 									disabled = {disabled}
-									className ='sh-input-radio-input'
-									onChange = {onChangeHandler}
-									onClick  = {onClickHandler}
+									className = {'sh-radio-input ' + size}
+									onChange  = {onChangeHandler}
 								/>
 								<label	
 									key       = {"key_" + id + "_labal_" + item.cd}
-									className ='sh-input-radio-label'
+									className = {'sh-radio-label ' + size}
 									htmlFor={id + "_radio_" + item.cd}
 								>
 									{item.nm}

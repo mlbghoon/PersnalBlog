@@ -53,7 +53,7 @@ button {
       &:before {    
         border: 1px solid lighten($color, 50%);;   
         background: rgb(212, 212, 212);
-        box-shadow: -2px -1px 0 $color;
+        box-shadow: 2px 1px 0 $color;
       }    
     }
     input[type="checkbox"]:checked + label.color-#{"" + $color}:before {
@@ -63,9 +63,67 @@ button {
       box-shadow: 2px 1px 0 #50565a;
     }
   }
+  .sh-selectbox.color-#{"" + $color} {
+    background-color: $color; 
+    color: invert($color);
+    outline: none;
+    transition:all 0.2s;
+    cursor:pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    &:hover {
+      background-color: darken($color, 20%);
+    }
+    &:disabled {
+      background-color: lighten($color, 20%);
+      cursor: not-allowed;
+    }
+  }  
+  textarea.color-#{"" + $color} {
+    color: $color;   
+  }
+  
+  .sh-switch-input:checked + .sh-switch-span.color-#{"" + $color} {
+    background-color: $color;   
+  } 
 }
 
+select {border-radius:4px; border:1px solid #DEE2E6; width:100%; outline: none; box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box; }
+
+.sh-select-div { overflow: hidden;}
+.sh-select-div:hover { cursor:pointer;}
+
+
 @each $name, $glyph in $size {
+  .sh-switch-label.#{$name}{
+    width: 40px/3* $glyph; height: 24px/3* $glyph;
+  }
+  .sh-switch-span.#{$name} {
+    border-radius: 34px/3* $glyph;
+  }
+  .sh-switch-span.#{$name}:before { 
+    height: 18px/3* $glyph;
+    width: 18px/3* $glyph;
+    left: 4px/3* $glyph;
+    bottom: 3px/3* $glyph;
+  }
+  .sh-switch-input:checked + .sh-switch-span.#{$name}:before {
+    -webkit-transform: translateX(14px/3* $glyph); 
+    -ms-transform: translateX(14px/3* $glyph); 
+    transform: translateX(14px/3* $glyph);
+  }
+  textarea.#{$name} {
+    font-size: 5px * $glyph;
+    line-height: 7.5px * $glyph;   
+
+  }
+  select.#{$name} {    
+    font-size: 5px * $glyph;
+    line-height: 7.5px * $glyph; 
+    height: 11px * $glyph;
+    padding: 2px* $glyph 0 2px* $glyph 1.3px* $glyph;
+  }
   button.#{$name} {    
     font-size: 6px * $glyph;
     line-height: 9px * $glyph; 
@@ -76,26 +134,65 @@ button {
     font-size: 6px * $glyph;
     line-height: 9px * $glyph; 
   }
-  span.#{$name} {    
-    font-size: 6px * $glyph;
-    line-height: 9px * $glyph; 
-    margin-right: 3px * $glyph; 
-    margin-left: 3px * $glyph;
-  }
+  .sh-label-div {
+    span.#{$name} {    
+      font-size: 6px * $glyph;
+      line-height: 9px * $glyph; 
+      margin-right: 3px * $glyph; 
+      margin-left: 3px * $glyph;
+    }
+  } 
+  .sh-label-div.#{$name} {  
+      margin-top: 1.5px * $glyph;
+  }  
   label.#{$name} {    
     font-size: 6px * $glyph;
     line-height: 9px * $glyph; 
+  } 
+  input[type="checkbox"] + label.#{$name} {
+    &:before {    
+      margin-top: 1.5px * $glyph;
+    }    
   }
   .sh-checkbox-div {
     input[type="checkbox"] + label.#{$name} {
       padding-left: 12px * $glyph;
-      margin-bottom: 10px * $glyph;
+      margin-bottom: 3px * $glyph;
       margin-right: 3px * $glyph;;
     }
+  }  
+  .sh-radio-div {
+    input[type='radio'].#{$name} {
+      width : 4px * $glyph;
+      height: 4px * $glyph;
+      top   : 2px * $glyph;
+    }
+    label.#{$name} {
+      font-size    : 6px * $glyph;
+      line-height  : 9px * $glyph; 
+      padding-left : 4px * $glyph; 
+      padding-right: 4px * $glyph; 
+      height       : 12.5px * $glyph; ; 
+    }
+    input + label.#{$name}:before{
+      left  : -5px * $glyph;
+      top   : 2px * $glyph;
+      width : 5px * $glyph;
+      height: 5px * $glyph;
+    }
   }
-  
 }
+//.sh-radio-div > input + label:before {background:#fff; border:2px solid #DEE2E6; }
 
+.sh-radio-div {display: inline-block; box-sizing: border-box; align-items: center; position:relative; margin-right: 12px;}
+.sh-radio-div:after {content:""; display: block; float: none; }
+.sh-radio-div > input[type='radio'] {float: left; align-content: center; position: relative;}
+.sh-radio-div > input + label:before {content:""; display: inline-block; position:absolute; background:#fff; border-radius:50%; box-sizing:border-box; border:2px solid #DEE2E6; }
+.sh-radio-div > input:checked + label:before { border:5px solid #748FFC;}
+.sh-radio-div > input:disabled + label:before { border:2px solid #dacece; background: #e9ecef; cursor: not-allowed;}
+.sh-radio-div > label {float: left; display:block; position: relative;}
+.sh-radio-input {margin: 0px 0px 0px 0px; cursor: pointer;z-index: -1;}
+.sh-radio-label {cursor: pointer;}
 
 .sh-table { width: 100%;}
 .sh-table > { width: 100%; border-collapse: collapse; }
@@ -180,8 +277,8 @@ input {
     &:before {
       content: "";
       display: block;
-      width: 1.4em;
-      height: 1.4em;
+      width: 1em;
+      height: 1em;
       border-radius: 0.2em;
       position: absolute;
       left: 0;
@@ -202,7 +299,22 @@ input {
 .sh-label-div{
   display: inline-block; position: relative; 
   span{
-    display: inline-block; position: relative; color:#495057; font-variant: small-caps; font-weight: bold;
-    font-weight: bold;
+    color:#495057; font-variant: small-caps; font-weight: bold;
+    font-weight: bold; 
   }
 }
+
+.no_resize{
+  resize: none;
+}
+.sh-textarea-div { width:auto;}
+.sh-textarea-div > textarea { width:100%; padding: 0px; margin: 0px; box-sizing: border-box; padding:8px; }
+.sh-textarea-div > textarea:disabled {background: #e9ecef !important; color:#adb5bd !important; cursor: not-allowed;}
+
+textarea { height: auto;}
+
+.sh-switch-label {position: relative; display: inline-block; top:-2px; margin-left: 10px;}
+
+.sh-switch-input {opacity: 0; width: 0; height: 0; }
+.sh-switch-span {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #dee2e6; -webkit-transition: .4s; transition: .4s; }
+.sh-switch-span:before {position: absolute; content: ""; background-color: white; -webkit-transition: .4s; transition: .4s; border-radius: 50%;}
