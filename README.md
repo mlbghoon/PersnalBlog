@@ -1,56 +1,49 @@
-2022-06-23 V 0.6
+2022-06-24 V 0.7
 ================
 
-컴포넌트 계속추가
+css => scss
 -------------------
-1. Switch 추가
-
-2. TextArea 추가
-
-3. 모든 return 타입 하나로 통일
-
-    ```typescript
-        export interface sh_evnt_return {	
-            id      : string;   
-            target  : HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-            key?    : string;
-            code?   : string;
-            type?   : string;
-            checked?: boolean; 
-        };
-    ```
-
-* event return이 너무 많아져서 하나로 통일 
-
-4. props extends사용, 디폴트 모두 제거하고 ES6 문법 '?' 사용하여 디폴트값 전달
-
-    ```typescript    
-        interface html_base_pt {
-            id       : string;
-            margin?  : string;
-            disabled?: boolean;
+1. input, button, checkBox css => scss
+    ```scss
+        $size  : (xs: 2, sm: 2.5, md: 3, lg: 4, xl: 5);         
+        @each $name, $glyph in $size {
+            button.#{$name} {    
+                font-size: 6px * $glyph;
+                line-height: 9px * $glyph; 
+                padding: 0 1.5px * $glyph;
+                height: 11px * $glyph;
+            }
+            input.#{$name} {    
+                font-size: 6px * $glyph;
+                line-height: 9px * $glyph; 
+            }
+            label.#{$name} {    
+                font-size: 6px * $glyph;
+                line-height: 9px * $glyph; 
+            }
+            .sh-checkbox-div {
+                input[type="checkbox"] + label.#{$name} {
+                padding-left: 12px * $glyph;
+                margin-bottom: 10px * $glyph;
+                margin-right: 3px * $glyph;;
+                }
+            }        
         }
-        export interface sh_btn_pt extends html_base_pt {	
-            icon?   : string;
-            size?   : string;
-            value?  : string;
-            color?  : string;
-            filled? : boolean;
-            onClick : (e:sh_evnt_return) => void;
-        };
-        
     ```
 
-* margin도 하나로 통일 (기존: mt, mr, mb, ml)
-* undefied로 되도 상관없는 값은 해당컴포넌트에서 default 값을 주지 않아도 정상 작동
-* html_base_pt 에 color, size 등등 모두 적용할수 있는 것들은 공통으로 빼는 것도 좋을듯
-* 현제 color, size는 일부 컴포넌트에서만 사용함 전부 사용할 수 있게 수정하고 해야 할듯
+* scss 로 변경하여 다양한 색상, 사이즈 props로 전달만 하면 되도록 변경 
+* 사용가능 color: antiquewhite, aqua, aquamarine, azure, beige, bisque, black, blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue, cornsilk, crimson, cyan, darkblue, darkcyan, darkgoldenrod, darkgray, darkgreen, darkgrey, darkkhaki, darkmagenta, darkolivegreen, darkorange, darkorchid, darkred, darksalmon, darkseagreen, darkslateblue, darkslategray, darkslategrey, darkturquoise, darkviolet, deeppink, deepskyblue, dimgray, dimgrey, dodgerblue, firebrick, floralwhite, forestgreen, fuchsia, gainsboro, ghostwhite, gold, goldenrod, gray, green, greenyellow, grey, honeydew, hotpink, indianred, indigo, ivory, khaki, lavender, lavenderblush, lawngreen, lemonchiffon, lightblue, lightcoral, lightcyan, lightgoldenrodyellow, lightgray, lightgreen, lightgrey, lightpink, lightsalmon, lightseagreen, lightskyblue, lightslategray, lightslategrey, lightsteelblue, lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue, mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen, mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite, navy, oldlace, olive, olivedrab, orange, orangered, orchid, palegoldenrod, palegreen, paleturquoise, palevioletred, papayawhip, peachpuff, peru, pink, plum, powderblue, purple, red, rosybrown, royalblue, saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue, slategray, slategrey, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet, wheat, white, whitesmoke, yellow, yellowgreen;
+* 사용가능 size: xs,sm,md,lg,xl
+
+2. checkBox 변경
+* 불필요한 props 제거 color,size porps추가
+* 클릭 에니메이션 추가
+
+3. ButtonTest, CheckTest, InputTest페이지 추가
+
+4. labal 변경
+* size porps추가
 
 ### 1차 목표 Tab, Tray 추가
 ### 2차 목표 Dialog 추가
 ### 3차 목표 공통 코드(dataset) 추가
-
-### default porps 수정이유 https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/default_props/ 
-### scss사용법 공부 https://blog.logrocket.com/the-definitive-guide-to-scss/
-### 컬러코드 https://www.quackit.com/css/css_color_codes.cfm
-### 스타일쪽 scss로 리팩토링 필요 

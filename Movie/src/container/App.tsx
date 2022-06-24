@@ -23,6 +23,24 @@ function App() {
           color= {"green"}
           onClick   = {() => push('/ComponentTest')}
         /> 
+        <Button
+          id   = {"buttotest"}
+          value= {"버튼테스트"}
+          color= {"green"}
+          onClick   = {() => push('/ButtonTest')}
+        /> 
+        <Button
+          id   = {"inputTest"}
+          value= {"input테스트"}
+          color= {"green"}
+          onClick   = {() => push('/InputTest')}
+        /> 
+        <Button
+          id   = {"CheckTest"}
+          value= {"CheckBox테스트"}
+          color= {"green"}
+          onClick   = {() => push('/CheckTest')}
+        /> 
       </CenterPanel>
     </>
   );

@@ -9,7 +9,7 @@ import { sh_evnt_return } from '../common/components/TypeInterfaces';
 export const ComponentTest = () => {  
   const [iptVal, setIptVal] = useState("");  
   const [checked, setChecked] = useState(false);  
-  const [multiChecked, setMultiChecked] = useState([{cd:"1_key", nm:"1", checked: false},{cd:"2_key", nm:"2", checked: false}]);
+  const [multiChecked, setMultiChecked] = useState([{cd:"1_key", nm:"1123", checked: false},{cd:"2_key", nm:"2444444", checked: false}]);
   const [selected, setSelected] = useState("2_key");  
   const [textAreaValue, setTextAreaValue] = useState("");  
   
@@ -424,7 +424,7 @@ export const ComponentTest = () => {
                 <Button
                   id   = {"btn32"}
                   margin= {"0px 5px 0px 0px"}
-                  size = {"s"}
+                  size = {"sm"}
                   color= {"purple"}
                   icon = {"play"}
                   onClick   = {buttonOnClick}
@@ -432,7 +432,7 @@ export const ComponentTest = () => {
                 <Button
                   id   = {"btn33"}
                   margin= {"0px 5px 0px 0px"}
-                  size = {"s"}
+                  size = {"sm"}
                   color= {"purple"}
                   value= {"btn33"}
                   icon = {"pause"}
@@ -441,7 +441,7 @@ export const ComponentTest = () => {
                 <Button
                   id   = {"btn34"}
                   margin= {"0px 5px 0px 0px"}
-                  size = {"m"}
+                  size = {"md"}
                   color= {"purple"}
                   icon = {"left"}
                   onClick   = {buttonOnClick}
@@ -449,7 +449,7 @@ export const ComponentTest = () => {
                 <Button
                   id   = {"btn35"}
                   margin= {"0px 5px 0px 0px"}
-                  size = {"m"}
+                  size = {"md"}
                   color= {"purple"}
                   value= {"btn35"}
                   icon = {"right"}
@@ -488,13 +488,20 @@ export const ComponentTest = () => {
                   icon = {"trash"}
                   filled    = {false}
                   onClick   = {buttonOnClick}
-                /> 
+                />                               
+              </FlexPanel>
+            </LFloatPanel>  
+          </RelativePanel>
+          <RelativePanel>
+            <LFloatPanel>
+              <FlexPanel>
                 <Button
                   id   = {"btn40"}
                   margin= {"0px 5px 0px 0px"}
                   color= {"purple"}
                   value= {"btn40"}
                   icon = {"copy"}
+                  size = {"xl"}
                   onClick   = {buttonOnClick}
                 /> 
                 <Button
@@ -503,6 +510,7 @@ export const ComponentTest = () => {
                   color= {"purple"}
                   value= {"btn41"}
                   icon = {"copy"}
+                  size = {"xl"}
                   filled    = {false}
                   onClick   = {buttonOnClick}
                 /> 
@@ -521,13 +529,7 @@ export const ComponentTest = () => {
                   value= {"btn43"}
                   icon = {"srch"}
                   onClick   = {buttonOnClick}
-                />                
-              </FlexPanel>
-            </LFloatPanel>  
-          </RelativePanel>
-          <RelativePanel>
-            <LFloatPanel>
-              <FlexPanel>
+                />  
                 <Button
                   id   = {"btn44"}
                   margin= {"0px 5px 0px 0px"}
@@ -574,7 +576,10 @@ export const ComponentTest = () => {
           <RelativePanel>
             <LFloatPanel>
               <FlexPanel>
-                {"all"}
+                <Label 
+                  value={'all'}
+                  req={true}
+                />
                 <Input
                   id={"all"}
                   value={iptVal}
@@ -585,7 +590,9 @@ export const ComponentTest = () => {
                   onBlur={inputOnBlur}
                   alertEmpty={true}
                 />
-                {"onlyNum"}
+                <Label 
+                  value={'onlyNum'}
+                />
                 <Input
                   id={"onlyNum"}
                   value={iptVal}
@@ -595,7 +602,9 @@ export const ComponentTest = () => {
                   onBlur={inputOnBlur}
                   type={"onlyNum"}
                 />
-                {"onlyKor"}
+                <Label 
+                  value={'onlyKor'}
+                />
                 <Input
                   id={"onlyKor"}
                   value={iptVal}
@@ -605,7 +614,9 @@ export const ComponentTest = () => {
                   onBlur={inputOnBlur}
                   type={"onlyKor"}
                 />
-                {"onlyEng"}
+                <Label 
+                  value={'onlyEng'}
+                />
                 <Input
                   id={"onlyEng"}
                   value={iptVal}
@@ -615,7 +626,9 @@ export const ComponentTest = () => {
                   onBlur={inputOnBlur}
                   type={"onlyEng"}
                 />
-                {"engNum"}
+                <Label 
+                  value={'engNum'}
+                />
                 <Input
                   id={"engNum"}
                   value={iptVal}
@@ -631,6 +644,11 @@ export const ComponentTest = () => {
           <RelativePanel>
             <LFloatPanel>
               <FlexPanel>
+                <Label 
+                  value={'xs'}
+                  size={"xs"}
+                  req={true}
+                />
                 <Input
                   id={"allxs"}
                   value={iptVal}
@@ -642,6 +660,10 @@ export const ComponentTest = () => {
                   alertEmpty={true}
                   size={"xs"}
                 />
+                <Label 
+                  value={'sm'}
+                  size={"sm"}
+                />
                 <Input
                   id={"alls"}
                   value={iptVal}
@@ -650,8 +672,11 @@ export const ComponentTest = () => {
                   onKeyPress={inputOnKeyPress}
                   onKeyUp={inputOnKeyUp}
                   onBlur={inputOnBlur}
-                  alertEmpty={true}
-                  size={"s"}
+                  size={"sm"}
+                />
+                <Label 
+                  value={'md'}
+                  size={"md"}
                 />
                 <Input
                   id={"allm"}
@@ -661,8 +686,12 @@ export const ComponentTest = () => {
                   onKeyPress={inputOnKeyPress}
                   onKeyUp={inputOnKeyUp}
                   onBlur={inputOnBlur}
-                  alertEmpty={true}
-                  size={"m"}
+                  size={"md"}
+                />
+                <Label 
+                  value={'lg'}
+                  size={"lg"}
+                  req={true}
                 />
                 <Input
                   id={"allmd"}
@@ -673,7 +702,11 @@ export const ComponentTest = () => {
                   onKeyUp={inputOnKeyUp}
                   onBlur={inputOnBlur}
                   alertEmpty={true}
-                  size={"md"}
+                  size={"lg"}
+                />
+                <Label 
+                  value={'xl'}
+                  size={"xl"}
                 />
                 <Input
                   id={"allla"}
@@ -683,8 +716,7 @@ export const ComponentTest = () => {
                   onKeyPress={inputOnKeyPress}
                   onKeyUp={inputOnKeyUp}
                   onBlur={inputOnBlur}
-                  alertEmpty={true}
-                  size={"lg"}
+                  size={"xl"}
                 />
               </FlexPanel>
             </LFloatPanel>
@@ -697,7 +729,6 @@ export const ComponentTest = () => {
             <FlexPanel>
               <Checkbox
                 id={"Checkbox"}
-                keyProp={"keyProp"}
                 value={"value"}
                 onChange={checkBoxOnChange}
                 onClick={checkBoxOnClick}
@@ -706,26 +737,15 @@ export const ComponentTest = () => {
               />
               <Checkbox
                 id={"Checkbox"}
-                keyProp={"keyProp"}
                 value={"value"}
                 onChange={checkBoxOnChange}
                 onClick={checkBoxOnClick}
                 checked={checked}
-                size={"s"}
+                size={"sm"}
               />
               <Checkbox
                 id={"Checkbox"}
-                keyProp={"keyProp"}
-                value={"value"}
-                onChange={checkBoxOnChange}
-                onClick={checkBoxOnClick}
-                checked={checked}
-                size={"m"}
-              />
-              <Checkbox
-                id={"Checkbox"}
-                keyProp={"keyProp"}
-                value={"value"}
+                value={"value2"}
                 onChange={checkBoxOnChange}
                 onClick={checkBoxOnClick}
                 checked={checked}
@@ -733,12 +753,19 @@ export const ComponentTest = () => {
               />
               <Checkbox
                 id={"Checkbox"}
-                keyProp={"keyProp"}
-                value={"value"}
+                value={"value3"}
                 onChange={checkBoxOnChange}
                 onClick={checkBoxOnClick}
                 checked={checked}
                 size={"lg"}
+              />
+              <Checkbox
+                id={"Checkbox"}
+                value={"value4"}
+                onChange={checkBoxOnChange}
+                onClick={checkBoxOnClick}
+                checked={checked}
+                size={"xl"}
               />
               <MultiCheckBox
                 id={"MultiCheckbox"}
@@ -752,6 +779,7 @@ export const ComponentTest = () => {
                 onChange={checkBoxOnChange}
                 onClick={checkBoxOnClick}
                 dataset={multiChecked}
+                size={"xs"}
               />
            </FlexPanel>
           </LFloatPanel>
