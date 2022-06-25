@@ -111,3 +111,28 @@ export interface sh_textarea_pt extends html_base_pt {
     onChange   : (e:sh_evnt_return) => void;
 };
 
+export interface sh_tab_pt  {
+	label   : string;
+	tabWidth: string;
+	color   : string;
+	size    : string;
+	active  : number;
+	index   : number;
+	onClick : (e:number) => void;
+}
+
+export interface sh_tabs_pt  {
+	tabWidth?: string;
+	height?  : string;
+	color?   : string;
+	size?    : string;
+	onClick?: (e:number) => void;
+	children: React.ReactNode;
+}
+export interface sh_tabpanel_pt  {
+	label   : string;
+	id      : string;
+	index   : number;
+	children: React.ReactNode;
+	
+}

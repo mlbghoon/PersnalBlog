@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, SelectBox, SubFullPanel, Switch, Table, TextArea } from '../common/components';
 import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../common/components';
+import { TabPanel, Tabs } from '../common/components/Tabs';
 import { sh_evnt_return } from '../common/components/TypeInterfaces';
 
 
@@ -65,6 +66,9 @@ export const ComponentTest = () => {
   }
   // TextArea Event Test //
   
+  const tabonClick = (index:number) => {
+   console.log(index)
+  }
   // checkBox Event Test //
   const checkBoxOnChange = (e:sh_evnt_return) => {
     switch (e.id) {
@@ -764,12 +768,12 @@ export const ComponentTest = () => {
                 size={"xl"}
                 color={"blue"}
               />
-              </FlexPanel>
-             </LFloatPanel>
-           </RelativePanel>
-           <RelativePanel>
-             <LFloatPanel>
-               <FlexPanel>
+            </FlexPanel>
+          </LFloatPanel>
+        </RelativePanel>
+        <RelativePanel>
+          <LFloatPanel>
+            <FlexPanel>
               <TextArea 
                 rows={2} 
                 onChange={onTextAreaChanged} 
@@ -821,9 +825,42 @@ export const ComponentTest = () => {
             </FlexPanel>
           </LFloatPanel>
         </RelativePanel>
+        <RelativePanel>
+              <Tabs  tabWidth='100px' onClick = {tabonClick}>
+                <TabPanel label={'test1'} id={'11'} index={0}>
+                  <TextArea 
+                    rows={5} 
+                    onChange={onTextAreaChanged} 
+                    value={textAreaValue}
+                    id={'textArea2'}
+                    resize={true}
+                    size={"lg"}
+                  />
+                </TabPanel>
+                <TabPanel label={'test2'} id={'13'} index={1}>
+                  <Switch
+                    id={"switch"}
+                    checked={checked}
+                    onChange={onSwitchChange}
+                    size={"xl"}
+                    color={"blue"}
+                  />
+                </TabPanel>
+                <TabPanel label={'test3'} id={'12'} index={2}>
+                  <SelectBox
+                    id={"selBox4"}
+                    dataset={[{cd:"1", nm:"일"},{cd:"2", nm:"이"}]}
+                    onChange={selBoxOnChange}
+                    disabled={true}
+                    color={"red"}
+                    size={"sm"}
+                  />     
+                </TabPanel>
+              </Tabs>
+        </RelativePanel>
       </ComponentPanel>
 
-      
+     
       {/* {movieList.map(movie => <MovieDisplay key={movie.id} movie={movie} />)} */}
     </FullPanel>
   );

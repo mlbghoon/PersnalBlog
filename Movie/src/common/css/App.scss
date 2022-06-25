@@ -27,6 +27,21 @@ button {
 .button.i .xi-x {padding-right:0px;}
 
 @each $color in $color {
+  .sh-tabs-ul-li.color-#{"" + $color} {
+    background: $color;
+    color: invert($color);  ;
+  }
+  .sh-tabs-ul-li-active.color-#{"" + $color} {
+    border: 1px solid #adb5bd;
+    color: lighten(invert($color), 10%);  
+    background: lighten($color, 10%);
+  }
+  .sh-tabs-ul-li.color-#{"" + $color}:hover {
+    background-color: lighten($color, 5%);
+  }
+  .sh-tabs-ul-li-active.color-#{"" + $color}:hover {
+    background-color: lighten($color, 10%);
+  }
   button.color-#{"" + $color} {
     background-color: $color; 
     color: invert($color);
@@ -89,15 +104,18 @@ button {
   } 
 }
 
-select {border-radius:4px; border:1px solid #DEE2E6; width:100%; outline: none; box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box; }
-
-.sh-select-div { overflow: hidden;}
-.sh-select-div:hover { cursor:pointer;}
-
-
 @each $name, $glyph in $size {
+  .sh-tabs-ul-li.#{$name} {
+    font-size:14px/3* $glyph;  
+    height: 33px/3* $glyph; 
+    line-height: 34px/3* $glyph; 
+  }
+  .sh-tabs-ul.#{$name} {
+    height: 34px/3* $glyph; 
+  }
   .sh-switch-label.#{$name}{
-    width: 40px/3* $glyph; height: 24px/3* $glyph;
+    width: 40px/3* $glyph; 
+    height: 24px/3* $glyph;
   }
   .sh-switch-span.#{$name} {
     border-radius: 34px/3* $glyph;
@@ -318,3 +336,17 @@ textarea { height: auto;}
 .sh-switch-input {opacity: 0; width: 0; height: 0; }
 .sh-switch-span {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #dee2e6; -webkit-transition: .4s; transition: .4s; }
 .sh-switch-span:before {position: absolute; content: ""; background-color: white; -webkit-transition: .4s; transition: .4s; border-radius: 50%;}
+
+
+.sh-tab-panel {width: 100%;}
+.sh-tab-container {width: 100%; display:inline; position: relative;}
+.sh-tabs-ul-li-active {border-width: 1px 1px 0 1px; border-bottom: 1px solid #fff;}
+.sh-tabs-ul {margin: 0; padding: 0; float: left; list-style: none;  border-bottom: 1px solid #adb5bd; width: 100%;}
+.sh-tabs-ul-li {float: left; text-align:center; cursor: pointer; font-weight: bold; overflow: hidden; position: relative;}
+
+
+select {border-radius:4px; border:1px solid #DEE2E6; width:100%; outline: none; box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box; }
+
+.sh-select-div { overflow: hidden;}
+.sh-select-div:hover { cursor:pointer;}
+.sh-tab-container {height: 100%}
