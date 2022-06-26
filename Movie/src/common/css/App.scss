@@ -23,17 +23,31 @@ button {
   }
 }
 
-.button .xi-x   {padding-right:5px;}
-.button.i .xi-x {padding-right:0px;}
+.button {padding-right:5px;}
+
+@function contrastText($color) {
+  $result: invert($color);
+  $lightness: lightness($result);
+
+  @debug "lightness: #{$lightness}";
+
+  @if ($lightness < 60) {
+    $result: black;
+  } @else {
+    $result: white;
+  }
+  @return $result;
+}
+
 
 @each $color in $color {
   .sh-tabs-ul-li.color-#{"" + $color} {
     background: $color;
-    color: invert($color);  ;
+    color: contrastText($color);  ;
   }
   .sh-tabs-ul-li-active.color-#{"" + $color} {
     border: 1px solid #adb5bd;
-    color: lighten(invert($color), 10%);  
+    color: lighten(contrastText($color), 10%);  
     background: lighten($color, 10%);
   }
   .sh-tabs-ul-li.color-#{"" + $color}:hover {
@@ -42,10 +56,10 @@ button {
   .sh-tabs-ul-li-active.color-#{"" + $color}:hover {
     background-color: lighten($color, 10%);
   }
+
   button.color-#{"" + $color} {
     background-color: $color; 
-    color: invert($color);
-    
+    color: contrastText($color);
   }
   button.color-#{"" + $color}-o {
     border-color: $color; 
@@ -63,8 +77,6 @@ button {
   .sh-checkbox-div {
     input[type="checkbox"] + label.color-#{"" + $color} {
       color: $color;   
-    }
-    input[type="checkbox"] + label.color-#{"" + $color} {
       &:before {    
         border: 1px solid lighten($color, 50%);;   
         background: rgb(212, 212, 212);
@@ -105,57 +117,51 @@ button {
 }
 
 @each $name, $glyph in $size {
+  
+  .#{$name} {
+    font-size: calc(16px / 3) * $glyph;
+    line-height: 6px * $glyph;  
+  }
+  .sh-input-div {
+    input.#{$name} {
+      height: calc(calc(33px / 3 * $glyph) - 4px); 
+    }
+  }
   .sh-tabs-ul-li.#{$name} {
-    font-size:14px/3* $glyph;  
-    height: 33px/3* $glyph; 
-    line-height: 34px/3* $glyph; 
+    height: calc(24px / 3) * $glyph; 
+    padding: calc(5px / 3) * $glyph 0px; 
   }
   .sh-tabs-ul.#{$name} {
-    height: 34px/3* $glyph; 
+    height: calc(34px / 3) * $glyph; 
   }
   .sh-switch-label.#{$name}{
-    width: 40px/3* $glyph; 
-    height: 24px/3* $glyph;
+    width: calc(40px / 3) * $glyph; 
+    height: 8px * $glyph; 
   }
   .sh-switch-span.#{$name} {
-    border-radius: 34px/3* $glyph;
+    border-radius: calc(34px / 3) * $glyph; 
   }
   .sh-switch-span.#{$name}:before { 
-    height: 18px/3* $glyph;
-    width: 18px/3* $glyph;
-    left: 4px/3* $glyph;
-    bottom: 3px/3* $glyph;
+    height: 6px * $glyph;
+    width: 6px * $glyph;
+    left: calc(4px / 3) * $glyph; 
+    bottom: 1px * $glyph;
   }
   .sh-switch-input:checked + .sh-switch-span.#{$name}:before {
-    -webkit-transform: translateX(14px/3* $glyph); 
-    -ms-transform: translateX(14px/3* $glyph); 
-    transform: translateX(14px/3* $glyph);
-  }
-  textarea.#{$name} {
-    font-size: 5px * $glyph;
-    line-height: 7.5px * $glyph;   
-
+    -webkit-transform: translateX(calc(14px / 3) * $glyph); 
+    -ms-transform: translateX(calc(14px / 3) * $glyph); 
+    transform: translateX(calc(14px / 3) * $glyph);
   }
   select.#{$name} {    
-    font-size: 5px * $glyph;
-    line-height: 7.5px * $glyph; 
     height: 11px * $glyph;
     padding: 2px* $glyph 0 2px* $glyph 1.3px* $glyph;
   }
   button.#{$name} {    
-    font-size: 6px * $glyph;
-    line-height: 9px * $glyph; 
-    padding: 0 1.5px * $glyph;
+    padding: 2px * $glyph 1.5px * $glyph;
     height: 11px * $glyph;
-  }
-  input.#{$name} {    
-    font-size: 6px * $glyph;
-    line-height: 9px * $glyph; 
   }
   .sh-label-div {
     span.#{$name} {    
-      font-size: 6px * $glyph;
-      line-height: 9px * $glyph; 
       margin-right: 3px * $glyph; 
       margin-left: 3px * $glyph;
     }
@@ -163,19 +169,10 @@ button {
   .sh-label-div.#{$name} {  
       margin-top: 1.5px * $glyph;
   }  
-  label.#{$name} {    
-    font-size: 6px * $glyph;
-    line-height: 9px * $glyph; 
-  } 
-  input[type="checkbox"] + label.#{$name} {
-    &:before {    
-      margin-top: 1.5px * $glyph;
-    }    
-  }
+ 
   .sh-checkbox-div {
     input[type="checkbox"] + label.#{$name} {
-      padding-left: 12px * $glyph;
-      margin-bottom: 3px * $glyph;
+      padding-left: 9px * $glyph;
       margin-right: 3px * $glyph;;
     }
   }  
@@ -186,15 +183,13 @@ button {
       top   : 2px * $glyph;
     }
     label.#{$name} {
-      font-size    : 6px * $glyph;
-      line-height  : 9px * $glyph; 
       padding-left : 4px * $glyph; 
       padding-right: 4px * $glyph; 
       height       : 12.5px * $glyph; ; 
     }
     input + label.#{$name}:before{
-      left  : -5px * $glyph;
-      top   : 2px * $glyph;
+      left  : calc(-10px / 3) * $glyph;
+      top   : calc(2px / 3) * $glyph;
       width : 5px * $glyph;
       height: 5px * $glyph;
     }

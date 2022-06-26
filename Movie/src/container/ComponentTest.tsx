@@ -4,9 +4,6 @@ import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../common/compone
 import { TabPanel, Tabs } from '../common/components/Tabs';
 import { sh_evnt_return } from '../common/components/TypeInterfaces';
 
-
-
-
 export const ComponentTest = () => {  
   const [iptVal, setIptVal] = useState("");  
   const [checked, setChecked] = useState(false);  
@@ -633,7 +630,7 @@ export const ComponentTest = () => {
                 onChange={radioOnChange}
                 selected={selected}
                 dataset={[{cd:"1_key", nm:"1"},{cd:"2_key", nm:"2"}]}
-                perRow ={1}
+                perRow ={2}
                 size={"xs"}
               /> 
             </FlexPanel>
@@ -649,7 +646,7 @@ export const ComponentTest = () => {
                 selected={selected}
                 disabled={true}
                 dataset={[{cd:"1_key", nm:"1"},{cd:"2_key", nm:"2"}]}
-                perRow ={2}
+                perRow ={1}
               />    
             </FlexPanel>
           </LFloatPanel>  
@@ -681,7 +678,7 @@ export const ComponentTest = () => {
                 selected={selected}
                 disabled={true}
                 dataset={[{cd:"1_key", nm:"1"},{cd:"2_key", nm:"2"},{cd:"3_key", nm:"3"},{cd:"4_key", nm:"4"}]}
-                perRow ={2}
+                perRow ={4}
                 size={"xl"}
               />
            </FlexPanel>

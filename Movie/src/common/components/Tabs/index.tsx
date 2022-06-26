@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { sh_tab_pt, sh_tabs_pt, sh_tabpanel_pt } from '../TypeInterfaces';
 export const Tabs =({onClick=(e:number)=>{return;},tabWidth="100%",height="",children,color="darkslategrey",size="md"}:sh_tabs_pt) => { 
 	const [active, setActive] = useState(0); 	

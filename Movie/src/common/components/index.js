@@ -22,7 +22,7 @@ import { Table } from './Table'
 import { SelectBox } from './SelectBox'
 import { Switch } from './Switch'
 import { TextArea } from './TextArea'
-
+import { TabPanel, Tabs } from './Tabs';
 
 
 export {
@@ -35,5 +35,6 @@ export {
     Table,
     SelectBox,
     Switch,
-    TextArea
+    TextArea,
+    TabPanel, Tabs
 }
