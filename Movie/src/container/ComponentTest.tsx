@@ -304,6 +304,7 @@ export const ComponentTest = () => {
                           value= {"btn18"}
                           color= {"blue"}
                           onClick   = {buttonOnClick}
+                          disabled={true}
                         /> 
                       },
                       {type : 'D', value :   
@@ -314,6 +315,7 @@ export const ComponentTest = () => {
                           color= {"blue"}
                           filled    = {false}
                           onClick   = {buttonOnClick}
+                          disabled={true}
                         />
                       },
                     ]
@@ -717,6 +719,7 @@ export const ComponentTest = () => {
                   onKeyUp={inputOnKeyUp}
                   onBlur={inputOnBlur}
                   size={"xl"}
+                  disabled={true}
                 />
               </FlexPanel>
             </LFloatPanel>
@@ -734,6 +737,7 @@ export const ComponentTest = () => {
                 onClick={checkBoxOnClick}
                 checked={checked}
                 size={"xs"}
+                  disabled={true}
               />
               <Checkbox
                 id={"Checkbox"}
@@ -750,6 +754,7 @@ export const ComponentTest = () => {
                 onClick={checkBoxOnClick}
                 checked={checked}
                 size={"md"}
+                disabled={true}
               />
               <Checkbox
                 id={"Checkbox"}

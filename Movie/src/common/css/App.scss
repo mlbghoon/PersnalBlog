@@ -152,8 +152,10 @@ input {
   border-radius:3px;
   background: #fff; 
   width: calc(100% - 6px);
+  &:disabled {
+    background-color: #ced4da; color:#777; cursor: not-allowed;
+  }
 }
-
 .sh-input-div {overflow:hidden;}
 
 .border_red {
