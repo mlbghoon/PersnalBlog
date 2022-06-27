@@ -1,541 +1,998 @@
-
-import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, SelectBox, SubFullPanel, Switch, Table, TextArea } from '../common/components';
-import { Button } from '../common/components';
+import { ComponentPanel, FlexPanel, FullPanel, LFloatPanel, RelativePanel, SubFullPanel } from '../common/components';
+import { Button, Table, TabPanel, Tabs } from '../common/components';
 import { sh_evnt_return } from '../common/components/TypeInterfaces';
 
-
-
-
 export const ButtonTest = () => {  
-  // button Event Test //
   const buttonOnClick = (e:sh_evnt_return) => {
     const target = e.target as HTMLButtonElement;
     alert("버튼클릭 : " + e.id);
-    console.log("btn.id : ", e.id);
-    console.log("btn.target : ", target);
   }
-  // button Event Test //
+
+  const color = ["antiquewhite", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanchedalmond", "blue", "blueviolet", "brown", "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "cornflowerblue", "cornsilk", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkgrey", "darkkhaki", "darkmagenta", "darkolivegreen", "darkorange", "darkorchid", "darkred", "darksalmon", "darkseagreen", "darkslateblue", "darkslategray", "darkslategrey", "darkturquoise", "darkviolet", "deeppink", "deepskyblue", "dimgray", "dimgrey", "dodgerblue", "firebrick", "floralwhite", "forestgreen", "fuchsia", "gainsboro", "ghostwhite", "gold", "goldenrod", "gray", "green", "greenyellow", "grey", "honeydew", "hotpink", "indianred", "indigo", "ivory", "khaki", "lavender", "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral", "lightcyan", "lightgoldenrodyellow", "lightgray", "lightgreen", "lightgrey", "lightpink", "lightsalmon", "lightseagreen", "lightskyblue", "lightslategray", "lightslategrey", "lightsteelblue", "lightyellow", "lime", "limegreen", "linen", "magenta", "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple", "mediumseagreen", "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred", "midnightblue", "mintcream", "mistyrose", "moccasin", "navajowhite", "navy", "oldlace", "olive", "olivedrab", "orange", "orangered", "orchid", "palegoldenrod", "palegreen", "paleturquoise", "palevioletred", "papayawhip", "peachpuff", "peru", "pink", "plum", "powderblue", "purple", "red", "rosybrown", "royalblue", "saddlebrown", "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue", "slateblue", "slategray", "slategrey", "snow", "springgreen", "steelblue", "tan", "teal", "thistle", "tomato", "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"];
+
+  const makeTbData = () => {
+	
+		let tbData: any[][] = [];
+		let rowData: { type: string; value: JSX.Element; }[] = [];		
+    
+    color.map((item, i) => {			
+			rowData.push({ type: 'D', value: <Button
+                        id   = {item}
+                        margin= {"0px 5px 0px 0px"}
+                        value= {"Button"}
+                        color= {item}
+                        onClick = {buttonOnClick}
+                      />})
+      if ((i+1)%20 === 0) {
+        tbData.push(rowData)
+        rowData = [];
+      } else if (i === color.length - 1) {
+        tbData.push(rowData)
+      }
+      return null;
+    })
+    console.log(tbData)
+    return tbData;
+  }
+  const makeTbData2 = () => {
+	
+		let tbData: any[][] = [];
+		let rowData: { type: string; value: JSX.Element; }[] = [];		
+    
+    color.map((item, i) => {			
+			rowData.push({ type: 'D', value: <Button
+                        id   = {item}
+                        margin= {"0px 5px 0px 0px"}
+                        value= {"Button"}
+                        color= {item}
+                        filled  = {false}
+                        onClick = {buttonOnClick}
+                      />})
+      if ((i+1)%20 === 0) {
+        tbData.push(rowData)
+        rowData = [];
+      } else if (i === color.length - 1) {
+        tbData.push(rowData)
+      }
+      return null;
+    })
+    console.log(tbData)
+    return tbData;
+  }
+
 
   return (
     <FullPanel>
       <SubFullPanel>
         <ComponentPanel>
-          <RelativePanel>
-            <LFloatPanel>
-              <FlexPanel>
+          <Tabs  tabWidth='100px'>
+            <TabPanel label={'색상'} id={'11'} index={0}>
+              <RelativePanel>
                 <Table 
-                  colGrp={[{width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}, {width: '10%'}]} 
+                  colGrp={[{width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}]} 
+                  tbData={makeTbData()}
+                />                    
+                <Table 
+                  colGrp={[{width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}]} 
+                  tbData={makeTbData2()}
+                />
+              </RelativePanel>
+            </TabPanel>
+            <TabPanel label={'크기'} id={'11'} index={1}>
+              <RelativePanel>
+                <Table 
+                  colGrp={[{width: '20%'}, {width: '20%'}, {width: '20%'}, {width: '20%'}, {width: '20%'}]} 
                   tbData={[
                     [	
                       {type : 'D', value :   
                         <Button
-                          id={"btn0"}
+                          id   = {"xs"}
                           margin= {"0px 5px 0px 0px"}
-                          value={"btn0"}
-                          color={"blue"}
-                          onClick={buttonOnClick} 
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn1"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn1"}
-                          color= {"white"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn2"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn2"}
-                          color= {"purple"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn3"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn3"}
-                          color= {"purple"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn4"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn4"}
-                          color= {"yellow"}
-                          onClick   = {buttonOnClick}
-                        />
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn5"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn5"}
-                          color= {"yellow"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn6"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn6"}
-                          color= {"grey"}
-                          onClick   = {buttonOnClick}
-                        />  
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn7"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn7"}
-                          color= {"grey"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn8"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn8"}
-                          color= {"red"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn9"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn9"}
-                          color= {"red"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        />
-                      },
-                    ],
-                    [	
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn10"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn10"}
-                          color= {"tomato"}
-                          onClick   = {buttonOnClick}
+                          value= {"Button"}
+                          color= {"aqua"}
+                          onClick= {buttonOnClick}
                           size={"xs"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn11"}
+                          id   = {"sm"}
                           margin= {"0px 5px 0px 0px"}
-                          value= {"btn11"}
-                          color= {"tomato"}
-                          filled    = {false}
+                          value= {"Button"}
+                          color= {"aqua"}
                           onClick   = {buttonOnClick}
                           size={"sm"}
                         />  
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn12"}
+                          id   = {"md"}
                           margin= {"0px 5px 0px 0px"}
-                          value= {"btn12"}
-                          color= {"new_green"}
-                          onClick   = {buttonOnClick}
+                          value= {"Button"}
+                          color= {"aqua"}
+                          onClick= {buttonOnClick}
                           size={"md"}
                         />  
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn13"}
+                          id   = {"lg"}
                           margin= {"0px 5px 0px 0px"}
-                          value= {"btn13"}
-                          color= {"new_green"}
-                          filled    = {false}
+                          value= {"Button"}
+                          color= {"aqua"}
                           onClick   = {buttonOnClick}
                           size={"lg"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn14"}
+                          id   = {"xl"}
                           margin= {"0px 5px 0px 0px"}
-                          value= {"btn14"}
-                          color= {"lightgreen"}
+                          value= {"Button"}
+                          color= {"aqua"}
                           onClick   = {buttonOnClick}
                           size={"xl"}
                         />
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn15"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn15"}
-                          color= {"lightgreen"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"xs"}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn16"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn16"}
-                          color= {"green"}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"sm"}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn17"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn17"}
-                          color= {"green"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"md"}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn18"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn18"}
-                          color= {"blue"}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"lg"}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn19"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn19"}
-                          color= {"blue"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"xl"}
-                        />
-                      },
-                    ],
+                      }
+                    ]]}
+                />
+              </RelativePanel>
+            </TabPanel>
+            <TabPanel label={'아이콘'} id={'11'} index={2}>
+              <RelativePanel>
+                <Table 
+                  colGrp={[{width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}, {width: '5%'}]} 
+                  tbData={[
                     [	
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn10"}
-                          margin= {"0px 5px 0px 0px"}
-                          color= {"tomato"}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"xs"}
+                          id     = {"diskette"}
+                          icon   = {"diskette"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn11"}
-                          margin= {"0px 5px 0px 0px"}
-                          color= {"tomato"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"sm"}
+                          id     = {"diskette"}
+                          icon   = {"diskette"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         />  
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn12"}
-                          margin= {"0px 5px 0px 0px"}
-                          color= {"new_green"}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"md"}
+                          id     = {"plus"}
+                          icon   = {"plus"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"plus"}
+                          icon   = {"plus"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         />  
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn13"}
-                          margin= {"0px 5px 0px 0px"}
-                          color= {"new_green"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"lg"}
+                          id     = {"minus"}
+                          icon   = {"minus"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn14"}
-                          margin= {"0px 5px 0px 0px"}
-                          color= {"lightgreen"}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
-                          size={"xl"}
-                        />
+                          id     = {"minus"}
+                          icon   = {"minus"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn15"}
-                          margin= {"0px 5px 0px 0px"}
-                          color= {"lightgreen"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                          icon = {"srch"}
+                          id     = {"check"}
+                          icon   = {"check"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn16"}
-                          margin= {"0px 5px 0px 0px"}
-                          icon = {"srch"}
-                          color= {"green"}
-                          onClick   = {buttonOnClick}
+                          id     = {"check"}
+                          icon   = {"check"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"trash"}
+                          icon   = {"trash"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn17"}
-                          margin= {"0px 5px 0px 0px"}
-                          icon = {"srch"}
-                          color= {"green"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
+                          id     = {"trash"}
+                          icon   = {"trash"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"info"}
+                          icon   = {"info"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn18"}
-                          margin= {"0px 5px 0px 0px"}
-                          icon = {"srch"}
-                          color= {"blue"}
-                          onClick   = {buttonOnClick}
+                          id     = {"info"}
+                          icon   = {"info"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"undo"}
+                          icon   = {"undo"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
                         /> 
                       },
                       {type : 'D', value :   
                         <Button
-                          id   = {"btn19"}
-                          margin= {"0px 5px 0px 0px"}
-                          icon = {"srch"}
-                          color= {"blue"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        />
+                          id     = {"undo"}
+                          icon   = {"undo"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
                       },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"redo"}
+                          icon   = {"redo"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"redo"}
+                          icon   = {"redo"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-up"}
+                          icon   = {"arrow-up"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-up"}
+                          icon   = {"arrow-up"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-down"}
+                          icon   = {"arrow-down"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-down"}
+                          icon   = {"arrow-down"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      }                         
+                    ],[	
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-left"}
+                          icon   = {"arrow-left"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-left"}
+                          icon   = {"arrow-left"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-right"}
+                          icon   = {"arrow-right"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"arrow-right"}
+                          icon   = {"arrow-right"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"close"}
+                          icon   = {"close"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"close"}
+                          icon   = {"close"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"play"}
+                          icon   = {"play"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"play"}
+                          icon   = {"play"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"pause"}
+                          icon   = {"pause"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"pause"}
+                          icon   = {"pause"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"documents"}
+                          icon   = {"documents"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"documents"}
+                          icon   = {"documents"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"download"}
+                          icon   = {"download"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"download"}
+                          icon   = {"download"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"search"}
+                          icon   = {"search"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"search"}
+                          icon   = {"search"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"angle-down"}
+                          icon   = {"angle-down"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"angle-down"}
+                          icon   = {"angle-down"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"youtube"}
+                          icon   = {"youtube"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"youtube"}
+                          icon   = {"youtube"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      }
+                    ],[	
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"yahoo"}
+                          icon   = {"yahoo"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"yahoo"}
+                          icon   = {"yahoo"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"xing"}
+                          icon   = {"xing"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"xing"}
+                          icon   = {"xing"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"wordpress"}
+                          icon   = {"wordpress"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"wordpress"}
+                          icon   = {"wordpress"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"vine"}
+                          icon   = {"vine"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"vine"}
+                          icon   = {"vine"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"twitter"}
+                          icon   = {"twitter"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"twitter"}
+                          icon   = {"twitter"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"stumbleupon"}
+                          icon   = {"stumbleupon"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"stumbleupon"}
+                          icon   = {"stumbleupon"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"stack-overflow"}
+                          icon   = {"stack-overflow"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"stack-overflow"}
+                          icon   = {"stack-overflow"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"magento"}
+                          icon   = {"magento"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"magento"}
+                          icon   = {"magento"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"kakao"}
+                          icon   = {"kakao"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"kakao"}
+                          icon   = {"kakao"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"google"}
+                          icon   = {"google"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"google"}
+                          icon   = {"google"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      }
+                    ],[	
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"sunset-up"}
+                          icon   = {"sunset-up"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"sunset-up"}
+                          icon   = {"sunset-up"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"umbrella"}
+                          icon   = {"umbrella"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"umbrella"}
+                          icon   = {"umbrella"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"copyleft"}
+                          icon   = {"copyleft"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"copyleft"}
+                          icon   = {"copyleft"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"copyright"}
+                          icon   = {"copyright"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"copyright"}
+                          icon   = {"copyright"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"500px"}
+                          icon   = {"500px"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"500px"}
+                          icon   = {"500px"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"digg"}
+                          icon   = {"digg"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"digg"}
+                          icon   = {"digg"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"flickr"}
+                          icon   = {"flickr"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"flickr"}
+                          icon   = {"flickr"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"ghost"}
+                          icon   = {"ghost"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"ghost"}
+                          icon   = {"ghost"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"github"}
+                          icon   = {"github"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"github"}
+                          icon   = {"github"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"git"}
+                          icon   = {"git"}
+                          value  = {"Button"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        /> 
+                      },
+                      {type : 'D', value :   
+                        <Button
+                          id     = {"git"}
+                          icon   = {"git"}
+                          color  = {"cadetblue"}
+                          margin = {"0px 5px 0px 0px"}
+                          onClick= {buttonOnClick}
+                          size   = {"xl"}
+                        />  
+                      }
                     ],
-                    [	
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn10"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn10"}
-                          color= {"tomato"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn11"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn11"}
-                          color= {"tomato"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        />  
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn12"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn12"}
-                          color= {"new_green"}
-                          onClick   = {buttonOnClick}
-                        />  
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn13"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn13"}
-                          color= {"new_green"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn14"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn14"}
-                          color= {"lightgreen"}
-                          onClick   = {buttonOnClick}
-                        />
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn15"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn15"}
-                          color= {"lightgreen"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn16"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn16"}
-                          color= {"green"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn17"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn17"}
-                          color= {"green"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn18"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn18"}
-                          color= {"blue"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn19"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn19"}
-                          color= {"blue"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        />
-                      },
-                    ],
-                    [	
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn10"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn10"}
-                          color= {"tomato"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn11"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn11"}
-                          color= {"tomato"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        />  
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn12"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn12"}
-                          color= {"new_green"}
-                          onClick   = {buttonOnClick}
-                        />  
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn13"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn13"}
-                          color= {"new_green"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn14"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn14"}
-                          color= {"lightgreen"}
-                          onClick   = {buttonOnClick}
-                        />
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn15"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn15"}
-                          color= {"lightgreen"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn16"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn16"}
-                          color= {"green"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn17"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn17"}
-                          color= {"green"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn18"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn18"}
-                          color= {"blue"}
-                          onClick   = {buttonOnClick}
-                        /> 
-                      },
-                      {type : 'D', value :   
-                        <Button
-                          id   = {"btn19"}
-                          margin= {"0px 5px 0px 0px"}
-                          value= {"btn19"}
-                          color= {"blue"}
-                          filled    = {false}
-                          onClick   = {buttonOnClick}
-                        />
-                      },
-                    ]
                   ]}
                 />
-              </FlexPanel>
-            </LFloatPanel> 
-          </RelativePanel>      
+              </RelativePanel>
+            </TabPanel>
+          </Tabs>    
         </ComponentPanel>
       </SubFullPanel>
     </FullPanel>

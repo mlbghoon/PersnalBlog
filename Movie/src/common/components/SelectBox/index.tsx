@@ -1,7 +1,7 @@
 import React from 'react';
 import { sh_sel_pt } from '../TypeInterfaces';
 
-export const SelectBox =({id,disabled,onChange,width,dataset,color}:sh_sel_pt) => { 
+export const SelectBox =({id,disabled,onChange,width,dataset,color="white",size="md"}:sh_sel_pt) => { 
 	const onChangeHandler = (e:React.ChangeEvent) => {
 		const target = e.target as HTMLSelectElement;
 		let key = "";
@@ -19,7 +19,7 @@ export const SelectBox =({id,disabled,onChange,width,dataset,color}:sh_sel_pt) =
 			<select
 				id = {id}
 				disabled = {disabled}
-				className={ "sh-selectbox " + color}
+				className={ size + " sh-selectbox color-" + color}
 				onChange = {onChangeHandler}
 			> 
 				{

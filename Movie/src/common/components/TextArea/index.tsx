@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { sh_evnt_return, sh_textarea_pt } from '../TypeInterfaces';
 
-export const TextArea =({size="md",margin,alertEmpty,rows,type,id,disabled,readOnly,width,value,placeholder,minLength,maxLength,onChange,onKeyPress=(e:sh_evnt_return)=>{return;},onBlur=(e:sh_evnt_return)=>{return;},onKeyUp=(e:sh_evnt_return)=>{return;},focusOnRender,resize=false }:sh_textarea_pt) => { 
+export const TextArea =({color="black", size="md",margin,alertEmpty,rows,type,id,disabled,readOnly,width,value,placeholder,minLength,maxLength,onChange,onKeyPress=(e:sh_evnt_return)=>{return;},onBlur=(e:sh_evnt_return)=>{return;},onKeyUp=(e:sh_evnt_return)=>{return;},focusOnRender,resize=false }:sh_textarea_pt) => { 
 	let inputRef = useRef<HTMLTextAreaElement>(null);
 
 	useEffect(() => {
@@ -14,7 +14,7 @@ export const TextArea =({size="md",margin,alertEmpty,rows,type,id,disabled,readO
 
 	if (alertEmpty) {
 		if (value === "") {
-			inputClass += "border_red ";
+			inputClass += " border_red";
 
 		}
 
@@ -65,8 +65,8 @@ export const TextArea =({size="md",margin,alertEmpty,rows,type,id,disabled,readO
 
 
 	return (
-		<div className={'scrm-textarea-div' + inputClass} style={{width: width, margin: margin}}>
-			<textarea className={(size + (resize ? "" : " no_resize"))}
+		<div className={'sh-textarea-div' + inputClass} style={{width: width, margin: margin}}>
+			<textarea className={(size + " color-" + color + (resize ? "" : " no_resize"))}
 				id			= {id}
 				value		= {rtnVal(value)}
 				placeholder	= {placeholder}
