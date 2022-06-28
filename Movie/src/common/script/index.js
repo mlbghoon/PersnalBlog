@@ -1,6 +1,5 @@
-import ReactDOM from 'react-dom';
-
-import { AlertDialog } from '../components/Dialog';
+import {createRoot} from 'react-dom/client';
+import { AlertDialog, ConfirmDialog } from '../components/Dialog';
 
 const newScrmObj = {
 	constants: {
@@ -14,9 +13,6 @@ const newScrmObj = {
 	}
 };
 const ComLib = {
-	isNull: (obj) => {
-		if (typeof obj === undefined || obj === null) return true;
-	},
 	isJson: (data) => {
 		try {
 			let json = JSON.parse(data);
@@ -39,15 +35,31 @@ const ComLib = {
 			return sessionStorage.getItem(id);
 		}
 	},
-	openDialog : (msg) => {
-		if ( document.getElementById(newScrmObj.constants.mdi.DIALOG) === undefined || document.getElementById(newScrmObj.constants.mdi.DIALOG) === null ) {
-			let dialog = document.createElement('div');
+	openDialog : (type, msg, headerColor, callback) => {
+		let dialog = document.getElementById(newScrmObj.constants.mdi.DIALOG)
+
+		if ( document.getElementById(newScrmObj.constants.mdi.DIALOG) === undefined || document.getElementById(newScrmObj.constants.mdi.DIALOG) === null ) {			
+			dialog = document.createElement('div');
 			dialog.id = newScrmObj.constants.mdi.DIALOG;
 			document.body.appendChild(dialog);
 		}
-		ReactDOM.render( <AlertDialog   open={true} message={msg}
-										onClose={ () => { document.body.removeChild(document.getElementById(newScrmObj.constants.mdi.DIALOG));} }/>
-		, document.getElementById(newScrmObj.constants.mdi.DIALOG) );
+
+		const root = createRoot(dialog);
+		if (type === "A") {
+			root.render(<AlertDialog 
+				message={msg} 
+				headerColor={headerColor}
+				onClose={ () => { document.body.removeChild(document.getElementById(newScrmObj.constants.mdi.DIALOG));} }
+			/>);
+		} else {
+			root.render(<ConfirmDialog 
+				message={msg} 
+				headerColor={headerColor}
+				onClose={ (e) => { document.body.removeChild(document.getElementById(newScrmObj.constants.mdi.DIALOG));callback(e)} }
+			/>);
+		}
+		
+
 	},
 	copyText : (txt) => {
 		const element = document.createElement('textarea');

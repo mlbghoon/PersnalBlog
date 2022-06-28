@@ -136,8 +136,13 @@ export interface sh_tabpanel_pt  {
 	children: React.ReactNode;
 	
 }
-export interface sh_dialog_pt {
-	open : boolean;
-	message : string;
+export interface sh_alert_dialog_pt {
+	message     : string;
+	headerColor?: string;
 	onClose: () => void;
+}
+export interface sh_confirm_dialog_pt {
+	message     : string;
+	headerColor?: string;
+	onClose: (trn:boolean) => void;
 }
