@@ -19,8 +19,8 @@ export const Radio =({id,readOnly,disabled,onChange,width,dataset,defaultSelecte
 	}
 
 	const setRadio = () => {
-		let colGrp = [];
-
+		let colGrp: { width: string }[] = [];
+		
 		if (perRow === 1) {
 			colGrp = [{ width: '100%' }];
 

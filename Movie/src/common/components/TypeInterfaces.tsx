@@ -136,3 +136,8 @@ export interface sh_tabpanel_pt  {
 	children: React.ReactNode;
 	
 }
+export interface sh_dialog_pt {
+	open : boolean;
+	message : string;
+	onClose: () => void;
+}
