@@ -1,12 +1,17 @@
-import { createStore } from 'redux';
-import modules from './modules';
+import { configureStore } from '@reduxjs/toolkit'
+import menusReducer from './modules'
 
 const configure = () => {
-	// const store = createStore(modules);
-	const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-	const store = createStore(modules, devTools);
+	//const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	const store = configureStore({
+		reducer: {
+		  menus: menusReducer
+		}
+	  })
 
 	return store;
 }
 
 export default configure;
+
+
