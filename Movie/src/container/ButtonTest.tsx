@@ -5,7 +5,7 @@ import { ComLib } from '../common/script';
 
 export const ButtonTest = () => {  
   const test =(e:boolean) => {
-    console.log(e)
+    alert(e)
   }
   const buttonOnClick = (e:sh_evnt_return) => {
     //const target = e.target as HTMLButtonElement;
@@ -39,7 +39,6 @@ export const ButtonTest = () => {
       }
       return null;
     })
-    console.log(tbData)
     return tbData;
   }
   const makeTbData2 = () => {
@@ -64,7 +63,6 @@ export const ButtonTest = () => {
       }
       return null;
     })
-    console.log(tbData)
     return tbData;
   }
 

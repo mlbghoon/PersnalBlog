@@ -11,15 +11,14 @@ export const CheckTest = () => {
     switch (e.id) {
       case "Checkbox":
         setChecked(prev=>!prev)
-        console.log("checkBoxOnChange")
         break;    
       default: break;
     }
   }
 
   const checkBoxOnClick = (e:sh_evnt_return) => {
-    console.log("checkBoxOnClick");
-    console.log(e);
+    // console.log("checkBoxOnClick");
+    // console.log(e);
   }
   // checkBox Event Test //
                 

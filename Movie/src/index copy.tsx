@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import Root from './container/Root';
-// import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals';
 
-import { createBrowserHistory } from 'history';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-
-
-const history = createBrowserHistory();
+import { AppPanel } from './common/components';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <BrowserRouter><Routes><Route path='/'  element={<Root/>} /></Routes></BrowserRouter>
+    <AppPanel>
+      <Root /> 
+    </AppPanel>
 );
 
 // If you want to start measuring performance in your app, pass a function

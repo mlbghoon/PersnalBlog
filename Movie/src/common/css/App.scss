@@ -164,6 +164,12 @@ button {
   button.#{$name} {    
     padding: 2px * $glyph 1.5px * $glyph;
     height: 11px * $glyph;
+    min-width: 25px * $glyph;
+  }
+  button.#{$name}.i {    
+    padding: 2px * $glyph 1.5px * $glyph;
+    height: 11px * $glyph;
+    min-width: 5px * $glyph;
   }
   .sh-label-div {
     span.#{$name} {    

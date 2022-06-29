@@ -38,7 +38,7 @@ export const AlertDialog =({message="", headerColor="dodgerblue" , onClose}:sh_a
 }
 
 export const ConfirmDialog =({message="", onClose, headerColor="dodgerblue"}:sh_confirm_dialog_pt) => { 
-	const onClickHandler = (e) => {
+	const onClickHandler = (e:{id: string}) => {
 		switch (e.id) {
 		case 'btnConfirm':  
 			onCloseHandler(true)
@@ -51,7 +51,7 @@ export const ConfirmDialog =({message="", onClose, headerColor="dodgerblue"}:sh_
 			break;
 		}
 	}
-	const onCloseHandler = (returnVal) => {
+	const onCloseHandler = (returnVal:boolean) => {
 		onClose(returnVal);
 	};
 
@@ -66,7 +66,7 @@ export const ConfirmDialog =({message="", onClose, headerColor="dodgerblue"}:sh_
 		>
 			<div className = "sh-alert-modal-content">
 				<div className = {"sh-alert-modal-content-header " + headerClass}>
-					<button className="button xs grey-o" style={{float: 'right'}} onClick ={onClickHandler}>
+					<button className="button xs grey-o i" style={{float: 'right'}} onClick ={(e) => onCloseHandler(false)}>
 						<span className="button__icon">
 							<i className="xi-close"></i>
 						</span>

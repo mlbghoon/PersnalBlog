@@ -1,10 +1,11 @@
 
 interface html_base_pt {
-	id       : string;
-    margin?  : string;	
-	color?   : string;
-	size?    : string;
-	disabled?: boolean;
+	id         : string;
+    margin?    : string;	
+	color?     : string;
+	size?      : string;
+	disabled?  : boolean;
+	extraClass?: string;
 }
 
 export interface sh_evnt_return {	

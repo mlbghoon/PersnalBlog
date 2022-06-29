@@ -1,49 +1,63 @@
-import React from 'react';
-import { useInternalRouter } from '../common/script/routing';
-import { Button, CenterPanel } from '../common/components';
+import { AppPanel, HeadPanel, MainPanel, MiddlePanel } from '../common/components';
+import { Main } from './Main';
+import { connect, ConnectedProps, useDispatch, useSelector } from 'react-redux';
 
-function App() {
-  const { push } = useInternalRouter();
+import { AnyAction, bindActionCreators, Dispatch } from 'redux';
+import menuHandle, { MenuState } from '../store/modules/appModule';
+import  * as appModuleActions from '../store/modules/appModule';
+import {addTray} from  '../store/modules/appModule';
+const mapState = (state:MenuState) => ({
+  selected : state.selected,
+  tray : state.tray,
+  popupList : state.popupList,
+})
+
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({menuHandle}, dispatch);
+
+
+const connector = connect(mapState, mapDispatchToProps)
+
+export type PropsFromRedux = ConnectedProps<typeof connector>
+
+function App(props: PropsFromRedux) {
   return (
-    <>
-      <CenterPanel>
-        <img 
-          src={require('../common/image/MarvelLogo.png')} 
-          alt="" 
-          onClick={() => push('/Main')}
-          className={'App-logo'}
-        />
-      </CenterPanel>
-      <CenterPanel>
-        어쩌구 저쩌구
-        {/* 화면 설명 문구 추가 예정 */}
-        <Button
-          id   = {"test"}
-          value= {"테스트페이지"}
-          color= {"green"}
-          onClick   = {() => push('/ComponentTest')}
-        /> 
-        <Button
-          id   = {"buttotest"}
-          value= {"버튼테스트"}
-          color= {"green"}
-          onClick   = {() => push('/ButtonTest')}
-        /> 
-        <Button
-          id   = {"inputTest"}
-          value= {"input테스트"}
-          color= {"green"}
-          onClick   = {() => push('/InputTest')}
-        /> 
-        <Button
-          id   = {"CheckTest"}
-          value= {"CheckBox테스트"}
-          color= {"green"}
-          onClick   = {() => push('/CheckTest')}
-        /> 
-      </CenterPanel>
-    </>
+    <AppPanel>
+		<HeadPanel>
+			head
+		</HeadPanel>
+		<MiddlePanel>
+			<MainPanel>
+				<Main
+					menu = {"props."}
+					tray={props.tray}
+					selected = {props.selected}
+					openMenu = {appModuleActions.addTray}
+					closeMenu = {appModuleActions.delTray}
+					prevMenu = {appModuleActions.prevTray}
+					nextMenu = {appModuleActions.nextTray}
+					selectMenu = {appModuleActions.selectTray}
+					closeAllMenu = {appModuleActions.delAllTray}
+				/>
+			</MainPanel>
+		</MiddlePanel>
+    </AppPanel>
   );
 }
+export default connector(App)
 
-export default App;
+/*
+const count = useSelector((state: RootState) => state.counter.count);
+const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다
+
+export default connect(
+	(state) => ({
+		selected : state.appModule.selected,
+		tray : state.appModule.tray,
+		popupList : state.appModule.popupList,
+	}),
+	(dispatch) => ({
+		appModuleActions : bindActionCreators(appModuleActions, dispatch)
+	})
+)(App);
+*/

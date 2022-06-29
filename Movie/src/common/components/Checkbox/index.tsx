@@ -30,7 +30,7 @@ export const Checkbox =({size="md",id,disabled,checked,value,onChange,onClick,co
 			<label 
 				key       = {"key_" + id + "_labal"}
 				className = {"sh-input-checkbox-label " + size + " color-" + color} 
-				onClick= {(e) => {console.log(e);e.stopPropagation(); checkBoxRef.current?.click()}}
+				onClick= {(e) => {e.stopPropagation(); checkBoxRef.current?.click()}}
 			> 
 				{value} 				
 			</label>
