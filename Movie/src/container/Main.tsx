@@ -6,7 +6,7 @@ interface PropTypes extends PropsFromRedux{
 };
 
 
-export const Main = (props:PropTypes) => {
+export const Main = (props:any) => {
   console.log(props)
   return (
     <>

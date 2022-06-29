@@ -12,8 +12,20 @@ const mapState = (state:MenuState) => ({
   popupList : state.popupList,
 })
 
+// ReturnType<typeof addTray>
+// | ReturnType<typeof delTray>
+// | ReturnType<typeof delAllTray>
+// | ReturnType<typeof selectTray>
+// | ReturnType<typeof prevTray>
+// | ReturnType<typeof nextTray>
+// | ReturnType<typeof addPop>
+// | ReturnType<typeof delPop>
+// | ReturnType<typeof delAllPop>
+// | ReturnType<typeof selectPop>;
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({menuHandle}, dispatch);
+
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({addTray}, dispatch);
 
 
 const connector = connect(mapState, mapDispatchToProps)
@@ -29,7 +41,7 @@ function App(props: PropsFromRedux) {
 		<MiddlePanel>
 			<MainPanel>
 				<Main
-					menu = {"props."}
+					menu = {[{1:"asd"}]}
 					tray={props.tray}
 					selected = {props.selected}
 					openMenu = {appModuleActions.addTray}
