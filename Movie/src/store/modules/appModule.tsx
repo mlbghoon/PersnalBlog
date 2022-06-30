@@ -1,9 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+type tray_tp = {
+	id: string, nm:string, pare_id: string, path: string
+}
+type popupList_tp = {
+	id: string, nm:string, path: string
+}
+
 export type menu = {
 	selected : {id: string, nm:string, pare_id?: string, path: string} | null;
-	tray : {id: string, nm:string, pare_id: string, path: string}[];
-	popupList: {id: string, nm:string, path: string}[];
+	tray     : Array<tray_tp>;
+	popupList: Array<popupList_tp>;
 };
 
 export type MenuState = menu;
@@ -19,39 +26,39 @@ const menusSlice = createSlice({
   initialState: initState,
   reducers: {
 	addTray(state, action) {
-		if (state.tray.indexOf(state.tray.filter(item => item === action.payload.menu)[0]) < 0) {
-			state.tray.push(action.payload.menu);
-			state.selected = action.payload.menu;
+		if (state.tray.indexOf(state.tray.filter(item => item === action.payload)[0]) < 0) {
+			state.tray.push(action.payload);
+			state.selected = action.payload;
 		} else {
-			state.selected = action.payload.menu;
+			state.selected = action.payload;
 		}
 	},
     delTray(state, action) {
-		if (state.tray.findIndex(element => element === action.payload.menu) !== 0) {
-			state.tray = state.tray.filter(item => item !== action.payload.menu);
-			state.selected = state.tray[state.tray.findIndex(element => element === action.payload.menu) - 1];
+		if (state.tray.findIndex(element => element === action.payload) !== 0) {
+			state.tray = state.tray.filter(item => item !== action.payload);
+			state.selected = state.tray[state.tray.findIndex(element => element === action.payload) - 1];
 		} 
     },
-    delAllTray(state, action) {
+    delAllTray(state) {
 		state.tray = [state.tray[0]];
 		state.selected = state.tray[0];
     },
     selectTray(state, action) {
-		state.selected = action.payload.menu;
+		state.selected = action.payload;
     },
     prevTray(state, action) {
-		if (state.tray.findIndex(element => element === action.payload.menu) === 0) {
-			state.selected = action.payload.menu;
+		if (state.tray.findIndex(element => element === action.payload) === 0) {
+			state.selected = action.payload;
 
 		} else {
-			state.selected = state.tray[state.tray.findIndex(element => element === action.payload.menu) - 1];
+			state.selected = state.tray[state.tray.findIndex(element => element === action.payload) - 1];
 		}
     },
     nextTray(state, action) {
-		if (state.tray.findIndex(element => element === action.payload.menu) === state.tray.length-1) {
-			state.selected = action.payload.menu;
+		if (state.tray.findIndex(element => element === action.payload) === state.tray.length-1) {
+			state.selected = action.payload;
 		} else {
-			state.selected = state.tray[state.tray.findIndex(element => element === action.payload.menu) + 1];
+			state.selected = state.tray[state.tray.findIndex(element => element === action.payload) + 1];
 		} 
     }
   }

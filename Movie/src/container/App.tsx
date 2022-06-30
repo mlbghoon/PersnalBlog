@@ -2,11 +2,28 @@ import { AppPanel, HeadPanel, MainPanel, MiddlePanel } from '../common/component
 import { Main } from './Main';
 
 import  * as appModuleActions from '../store/modules/appModule';
+import { useDispatch, useSelector } from 'react-redux';
+import { MenuState } from '../store/modules/appModule';
+import { useEffect } from 'react';
+import store from '../store';
 
 
 
 function App() {
-	appModuleActions.addTray({id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"});
+	const dispatch = useDispatch();
+	// 각 액션들을 디스패치하는 함수들을 만드세요
+	const addTray = (menu: any) => dispatch(appModuleActions.addTray(menu));
+	const delTray = (menu: any) => dispatch(appModuleActions.delTray(menu));
+	const delAllTray = () => dispatch(appModuleActions.delAllTray());
+	const selectTray = (menu: any) => dispatch(appModuleActions.selectTray(menu));
+	const prevTray = (menu: any) => dispatch(appModuleActions.prevTray(menu));
+	const nextTray = (menu: any) => dispatch(appModuleActions.nextTray(menu));
+
+	// appModuleActions.addTray({id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"});
+	useEffect(() => {
+		addTray({id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"})
+
+	}, [])
 
 	return (
 		<AppPanel>
@@ -16,12 +33,12 @@ function App() {
 			<MiddlePanel>
 				<MainPanel>
 					<Main
-						openMenu = {appModuleActions.addTray}
-						closeMenu = {appModuleActions.delTray}
-						prevMenu = {appModuleActions.prevTray}
-						nextMenu = {appModuleActions.nextTray}
-						selectMenu = {appModuleActions.selectTray}
-						closeAllMenu = {appModuleActions.delAllTray}
+						openMenu     = {addTray}
+						closeMenu    = {delTray}
+						prevMenu     = {prevTray}
+						nextMenu     = {nextTray}
+						selectMenu   = {selectTray}
+						closeAllMenu = {delAllTray}
 					/>
 				</MainPanel>
 			</MiddlePanel>

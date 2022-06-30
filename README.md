@@ -2,20 +2,21 @@
 ================
 1. tsconfig.json, react-app-env.d.ts 수정
 
-    ``` typescript
-        // react-app-env.d.ts 추가
-        declare module 'react-modeless'         
-        // tsconfig.json 수정
-        // "noImplicitAny": false (as-is)
-        "noImplicitAny": true
-    ```  
+  ``` typescript
+      // react-app-env.d.ts 추가
+      declare module 'react-modeless'         
+      // tsconfig.json 수정
+      // "noImplicitAny": false (as-is)
+      "noImplicitAny": true
+  ```  
 
-* react-modelss는 typescript전용으로 만들어진게 없어 오류를 해결하기 위해 
-  "noImplicitAny": false 추가하니까 다른 any들이 전부 허용되서 
-  react-app-env.d.ts 파일에 react-modelss모듈을 declare해서 해결 하는 방식으로 변경
+  * react-modelss는 typescript전용으로 만들어진게 없어 오류를 해결하기 위해 
+    "noImplicitAny": false 추가하니까 다른 any들이 전부 허용되서 
+    react-app-env.d.ts 파일에 react-modelss모듈을 declare해서 해결 하는 방식으로 변경
 
-2. redux 공부
- * https://react.vlpt.us/redux/01-keywords.html
+2. redux 작업
+  * 연결은 완료 최적화를 하기위해 리펙토링 필요
+  * https://react.vlpt.us/redux/01-keywords.html
 
       리덕스 키워드
 
@@ -44,7 +45,8 @@
       subscribe 함수에 특정 함수를 전달해주면, 액션이 디스패치 되었을 때 마다 전달해준 함수가 호출
       (리액트에서는 connect 함수 또는 useSelector Hook 을 사용)
 
- * https://react.vlpt.us/redux/05-counter.html
+  * https://react.vlpt.us/redux/05-counter.html
       컨테이너 컴포넌트 만들기 부분
+      
 ### 2차 목표 Dialog 추가
 ### 3차 목표 공통 코드(dataset) 추가
