@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 
-type tray_tp = {
+export type tray_tp = {
 	id: string, nm:string, pare_id: string, path: string
 }
 type popupList_tp = {
@@ -16,8 +16,8 @@ export type menu = {
 export type MenuState = menu;
 
 const initState: MenuState = {
-	selected : null,
-	tray : [],
+	selected : {id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"},
+	tray : [{id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"},{id: 'CheckTest', nm:'CheckTest', pare_id: "", path: "/CheckTest"}],
 	popupList: []
 };
 
@@ -25,40 +25,66 @@ const menusSlice = createSlice({
   name: 'menus',
   initialState: initState,
   reducers: {
-	addTray(state, action) {
+	addTray(state, action) {	
 		if (state.tray.indexOf(state.tray.filter(item => item === action.payload)[0]) < 0) {
-			state.tray.push(action.payload);
-			state.selected = action.payload;
+			return {
+				...state,
+				tray: state.tray.concat(action.payload),
+				selected : action.payload
+			}
 		} else {
-			state.selected = action.payload;
-		}
+			return {
+				...state,
+				tray: state.tray,
+				selected : action.payload
+			}
+		}		
 	},
-    delTray(state, action) {
-		if (state.tray.findIndex(element => element === action.payload) !== 0) {
-			state.tray = state.tray.filter(item => item !== action.payload);
-			state.selected = state.tray[state.tray.findIndex(element => element === action.payload) - 1];
-		} 
+    delTray(state, action) {	
+		if (state.tray.findIndex(element => element.id === action.payload.id) !== 0) {
+			return {
+				...state,
+				tray: state.tray.filter(item => item.id !== action.payload.id),
+				selected : state.tray[state.tray.findIndex(element => element.id === action.payload.id) - 1]
+			}
+		} else {
+			return state;
+		}
     },
     delAllTray(state) {
 		state.tray = [state.tray[0]];
 		state.selected = state.tray[0];
     },
     selectTray(state, action) {
-		state.selected = action.payload;
-    },
-    prevTray(state, action) {
-		if (state.tray.findIndex(element => element === action.payload) === 0) {
-			state.selected = action.payload;
-
-		} else {
-			state.selected = state.tray[state.tray.findIndex(element => element === action.payload) - 1];
+		return {
+			...state,
+			selected : action.payload
 		}
     },
-    nextTray(state, action) {
-		if (state.tray.findIndex(element => element === action.payload) === state.tray.length-1) {
-			state.selected = action.payload;
+    prevTray(state, action) {
+		if (state.tray.findIndex(element => element.id === action.payload.id) === 0) {
+			return {
+				...state,
+				selected : action.payload
+			}
 		} else {
-			state.selected = state.tray[state.tray.findIndex(element => element === action.payload) + 1];
+			return {
+				...state,
+				selected : state.tray[state.tray.findIndex(element => element.id === action.payload.id) - 1]
+			}
+		}
+    },
+    nextTray(state, action) {	
+		if (state.tray.findIndex(element => element.id === action.payload.id) === state.tray.length-1) {
+			return {
+				...state,
+				selected : action.payload
+			}
+		} else {			
+			return {
+				...state,
+				selected : state.tray[state.tray.findIndex(element => element.id === action.payload.id) + 1]
+			}
 		} 
     }
   }

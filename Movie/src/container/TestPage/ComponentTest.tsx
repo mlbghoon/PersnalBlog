@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, SelectBox, SubFullPanel, Switch, Table, TextArea } from '../common/components';
-import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../common/components';
-import { TabPanel, Tabs } from '../common/components/Tabs';
-import { sh_evnt_return } from '../common/components/TypeInterfaces';
+import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, SelectBox, SubFullPanel, Switch, Table, TextArea } from '../../common/components';
+import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../../common/components';
+import { TabPanel, Tabs } from '../../common/components/Tabs';
+import { sh_evnt_return } from '../../common/components/TypeInterfaces';
 
 export const ComponentTest = () => {  
   const [iptVal, setIptVal] = useState("");  

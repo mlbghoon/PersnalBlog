@@ -1,3 +1,4 @@
+import { tray_tp } from "../../store/modules/appModule";
 
 interface html_base_pt {
 	id         : string;
@@ -15,6 +16,13 @@ export interface sh_evnt_return {
 	code?   : string;
 	type?   : string;
 	checked?: boolean; 
+};
+// trays, onSelect,onClose,selected
+export interface sh_tray_div_pt extends html_base_pt {	
+	tray     : any;
+	selected : any;
+	onSelect : any;
+	onClose  : any;
 };
 
 export interface sh_btn_pt extends html_base_pt {	

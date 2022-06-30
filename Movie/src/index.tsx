@@ -1,13 +1,11 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Root from './container/Root';
-// import reportWebVitals from './reportWebVitals';
-
-import { createBrowserHistory } from 'history';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import Root from './container/Root';
 
+// import reportWebVitals from './reportWebVitals';
+// import { createBrowserHistory } from 'history';
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

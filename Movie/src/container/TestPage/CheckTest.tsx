@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { ComponentPanel, FlexPanel, FullPanel, LFloatPanel, RelativePanel, SubFullPanel } from '../common/components';
-import { Checkbox } from '../common/components';
-import { sh_evnt_return } from '../common/components/TypeInterfaces';
+import { ComponentPanel, FlexPanel, FullPanel, LFloatPanel, RelativePanel, SubFullPanel } from '../../common/components';
+import { Checkbox } from '../../common/components';
+import { sh_evnt_return } from '../../common/components/TypeInterfaces';
 
 export const CheckTest = () => {  
   const [checked, setChecked] = useState(false);  

@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { ComponentPanel, FlexPanel, FullPanel, LFloatPanel, RelativePanel, SubFullPanel, Table, TabPanel, Tabs } from '../common/components';
-import { Input } from '../common/components';
-import { sh_evnt_return } from '../common/components/TypeInterfaces';
+import { ComponentPanel, FullPanel, RelativePanel, SubFullPanel, Table, TabPanel, Tabs } from '../../common/components';
+import { Input } from '../../common/components';
+import { sh_evnt_return } from '../../common/components/TypeInterfaces';
 
 export const InputTest = () => {  
   const [iptVal, setIptVal] = useState("가나다AaBbcC12340!@#$%");  

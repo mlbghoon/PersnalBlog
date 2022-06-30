@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from '../Table';
-import { sh_evnt_return, sh_rdo_pt } from '../TypeInterfaces';
+import { sh_rdo_pt } from '../TypeInterfaces';
 
 export const Radio =({id,readOnly,disabled,onChange,width,dataset,defaultSelected,selected,perRow=1,color="black",size="md"}:sh_rdo_pt) => { 
 	const onChangeHandler = (e:React.ChangeEvent) => {

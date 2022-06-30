@@ -1,7 +1,7 @@
-import { ComponentPanel, FullPanel, RelativePanel, SubFullPanel } from '../common/components';
-import { Button, Table, TabPanel, Tabs } from '../common/components';
-import { sh_evnt_return } from '../common/components/TypeInterfaces';
-import { ComLib } from '../common/script';
+import { ComponentPanel, FullPanel, RelativePanel, SubFullPanel } from '../../common/components';
+import { Button, Table, TabPanel, Tabs } from '../../common/components';
+import { sh_evnt_return } from '../../common/components/TypeInterfaces';
+import { ComLib } from '../../common/script';
 
 export const ButtonTest = () => {  
   const test =(e:boolean) => {

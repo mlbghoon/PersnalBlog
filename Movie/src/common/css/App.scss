@@ -256,8 +256,8 @@ button {
   position: relative; display: block; width: 100%;
   .component-panel {margin-top: 10px;}
 }
-.lfloat-panel {position: relative; float:left; width: 100%;}
-.rfloat-panel {position: relative; float: right; width: 100%;}
+.lfloat-panel {position: relative; float:left;}
+.rfloat-panel {position: relative; float: right;}
 .relative-panel {position: relative; display: inline-block; width: 100%;}
 .main-panel .tray-panel {width:100%; display: inline-block; height: 47px; border-bottom: 1px solid #E9ECEF; position:relative; }
 .main-panel .tray-panel .rfloat-panel {position: absolute; height:47px; padding-right:40px; right:0; background: #fff; border-bottom: 1px solid #E9ECEF; box-shadow: -10px 0px 10px rgba(0,0,0,.15);}
@@ -337,6 +337,9 @@ input {
 .sh-textarea-div > textarea { width:100%; padding: 0px; margin: 0px; box-sizing: border-box; padding:8px; }
 .sh-textarea-div > textarea:disabled {background: #e9ecef !important; color:#adb5bd !important; cursor: not-allowed;}
 
+body {
+  margin: 0 0 0 0;
+}
 textarea { height: auto;}
 
 .sh-switch-label {position: relative; display: inline-block; top:-2px; margin-left: 10px;}
@@ -374,3 +377,26 @@ select {border-radius:4px; border:1px solid #DEE2E6; width:100%; outline: none; 
 
 .sh-popup-modal-content-header button,
 .sh-alert-modal-content-header button {border:none; cursor: pointer; overflow: hidden; margin-top: 10px;margin-right: 10px; background-position:50% 50%; background-size:50%;}
+
+.scrm-tray-div {width :100%; height: 48px; border: 0px solid rgb(255, 255, 255); overflow:hidden; }
+.scrm-tray-div > ul {list-style : none; padding: 0px; margin: 0px 0 0 50px; display: flex;}
+.scrm-tray-div > ul:after {content: ''; clear: both; float: none;}
+.scrm-tray-div > ul > li {float: left; font-weight: bold; margin-left: 0px; margin-right:15px; padding:0 10px; overflow:hidden; height: 46px; border-bottom: 2px solid rgba(0,0,0,0); flex:none;}
+.scrm-tray-div > ul > li:hover,
+.scrm-tray-div > ul > li.scrm-tray-div-li-selected{border-bottom: 2px solid #3B5BDB; cursor: pointer;}
+.scrm-tray-div > ul > li > div {float: left; font-size:14px; font-weight: bold;height:48px; line-height: 48px; padding-right: 6px;}
+.scrm-tray-div > ul > li:first-child{padding-left:0;}
+.scrm-tray-div > ul > li:first-child > div {padding-right:0;}
+
+.scrm-tray-div-btn-close {align-content: center; float: right; border : none; cursor: pointer; width: 20px;height: 48px; background:url('../image/btn_trayClose.png') no-repeat center; background-size: 20px; outline: none;}
+
+.scrm-tray-btn-div { align-content: center; }
+.scrm-tray-btn-add { border : none; cursor: pointer; width: 25px; height: 25px; background:url('../image/btn_add.png') no-repeat center; background-size: cover; outline: none;}
+.scrm-tray-btn-prev { border : none; cursor: pointer; width: 46px; height: 47px; background:url('../image/btn_prev.png') no-repeat center; background-size: 9px ; outline: none;}
+.scrm-tray-btn-next { border : none; cursor: pointer; width: 46px; height: 47px; background:url('../image/btn_next.png') no-repeat center; background-size: 9px; outline: none;}
+.scrm-tray-btn-close { border : none; cursor: pointer; width: 46px; height: 47px; background:url('../image/btn_closeAll.png') no-repeat center; background-size: 35%; outline: none;}
+.scrm-tray-btn-div > button[tooltip]:hover {position : relative;}
+.scrm-tray-btn-div > button[tooltip]:hover:after {
+	content : attr(tooltip);
+	position : absolute; bottom: calc(100% + 1px); left : calc(-50%); background-color: transparent; color: white; font-weight: bold; font-size: 12px; z-index: 9999; width: calc(100% + 50px);
+} 
