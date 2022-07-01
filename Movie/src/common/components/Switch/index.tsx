@@ -1,8 +1,8 @@
 import { sh_switch_pt } from '../TypeInterfaces';
 
 export const Switch =({id, onChange, checked,color="aquamarine",size="md"}:sh_switch_pt) => { 
-	const onChangeHandler = (e:React.ChangeEvent) => {
-		const target = e.target as HTMLInputElement;
+	const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
+		const target: HTMLInputElement = e.target;
 		onChange({id: id, target : target});
 		
 	}

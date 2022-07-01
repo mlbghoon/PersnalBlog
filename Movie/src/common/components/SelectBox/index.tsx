@@ -2,8 +2,8 @@ import React from 'react';
 import { sh_sel_pt } from '../TypeInterfaces';
 
 export const SelectBox =({id,disabled,onChange,width,dataset,color="white",size="md"}:sh_sel_pt) => { 
-	const onChangeHandler = (e:React.ChangeEvent) => {
-		const target = e.target as HTMLSelectElement;
+	const onChangeHandler = (e:React.ChangeEvent<HTMLSelectElement>) => {
+		const target: HTMLSelectElement = e.currentTarget;
 		let key = "";
 		for (let i = 0; i < dataset.length; i ++) {
 			if (dataset[i].cd === target.value) {

@@ -17,7 +17,10 @@ export type MenuState = menu;
 
 const initState: MenuState = {
 	selected : {id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"},
-	tray : [{id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"},{id: 'CheckTest', nm:'CheckTest', pare_id: "", path: "/CheckTest"}],
+	tray : [{id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"}
+		   ,{id: 'CheckTest', nm:'CheckTest', pare_id: "", path: "/CheckTest"}
+		   ,{id: 'ComponentTest', nm:'ComponentTest', pare_id: "", path: "/ComponentTest"}
+		   ,{id: 'InputTest', nm:'InputTest', pare_id: "", path: "/InputTest"}],
 	popupList: []
 };
 

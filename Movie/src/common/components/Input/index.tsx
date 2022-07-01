@@ -39,25 +39,28 @@ export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width="9
 		}
 
 	} 
-
-	const onChangeHandler = (e:React.ChangeEvent) => {		
-		onChange({id: id, target : e.target as HTMLInputElement});
-		
-	}
-
-	const onKeyPressHandler = (e:React.KeyboardEvent) => {
-		onKeyPress({id: id, target : e.target as HTMLInputElement, key: e.key, code: e.code});
+	const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
+		const target: HTMLInputElement = e.currentTarget;
 	
+		onChange({id: id, target : target});
 	}
 
-	const onKeyUpHandler = (e:React.KeyboardEvent) => {
-		onKeyUp({id: id, target : e.target as HTMLInputElement, key: e.key, code: e.code});
+	const onKeyPressHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {		
+		const target: HTMLInputElement = e.currentTarget;
 	
+		onKeyPress({id: id, target : target, key: e.key, code: e.code});
 	}
 
-	const onBlurHandler = (e:React.FocusEvent) => {
-		onBlur({id: id, target : e.target as HTMLInputElement, type: e.type});
+	const onKeyUpHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
+		const target: HTMLInputElement = e.currentTarget;
+	
+		onKeyUp({id: id, target : target, key: e.key, code: e.code});	
+	}
 
+	const onBlurHandler = (e:React.FocusEvent<HTMLInputElement>) => {
+		const target: HTMLInputElement = e.currentTarget;
+	
+		onBlur({id: id, target : target, type: e.type});
 	}
 
 

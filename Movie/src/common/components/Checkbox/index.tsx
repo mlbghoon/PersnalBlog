@@ -4,12 +4,15 @@ import { sh_chk_pt, sh_evnt_return, sh_multi_chk_pt } from '../TypeInterfaces';
 export const Checkbox =({size="md",id,disabled,checked,value,onChange,onClick,color="black"}:sh_chk_pt) => { 
 	let checkBoxRef = useRef<HTMLInputElement>(null);
 
-	const onClickHandler = (e:React.MouseEvent) => {
-		const target = e.target as HTMLInputElement;
+	const onClickHandler = (e:React.MouseEvent<HTMLInputElement>) => {
+		const target: HTMLInputElement = e.currentTarget;
+	
 		onClick({id: id, target : target, checked : target.checked });
 	}
-	const onChangeHandler = (e:React.ChangeEvent) => {
-		const target = e.target as HTMLInputElement;
+	
+	const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
+		const target: HTMLInputElement = e.currentTarget;
+	
 		onChange({id: id, target : target, checked : target.checked });
 	}
 

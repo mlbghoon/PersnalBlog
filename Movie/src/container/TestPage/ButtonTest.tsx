@@ -4,14 +4,16 @@ import { sh_evnt_return } from '../../common/components/TypeInterfaces';
 import { ComLib } from '../../common/script';
 
 export const ButtonTest = () => {  
-  const test =(e:boolean) => {
+  const test =(e:any) => {
+    console.log("ButtonTest callbak function")
+    console.log(e)
     alert(e)
   }
   const buttonOnClick = (e:sh_evnt_return) => {
-    //const target = e.target as HTMLButtonElement;
-    //alert("버튼클릭 : " + e.id);
+    const target = e.target as HTMLButtonElement;
+    alert("버튼클릭 : " + e.id);
     // ComLib.openDialog('A', "버튼클릭 : "+ e.id, e.id)
-    
+   
     ComLib.openDialog('C', "버튼클릭 : "+ e.id, e.id, test)
   }
 

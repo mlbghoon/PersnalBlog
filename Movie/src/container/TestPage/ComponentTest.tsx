@@ -3,6 +3,7 @@ import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel
 import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../../common/components';
 import { TabPanel, Tabs } from '../../common/components/Tabs';
 import { sh_evnt_return } from '../../common/components/TypeInterfaces';
+import { ComLib } from '../../common/script';
 
 export const ComponentTest = () => {  
   const [iptVal, setIptVal] = useState("");  
@@ -17,6 +18,19 @@ export const ComponentTest = () => {
     alert("버튼클릭 : " + e.id);
     console.log("btn.id : ", e.id);
     console.log("btn.target : ", target);
+  }  
+
+  
+  const testsss = (e:any) => {
+    console.log("4. ComponentTest onCallback")
+    console.log(e)
+  }
+ 
+  const buttonOnClick2 = (e:sh_evnt_return) => {
+    let param = {id:"modaless", data: "test"};
+    let option2= { width: '600px', height: '830px', param: param, headerColor: "red"};
+
+    ComLib.openPop("PopupTest", "팝업테스트 modaless", option2, testsss)
   }
   // button Event Test //
 
@@ -828,15 +842,14 @@ export const ComponentTest = () => {
         </RelativePanel>
         <RelativePanel>
               <Tabs  tabWidth='100px' onClick = {tabonClick}>
-                <TabPanel label={'test1'} id={'11'} index={0}>
-                  <TextArea 
-                    rows={5} 
-                    onChange={onTextAreaChanged} 
-                    value={textAreaValue}
-                    id={'textArea2'}
-                    resize={true}
-                    size={"lg"}
-                  />
+                <TabPanel label={'test1'} id={'11'} index={0}>             
+                  <Button
+                    id={"modaless"}
+                    margin= {"0px 5px 0px 0px"}
+                    value={"modaless"}
+                    color={"blue"}
+                    onClick={buttonOnClick2} 
+                  /> 
                 </TabPanel>
                 <TabPanel label={'test2'} id={'13'} index={1}>
                   <Switch

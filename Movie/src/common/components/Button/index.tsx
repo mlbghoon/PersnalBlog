@@ -23,9 +23,11 @@ export const Button = ({id,margin,disabled,size="md",color="tomato",filled=true,
 		}
 	}
 	
-	const onClickHandler = (e:React.MouseEvent) => {
-		onClick({id: id, target : e.target as HTMLButtonElement});
-	}
+	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+		const target: HTMLButtonElement = e.currentTarget;
+
+		onClick({id: id, target : target});
+	};
 
 	return (
 		<>

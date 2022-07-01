@@ -17,7 +17,26 @@ export interface sh_evnt_return {
 	type?   : string;
 	checked?: boolean; 
 };
-// trays, onSelect,onClose,selected
+type position = {
+	x:number;
+	y:number;
+}
+
+type param  = {id: string, data: any};
+type option = {width: string, height: string, modaless: boolean, param: param}
+
+export interface sh_popup_dialog_pt {	
+	modaless?   : boolean
+	position    : position;
+	onClose     : (e:param) => void;
+	headerColor : string;
+	popupdivid  : string;
+	title       : string;
+	url         : string;
+	options     : option;
+	onCallbackFunc: (e:any) => void | null
+};
+
 export interface sh_tray_div_pt extends html_base_pt {	
 	tray     : any;
 	selected : any;

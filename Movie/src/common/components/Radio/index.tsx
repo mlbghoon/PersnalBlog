@@ -3,9 +3,9 @@ import { Table } from '../Table';
 import { sh_rdo_pt } from '../TypeInterfaces';
 
 export const Radio =({id,readOnly,disabled,onChange,width,dataset,defaultSelected,selected,perRow=1,color="black",size="md"}:sh_rdo_pt) => { 
-	const onChangeHandler = (e:React.ChangeEvent) => {
+	const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
 		if (!disabled) {
-			const target = e.target as HTMLInputElement;
+			const target: HTMLInputElement = e.currentTarget;
 			let key = "";
 			for (let i = 0; i < dataset.length; i ++) {
 				if (dataset[i].cd === target.value) {

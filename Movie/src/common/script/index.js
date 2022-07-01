@@ -1,5 +1,8 @@
 import {createRoot} from 'react-dom/client';
-import { AlertDialog, ConfirmDialog } from '../components/Dialog';
+import { AlertDialog, ConfirmDialog, PopupDialog } from '../components/Dialog';
+import { Provider } from 'react-redux';
+import store from '../../store';
+import ReactDOM from 'react-dom';
 
 const newScrmObj = {
 	constants: {
@@ -57,9 +60,71 @@ const ComLib = {
 				headerColor={headerColor}
 				onClose={ (e) => { document.body.removeChild(document.getElementById(newScrmObj.constants.mdi.DIALOG));callback(e)} }
 			/>);
+		}	
+	},
+	openPop : (url, name, options, callbackFunc) => {
+		let arrPopTag = Object.values(document.body.children).filter(
+			tag => tag.tagName === 'DIV'
+		).filter(
+			item => item.id.substring(0, newScrmObj.constants.mdi.POP_UP.length) === newScrmObj.constants.mdi.POP_UP
+		);
+		
+		let popDiv = document.createElement('div');
+		let position = {x: 0, y: 0};
+
+		if (arrPopTag.length === 0) {
+			popDiv.id = newScrmObj.constants.mdi.POP_UP + '_div_' + arrPopTag.length;
+		} else {
+			popDiv.id = newScrmObj.constants.mdi.POP_UP + '_div_' + (Number(arrPopTag[arrPopTag.length - 1].id.substr((newScrmObj.constants.mdi.POP_UP.length + '_div_'.length))) + 1).toString();
+			position = { x : arrPopTag.length * 10,  y: arrPopTag.length * 10 }
 		}
 		
+		document.body.appendChild(popDiv);
 
+		const root = createRoot(popDiv);
+		let headerColor = "dodgerblue";
+
+		if (options.headerColor !== undefined) {
+			headerColor = options.headerColor;
+		}
+		const onCloseHandler = async (e) => {
+			try {
+				await new Promise((resolve, reject) => {
+					try {
+						if (typeof callbackFunc === "function") {
+							try {
+								callbackFunc(e);
+							} catch (err) {
+								reject(err);
+							}
+						}
+						resolve();
+					} catch (error) {
+						reject(error);
+					}
+				});
+				root.unmount();
+			} catch (error_1) {
+				console.log(error_1);
+			}
+			document.body.removeChild(popDiv);
+		}
+
+		root.render(
+			<Provider store={store}>
+				<PopupDialog
+					popupdivid = {popDiv.id}
+					open={true}
+					url={url}
+					name={name}
+					modaless={true}
+					position = {position}
+					options={options}
+					onClose={onCloseHandler}
+					headerColor={headerColor}
+				/>
+			</Provider>);
+		return popDiv.id;
 	},
 	copyText : (txt) => {
 		const element = document.createElement('textarea');
