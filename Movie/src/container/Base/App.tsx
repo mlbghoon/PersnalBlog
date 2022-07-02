@@ -1,11 +1,11 @@
-import { AppPanel, HeadPanel, MainPanel, MiddlePanel } from '../../common/components';
+import { AppPanel, FooterPanel, HeadPanel, MainPanel, MiddlePanel } from '../../common/components';
 
 import  * as appModuleActions from '../../store/modules/appModule';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import store from '../../store';
 import Main from './main/Main';
-
-
+import Header from './header';
+import Footer from './footer';
 
 function App() {
 	const dispatch = useDispatch();
@@ -16,16 +16,21 @@ function App() {
 	const prevTray = (menu: any) => dispatch(appModuleActions.prevTray(menu));
 	const nextTray = (menu: any) => dispatch(appModuleActions.nextTray(menu));
 
+	const addPop = (pop:any) => dispatch(appModuleActions.addPop(pop))
+	const deletePop = (pop:any) => dispatch(appModuleActions.deletePop(pop))
+	const deleteAllPop = (pop:any) => dispatch(appModuleActions.deleteAllPop())
+	const selectPop = (pop:any) => dispatch(appModuleActions.selectPop(pop))
+
 	type RootState = ReturnType<typeof store.getState>
 	
 	const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-	const { selected, tray } = useAppSelector((state) => state.menus.appModule)
+	const { selected, tray, popupList } = useAppSelector((state) => state.menus.appModule)
 
 	return (
 		<AppPanel>
 			<HeadPanel>
-				head
+				<Header/>
 			</HeadPanel>
 			<MiddlePanel>
 				<MainPanel>
@@ -41,6 +46,14 @@ function App() {
 					/>
 				</MainPanel>
 			</MiddlePanel>
+			<FooterPanel>
+				<Footer
+					popupList    = {popupList}
+					deletePop    = {deletePop}
+					deleteAllPop = {deleteAllPop}
+					selectPop    = {selectPop}
+				/>
+			</FooterPanel>
 		</AppPanel>
 	);
 }

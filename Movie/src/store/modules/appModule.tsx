@@ -17,17 +17,17 @@ export type MenuState = menu;
 
 const initState: MenuState = {
 	selected : {id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"},
-	tray : [{id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"}
-		   ,{id: 'CheckTest', nm:'CheckTest', pare_id: "", path: "/CheckTest"}
-		   ,{id: 'ComponentTest', nm:'ComponentTest', pare_id: "", path: "/ComponentTest"}
-		   ,{id: 'InputTest', nm:'InputTest', pare_id: "", path: "/InputTest"}],
+	tray     : [{id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"}
+		       ,{id: 'CheckTest', nm:'CheckTest', pare_id: "", path: "/CheckTest"}
+		       ,{id: 'ComponentTest', nm:'ComponentTest', pare_id: "", path: "/ComponentTest"}
+		       ,{id: 'InputTest', nm:'InputTest', pare_id: "", path: "/InputTest"}],
 	popupList: []
 };
 
 const menusSlice = createSlice({
-  name: 'menus',
-  initialState: initState,
-  reducers: {
+	name: 'menus',
+	initialState: initState,
+	reducers: {
 	addTray(state, action) {	
 		if (state.tray.indexOf(state.tray.filter(item => item === action.payload)[0]) < 0) {
 			return {
@@ -89,9 +89,34 @@ const menusSlice = createSlice({
 				selected : state.tray[state.tray.findIndex(element => element.id === action.payload.id) + 1]
 			}
 		} 
-    }
+    },
+	addPop(state, action) {	
+		return {
+			...state,
+			popupList: state.popupList.concat(action.payload)
+		}	
+	},
+	deletePop(state, action) {	
+		return {
+			...state,
+			popupList: state.popupList.filter(item => item.id !== action.payload.id)
+		}	
+	},
+	deleteAllPop(state) {	
+		return {
+			...state,
+			popupList: []
+		}	
+	},
+	selectPop(state, action) {	
+		return {
+			...state,
+			popupList: state.popupList.filter(item => item.id !== action.payload.id)
+		}	
+	},
   }
 })
 
-export const { addTray, delTray, delAllTray, selectTray, prevTray, nextTray } = menusSlice.actions
+
+export const { addTray, delTray, delAllTray, selectTray, prevTray, nextTray, addPop, deletePop, deleteAllPop, selectPop } = menusSlice.actions
 export default menusSlice.reducer

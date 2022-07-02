@@ -1,5 +1,3 @@
-import { tray_tp } from "../../store/modules/appModule";
-
 interface html_base_pt {
 	id         : string;
     margin?    : string;	
@@ -26,7 +24,7 @@ type param  = {id: string, data: any};
 type option = {width: string, height: string, modaless: boolean, param: param}
 
 export interface sh_popup_dialog_pt {	
-	modaless?   : boolean
+	modaless?   : boolean;
 	position    : position;
 	onClose     : (e:param) => void;
 	headerColor : string;
@@ -34,7 +32,7 @@ export interface sh_popup_dialog_pt {
 	title       : string;
 	url         : string;
 	options     : option;
-	onCallbackFunc: (e:any) => void | null
+	onCallbackFunc: (e:any) => void | null;
 };
 
 export interface sh_tray_div_pt extends html_base_pt {	
