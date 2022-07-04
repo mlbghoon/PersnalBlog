@@ -58,7 +58,6 @@ export const InputTest = () => {
       }
       return null;
     })
-    console.log(tbData)
     return tbData;
   }
 

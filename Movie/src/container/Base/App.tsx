@@ -6,6 +6,7 @@ import store from '../../store';
 import Main from './main/Main';
 import Header from './header';
 import Footer from './footer';
+import { useState } from 'react';
 
 function App() {
 	const dispatch = useDispatch();
@@ -27,10 +28,21 @@ function App() {
 
 	const { selected, tray, popupList } = useAppSelector((state) => state.menus.appModule)
 
+
+
+	const [menu, setMenu] = useState([{id: "TestPage", nm:"test페이지", pare_id: "", path: ""}
+									 ,{id: "ButtonTest", nm:"버튼", pare_id: "TestPage", path: "/TestPage/ButtonTest"}
+									 ,{id: "CheckTest", nm:"체크박스", pare_id: "TestPage", path: "/TestPage/CheckTest"}
+									 ,{id: "InputTest", nm:"인풋", pare_id: "TestPage", path: "/TestPage/InputTest"}
+									 ,{id: "ComponentTest", nm:"컴포넌트", pare_id: "TestPage", path: "/TestPage/ComponentTest"}]); 	
+
 	return (
 		<AppPanel>
 			<HeadPanel>
-				<Header/>
+				<Header
+					menu       = {menu}				
+					addTray = {addTray}
+				/>
 			</HeadPanel>
 			<MiddlePanel>
 				<MainPanel>

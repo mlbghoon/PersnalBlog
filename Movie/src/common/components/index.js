@@ -24,6 +24,7 @@ import { Switch } from './Switch'
 import { TextArea } from './TextArea'
 import { TabPanel, Tabs } from './Tabs';
 import { TrayDiv } from './Tray';
+import { HeaderMenu } from './Menu';
 
 
 export {
@@ -38,5 +39,6 @@ export {
     Switch,
     TextArea,
     TabPanel, Tabs,
-    TrayDiv
+    TrayDiv,
+    HeaderMenu
 }

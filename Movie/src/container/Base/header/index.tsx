@@ -1,4 +1,4 @@
-import { LFloatPanel, RFloatPanel } from '../../../common/components';
+import { HeaderMenu, LFloatPanel, RFloatPanel } from '../../../common/components';
 
 const Header = (props:any) => {
 	const onClickHandler = () => {
@@ -23,8 +23,8 @@ const Header = (props:any) => {
 						<Label color={'white'} value={"사용자 : [" + ComLib.getSession("gdsUserInfo")[0]['USR_NM'] + ']'}> </Label> */}
 					</div>
 				</div>
-			</div>
-			{/* <HeaderMenu menu={this.props.menu} openMenu = {this.props.openMenu}/> */}
+			</div>			
+			<HeaderMenu menu={props.menu} addTray = {props.addTray}/> 
 		</>
 	);
 }

@@ -21,7 +21,7 @@ type position = {
 }
 
 type param  = {id: string, data: any};
-type option = {width: string, height: string, modaless: boolean, param: param}
+export type option = {width: string, height: string, param: param, headerColor?: any}
 
 export interface sh_popup_dialog_pt {	
 	modaless?   : boolean;
@@ -32,7 +32,6 @@ export interface sh_popup_dialog_pt {
 	title       : string;
 	url         : string;
 	options     : option;
-	onCallbackFunc: (e:any) => void | null;
 };
 
 export interface sh_tray_div_pt extends html_base_pt {	

@@ -242,8 +242,8 @@ button {
 .sh-table-td { height: 23px; outline: none; }
 
 .app-panel    {height: 100vh; width: 100%; display: block; overflow: hidden;}
-.head-panel   {height: 40px}
-.middle-panel {width: 100%; display: flex; height: calc(100% - 40px);}
+.head-panel   {width :100%; height: 8vh; max-height: 8vh; background-color:#3B5BDB;}
+.middle-panel {width: 100%; display: flex; height: 87.5vh;}
 .side-panel   {position:relative;
   height: 100%;
   width: 17vw;
@@ -427,3 +427,26 @@ select {border-radius:4px; border:1px solid #DEE2E6; width:100%; outline: none; 
 .scrm-footer-pop-ul{list-style : none; padding: 0px; margin: 0px;}
 .scrm-footer-pop-li{display: inline-block; position:relative; padding:4px 10px 4px 26px; font-weight: bold; margin-left: 0px; width: auto; margin:5px 0 0 5px;border: 1px solid rgb(12, 12, 12); margin-right: 2px;}
 .scrm-footer-pop-li:before {font-family: 'xeicon' !important; content:"\e980"; font-size:1.2em; display: inline-block; position: absolute; left:5px; top:7px;}
+
+.scrm-header-div {width :100%; height: 10vh; max-height: 70px;}
+.scrm-header-btn-div {align-content: center; margin-top: 3.5vh;}
+.scrm-header-btn-div > button[tooltip]:hover {position : relative;}
+.scrm-header-btn-div > button[tooltip]:hover:after {
+	content : attr(tooltip);
+	position : absolute; left : -15%; bottom: -100%; background-color: transparent; color: white; font-weight: bold; font-size: 12px; z-index: 9999; width: calc(100% + 50px);
+}
+.logo .scrm-header-left-div {width:88px; height: 8vh; max-height: 8vh; background-size: 100px;}
+.logo {font-family: 'Roboto'; font-weight: bold; width:247px; height: 8vh; max-height: 8vh; line-height: 8vh; color:#fff; font-size:24px;}
+
+.scrm-header-menu-container > .scrm-header-menu-ul {list-style : none; padding: 0px; margin: 0px; display: flex;}
+.scrm-header-menu-container > .scrm-header-menu-ul > .scrm-header-menu-li {width : 160px; height:100%; font-size:17px; float: left; margin: 0 0 0 0; padding: 0 0 0 0; border : 0; height: 8vh; line-height: 8vh; color:#fff; text-align: left;}
+.scrm-header-menu-container li:hover, 
+.scrm-header-submenu-ul li:hover {font-weight: bold; cursor:pointer;}
+.scrm-header-menu-nested {display: none; transition: 0.5s;}
+
+.scrm-header-menu-active {position: absolute; left:0; z-index: 15; background-color: white; display: inline-block; padding:10px 0;transition: 0.5s; width: 100%; background-color: #364FC7;}
+.scrm-header-menu-active > ul {margin-left: 210px;}
+.scrm-header-menu-active > ul > li {list-style : none; padding: 0px; margin: 0px; display: flex; color:#fff; text-align: left; font-size:14px;height: 100%; float: left; }
+
+.scrm-header-submenu-ul {list-style : none; padding: 0px; margin: 0px; width: 160px;}
+.scrm-header-submenu-ul > li{ height: 30px;}

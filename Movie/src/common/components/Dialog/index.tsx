@@ -5,6 +5,8 @@ import { Button } from "../Button";
 import { useEffect, useState } from "react";
 import Draggable from 'react-draggable';
 import { popRoute } from "../../../routes/popupRoute";
+import { useDispatch } from "react-redux";
+import  * as appModuleActions from '../../../store/modules/appModule';
 
 export const AlertDialog =({message="", headerColor="dodgerblue" , onClose}:sh_alert_dialog_pt) => { 
 	const onCloseHandler = () => {
@@ -101,11 +103,14 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 			right :   eleDiv.getBoundingClientRect().left  + 400,
 			bottom:   eleDiv.getBoundingClientRect().top   + 400
 		}
-		// ReactDOM.findDOMNode(this).scrollIntoView();
+		eleDiv.scrollIntoView();
 
 		setBound(bound);
 
 	}, []);
+
+	const dispatch = useDispatch();		
+	const addPop = (pop:any) => dispatch(appModuleActions.addPop(pop))
 
 	const onFocus = (e:React.FocusEvent<HTMLDivElement>) => {
 		const target: HTMLDivElement = e.target;
@@ -122,9 +127,9 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 	const onCloseHandler = (e:any) => {
 		onClose({id: popupdivid, data: e});
 	}
-	const onMinimize = () => {
-		//const {AppModuleAction} = props;
-		//AppModuleAction.addPop({id : popupdivid, name : name});
+	const useMinimize = () => {
+
+		addPop({id : popupdivid, name : title});
 		
 		let ele = document.getElementById(popupdivid) as HTMLDivElement;
 		ele.hidden = true;
@@ -161,7 +166,7 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 						</button>
 						{
 							(modaless)
-								?	<button className="button xs grey-o i"  style={{float: 'right'}} onClick={onMinimize}>
+								?	<button className="button xs grey-o i"  style={{float: 'right'}} onClick={useMinimize}>
 								<span className="button__icon">
 											<i className="xi-minus"/>
 										</span>

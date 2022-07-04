@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel, SelectBox, SubFullPanel, Switch, Table, TextArea } from '../../common/components';
 import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../../common/components';
 import { TabPanel, Tabs } from '../../common/components/Tabs';
 import { sh_evnt_return } from '../../common/components/TypeInterfaces';
-import { ComLib } from '../../common/script';
+import { ComLib, DataLib, useStateWithDataSet } from '../../common/script';
+
+
 
 export const ComponentTest = () => {  
   const [iptVal, setIptVal] = useState("");  
@@ -11,6 +13,7 @@ export const ComponentTest = () => {
   const [multiChecked, setMultiChecked] = useState([{cd:"1_key", nm:"1123", checked: false},{cd:"2_key", nm:"2444444", checked: false}]);
   const [selected, setSelected] = useState("2_key");  
   const [textAreaValue, setTextAreaValue] = useState("");  
+  const [dataSet, initDataset, setDataSet, setDataSetValue ] = useStateWithDataSet({ dataSetTest: DataLib.datalist.getInstance({})});  
   
   // button Event Test //
   const buttonOnClick = (e:sh_evnt_return) => {
@@ -23,7 +26,8 @@ export const ComponentTest = () => {
   
   const testsss = (e:any) => {
     console.log("4. ComponentTest onCallback")
-    console.log(e)
+    initDataset("dataSetTest", [{test: 1, test2: 2}])
+ 
   }
  
   const buttonOnClick2 = (e:sh_evnt_return) => {
@@ -32,6 +36,26 @@ export const ComponentTest = () => {
 
     ComLib.openPop("PopupTest", "팝업테스트 modaless", option2, testsss)
   }
+  
+  const buttonOnClick3 = (e:sh_evnt_return) => {
+    let newRecords = dataSet.dataSetTest;
+   
+    setDataSetValue("dataSetTest", 0, "test", newRecords.records[0].test + 1)
+  }
+  const buttonOnClick4 = (e:sh_evnt_return) => {
+    let dataSetTest = dataSet.dataSetTest;
+
+    dataSetTest.addRow(1);
+    console.log(dataSetTest)
+    
+
+    // let records = dataSetTest.orgrecords;
+    
+    // setDataSet("dataSetTest", records)
+  }
+
+  
+
   // button Event Test //
 
   // input Event Test //
@@ -842,14 +866,34 @@ export const ComponentTest = () => {
         </RelativePanel>
         <RelativePanel>
               <Tabs  tabWidth='100px' onClick = {tabonClick}>
-                <TabPanel label={'test1'} id={'11'} index={0}>             
-                  <Button
-                    id={"modaless"}
-                    margin= {"0px 5px 0px 0px"}
-                    value={"modaless"}
-                    color={"blue"}
-                    onClick={buttonOnClick2} 
-                  /> 
+                <TabPanel label={'test1'} id={'11'} index={0}>   
+                  <FlexPanel>          
+                    <Button
+                      id={"modaless"}
+                      margin= {"0px 5px 0px 0px"}
+                      value={"modaless"}
+                      color={"blue"}
+                      onClick={buttonOnClick2} 
+                    /> 
+                    <Button
+                      id={"modaless"}
+                      margin= {"0px 5px 0px 0px"}
+                      value={"modaless"}
+                      color={"blue"}
+                      onClick={buttonOnClick3} 
+                    />
+                     
+                     <Button
+                      id={"modaless"}
+                      margin= {"0px 5px 0px 0px"}
+                      value={"modaless"}
+                      color={"blue"}
+                      onClick={buttonOnClick4} 
+                    />
+                    {dataSet["dataSetTest"].records.map((item:any, key: number) => {
+                      return <div key={key} style={{width: "200px", height: "20px"}}>test : {item.test}, test2 : {item.test2} </div>}
+                    )}
+                  </FlexPanel>
                 </TabPanel>
                 <TabPanel label={'test2'} id={'13'} index={1}>
                   <Switch

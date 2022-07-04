@@ -16,20 +16,18 @@ export type menu = {
 export type MenuState = menu;
 
 const initState: MenuState = {
-	selected : {id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"},
-	tray     : [{id: 'ButtonTest', nm:'ButtonTest', pare_id: "", path: "/ButtonTest"}
-		       ,{id: 'CheckTest', nm:'CheckTest', pare_id: "", path: "/CheckTest"}
-		       ,{id: 'ComponentTest', nm:'ComponentTest', pare_id: "", path: "/ComponentTest"}
-		       ,{id: 'InputTest', nm:'InputTest', pare_id: "", path: "/InputTest"}],
+	selected : {id: 'ButtonTest', nm:'버튼', pare_id: "", path: "/ButtonTest"},
+	tray     : [{id: 'ButtonTest', nm:'버튼', pare_id: "", path: "/ButtonTest"}],
 	popupList: []
 };
+
 
 const menusSlice = createSlice({
 	name: 'menus',
 	initialState: initState,
 	reducers: {
 	addTray(state, action) {	
-		if (state.tray.indexOf(state.tray.filter(item => item === action.payload)[0]) < 0) {
+		if (state.tray.indexOf(state.tray.filter(item => item.id === action.payload.id)[0]) < 0) {
 			return {
 				...state,
 				tray: state.tray.concat(action.payload),
