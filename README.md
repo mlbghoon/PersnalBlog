@@ -1,58 +1,27 @@
-2022-07-04 V 1.2
+2022-07-06 V 1.3
 ================
-1. footer 추가
-2. Menu 추가 (추후 DB 연동)
-3. DataLib, ComLib 추가 (../common/script.tsx)
-4. dataset 기본구성 추가
+1. session 에서 사용하던 정보들 redux로 변경 고려중
 
     ```typescript
-        // ../common/script.tsx
-        const useStateWithDataSet = (initialState: any) => {
-            const [state, setState] = useState(initialState);
-            
-            const initState = (strDatasetId: string, newState: any) => {
-                let objDs = state[strDatasetId];
-                objDs.initRecords(newState);
-            
-                setState({...state, [strDatasetId]: objDs});
-            };
-            const setStateCB = (strDatasetId: string, newState: any) => {
-                let objDs = state[strDatasetId];
-                objDs.setRecords(newState);
-        
-                setState({...state, [strDatasetId]: objDs});
-            };
-            const setStateValue = (strDatasetId: string, nRowIndex: number, strColumnId: string, strValue: string | number) => {
-                let objDs = state[strDatasetId];
-                objDs.setValue(nRowIndex, strColumnId, strValue);
-            
-                setState({...state, [strDatasetId]: objDs});
-            }
-        
-            return [state, initState, setStateCB, setStateValue];
-        };
-
-        // ComponentTest.tsx
-        const [dataSet, initDataset, setDataSet, setDataSetValue ] = useStateWithDataSet({ dataSetTest: DataLib.datalist.getInstance({})});  
+        ComLib.setSession('gdsUserInfo',	res.data.dsUserInfo);
+        ComLib.setSession('gdsCommCode',	res.data.dsCommCodeInfo);
+        ComLib.setSession('gdsMenu', 		res.data.dsMenuInfo);
+        ComLib.setSession('gdsCentStndVl',	res.data.dsCentStvlInfo);
+        ComLib.setSession('gdsCentList',	res.data.dsCentList);
+        ComLib.setSession('gdsTeamList',	res.data.dsTeamList);
+        ComLib.setSession('gdsUserList',	res.data.dsUserList);
+        ComLib.setSession('gdsMsgList',		res.data.dsMsgList);
+        ComLib.setSession('gdsConstList',	res.data.dsConstList);
     ```
+    
+    * 공통 코드, 메세지 코드 등등 변경후 바로 rerendering 이 되게 할수 있음
+    * theme 같은 기능을 만들때 좋음
 
-    * custom useState 생성
+2. redux, store 정리
 
-    ```typescript
-        type record_tp<key extends string = string>  = Record<key, string | number>;
+    * 불필요 하게 분해 되있는 부분 합치기
+    * menuSlice 말고 다른 slice도 추가 할수 있게 변경
+    * store에 저장되있는 state 명명 전부 변경
 
-        const DataLib = {
-            ...
-            datalist: {
-                records: [] as record_tp[],
-                orgrecords: [] as record_tp[], 
-                header: {} as record_tp, 
-                ...
-            }
-            ...
-        }
-
-    ```
-    * object type 생성
 
 ### 다음목표 : 1. dataset 마무리 

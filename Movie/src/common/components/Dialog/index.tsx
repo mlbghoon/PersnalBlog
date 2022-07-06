@@ -110,7 +110,7 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 	}, []);
 
 	const dispatch = useDispatch();		
-	const addPop = (pop:any) => dispatch(appModuleActions.addPop(pop))
+	const addPop = (pop:appModuleActions.popup_tp) => dispatch(appModuleActions.addPop(pop))
 
 	const onFocus = (e:React.FocusEvent<HTMLDivElement>) => {
 		const target: HTMLDivElement = e.target;
@@ -127,10 +127,9 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 	const onCloseHandler = (e:any) => {
 		onClose({id: popupdivid, data: e});
 	}
+	
 	const useMinimize = () => {
-
-		addPop({id : popupdivid, name : title});
-		
+		addPop({POP_ID: popupdivid, POP_NM: title});		
 		let ele = document.getElementById(popupdivid) as HTMLDivElement;
 		ele.hidden = true;
 

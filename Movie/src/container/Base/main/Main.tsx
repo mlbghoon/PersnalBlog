@@ -8,7 +8,7 @@ const Main = (props:any) => {
 		<>
 			<TrayPanel>
 				<LFloatPanel>
-					<TrayDiv id={"_mainTrayDiv"} tray={props.tray} selected={props.selected} onClose={props.delTray} onSelect={props.selectTray}/>
+					<TrayDiv id={"_mainTrayDiv"} tray={props.openedMenu} selected={props.selected} onClose={props.delTray} onSelect={props.selectTray}/>
 				</LFloatPanel>
 				<RFloatPanel>
 					<div className="sh-tray-btn-div" id = "_trayBtnPanel">
@@ -20,11 +20,11 @@ const Main = (props:any) => {
 			</TrayPanel>
 			<div className={'sh-main-view-Panel'}>
 				{
-					props.tray.map((item:{id: string, nm:string, pare_id: string, path: string}) => {
+					props.openedMenu.map((item:{MNU_ID: string, MNU_NM:string, PARE_MNU_ID: string, PGM_PATH: string}) => {
 						return (
-							<div id={item.id} style={{display : (props.selected?.id === item.id) ? 'block' : 'none'}} key={'_menu_div_' + item.id}>
+							<div id={item.MNU_ID} style={{display : (props.selected?.MNU_ID === item.MNU_ID) ? 'block' : 'none'}} key={'_menu_div_' + item.MNU_ID}>
 								{
-									appRoute.filter(route => route.id === item.id).map((prop) => {
+									appRoute.filter(route => route.id === item.MNU_ID).map((prop) => {
 										return <prop.component key = {'_menu_comp_' + prop.id}/>
 									})
 								}

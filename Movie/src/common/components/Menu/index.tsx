@@ -25,8 +25,8 @@ const HeaderMenu = (props: any) => {
 			<div className="scrm-header-menu-container">
 				<ul className="scrm-header-menu-ul">
 					{
-						props.menu.filter((item: { pare_id: string; }) => item.pare_id === "").map((item: { nm: string}, key: string) => {
-							return <li className="scrm-header-menu-li" key={'menu_' + key} onClick={setMenuDivOpen}>{item.nm}</li>
+						props.menu.filter((item: { PARE_MNU_ID: string; }) => item.PARE_MNU_ID === "").map((item: { MNU_NM: string}, key: string) => {
+							return <li className="scrm-header-menu-li" key={'menu_' + key} onClick={setMenuDivOpen}>{item.MNU_NM}</li>
 						})
 					}
 				</ul>
@@ -34,20 +34,20 @@ const HeaderMenu = (props: any) => {
 			<div id="_scrm_menu_area" className= {(open) ? "scrm-header-menu-active" : "scrm-header-menu-nested"}>
 					<ul className="scrm-header-menu-ul">
 						{
-							props.menu.filter((item: { pare_id: string; }) => item.pare_id === "").map((item: { id: string; }, key: string) => {
+							props.menu.filter((item: { PARE_MNU_ID: string; }) => item.PARE_MNU_ID === "").map((item: { MNU_ID: string; }, key: string) => {
 								return (
 									<li className="scrm-header-menu-li" key={'div_menu_' + key} onClick={closeMenuList}>
 										<ul className="scrm-header-submenu-ul">
 											{
-												props.menu.filter((menu: { pare_id: string; }) => menu.pare_id === item.id).map((subMenu: { id: string; nm: string; }, subKey: string) => {
-													return <li  className="scrm-header-submenu-li" key={'submenu_' + subKey} id={'subMenu_' + subMenu.id}
+												props.menu.filter((menu: { PARE_MNU_ID: string; }) => menu.PARE_MNU_ID === item.MNU_ID).map((subMenu: { MNU_ID: string; MNU_NM: string; }, subKey: string) => {
+													return <li  className="scrm-header-submenu-li" key={'submenu_' + subKey} id={'subMenu_' + subMenu.MNU_ID}
 																onClick = {
 																	() => {
 																		props.addTray(subMenu);
 																		setOpen(false);
 																	}
 																}
-															> {subMenu.nm} </li>;
+															> {subMenu.MNU_NM} </li>;
 												})
 											}
 										</ul>
@@ -74,12 +74,12 @@ const HeaderMenu = (props: any) => {
 // 	setMenuConfig = (data) => {
 // 		let rtnUpMenu = [];
 // 		data.map((item) => {
-// 			if (item.pare_id === null || item.pare_id === '') {
+// 			if (item.PARE_MNU_ID === null || item.PARE_MNU_ID === '') {
 // 				item = {...item, subMenuYn: 'N'};
 // 				rtnUpMenu.push(item);
 // 			} else {
 // 				rtnUpMenu.map((arrJson) => {
-// 					if (arrJson.id === item.pare_id) {
+// 					if (arrJson.id === item.PARE_MNU_ID) {
 // 						arrJson.subMenuYn = 'Y';
 // 					}
 // 					return arrJson;
@@ -93,14 +93,14 @@ const HeaderMenu = (props: any) => {
 // 						return (
 // 							<li key={'up_menu_li_' + i}>
 // 								 <Link style={{ textDecoration: 'none', color: '#000000'}} to= {'/' + json.id }>
-// 									<div className='scrm-menu-side-li-div'>{json.nm}</div>
+// 									<div className='scrm-menu-side-li-div'>{json.MNU_NM}</div>
 // 								</Link>
 // 							</li>
 // 						);
 // 					} else {
 // 						return (
 // 							<li key={'up_menu_li_' + i}>
-// 								<div className='scrm-menu-side-li-div' onClick={this.setMenuOpen}> {json.nm} </div>
+// 								<div className='scrm-menu-side-li-div' onClick={this.setMenuOpen}> {json.MNU_NM} </div>
 // 							</li>
 // 						);
 // 					}
@@ -108,16 +108,16 @@ const HeaderMenu = (props: any) => {
 // 					return (
 // 						<li key={'up_menu_li_' + i}>
 // 							<div>
-// 								<div className='scrm-menu-side-li-div' onClick={this.setMenuOpen}>{json.nm}</div>
+// 								<div className='scrm-menu-side-li-div' onClick={this.setMenuOpen}>{json.MNU_NM}</div>
 // 								<div className='scrm-menu-side-li-div-hide'>
 // 									<ul key = {'sub_menu_ul' + i} >
 // 									{
 // 										data.map((menu, index) => {
-// 											if (menu.pare_id === json.id) {
+// 											if (menu.PARE_MNU_ID === json.id) {
 // 												return (
 // 													<li key={'sub_mnu_li' + index}>
 // 														<Link style={{ textDecoration: 'none', color: '#000000'}} to={menu.PGM_PATH}>
-// 															<div className='scrm-menu-side-li-div' >{menu.nm}</div>
+// 															<div className='scrm-menu-side-li-div' >{menu.MNU_NM}</div>
 // 														</Link>
 // 													</li>
 // 												);

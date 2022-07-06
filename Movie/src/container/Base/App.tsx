@@ -26,7 +26,7 @@ function App() {
 	
 	const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-	const { selected, tray, popupList } = useAppSelector((state) => state.menus.appModule)
+	const { selected, openedMenu, popupList } = useAppSelector((state) => state.menus.menusSlice)
 
 
 
@@ -47,7 +47,7 @@ function App() {
 			<MiddlePanel>
 				<MainPanel>
 					<Main
-						tray       = {tray}
+						openedMenu  = {openedMenu}
 						selected   = {selected}
 						addTray    = {addTray}
 						delTray    = {delTray}
