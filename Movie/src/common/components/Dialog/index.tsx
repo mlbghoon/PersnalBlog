@@ -107,8 +107,8 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 
 		setBound(bound);
 
-	}, []);
-
+	}, [popupdivid]);
+	
 	const dispatch = useDispatch();		
 	const addPop = (pop:appModuleActions.popup_tp) => dispatch(appModuleActions.addPop(pop))
 

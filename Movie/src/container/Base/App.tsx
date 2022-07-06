@@ -30,11 +30,11 @@ function App() {
 
 
 
-	const [menu, setMenu] = useState([{id: "TestPage", nm:"test페이지", pare_id: "", path: ""}
-									 ,{id: "ButtonTest", nm:"버튼", pare_id: "TestPage", path: "/TestPage/ButtonTest"}
-									 ,{id: "CheckTest", nm:"체크박스", pare_id: "TestPage", path: "/TestPage/CheckTest"}
-									 ,{id: "InputTest", nm:"인풋", pare_id: "TestPage", path: "/TestPage/InputTest"}
-									 ,{id: "ComponentTest", nm:"컴포넌트", pare_id: "TestPage", path: "/TestPage/ComponentTest"}]); 	
+	const [menu, setMenu] = useState([{MNU_ID: "TestPage", MNU_NM:"test페이지", PARE_MNU_ID: ""}
+									 ,{MNU_ID: "ButtonTest", MNU_NM:"버튼", PARE_MNU_ID: "TestPage"}
+									 ,{MNU_ID: "CheckTest", MNU_NM:"체크박스", PARE_MNU_ID: "TestPage"}
+									 ,{MNU_ID: "InputTest", MNU_NM:"인풋", PARE_MNU_ID: "TestPage"}
+									 ,{MNU_ID: "ComponentTest", MNU_NM:"컴포넌트", PARE_MNU_ID: "TestPage"}]); 	
 
 	return (
 		<AppPanel>
