@@ -96,12 +96,12 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 	const [bound, setBound] = useState({ top: 0, left : 0, right : 0, bottom : 0}); 	
 	useEffect(() => {
 		let eleDiv = document.getElementById(popupdivid + "_inner_div") as HTMLDivElement;
-
+		
 		let bound = { 
 			top   : -(eleDiv.getBoundingClientRect().top),
-			left  : -(eleDiv.getBoundingClientRect().left) - 400,
-			right :   eleDiv.getBoundingClientRect().left  + 400,
-			bottom:   eleDiv.getBoundingClientRect().top   + 400
+			left  : -(eleDiv.getBoundingClientRect().left) - eleDiv.getBoundingClientRect().width + 100,
+			right :   eleDiv.getBoundingClientRect().left  + eleDiv.getBoundingClientRect().width - 100,
+			bottom:   eleDiv.getBoundingClientRect().top   + eleDiv.getBoundingClientRect().height - 50
 		}
 		eleDiv.scrollIntoView();
 
