@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import { sh_btn_pt } from '../TypeInterfaces';
 
 export const Button = ({id,margin,disabled,size="md",color="tomato",filled=true,value,icon="",onClick, extraClass}:sh_btn_pt) => { 
+	const buttonRef = useRef<HTMLButtonElement>(null);
+	const innerImage = icon === "" ? false : true;
 	let btnClass, iconClass;
-	let buttonRef = useRef<HTMLButtonElement>(null);
-	let innerImage = icon === "" ? false : true;
 
 	btnClass =  (value) ?
 				 	'button ' + size + ' color-' + color + (filled  ? '' : '-o') 
@@ -37,7 +37,7 @@ export const Button = ({id,margin,disabled,size="md",color="tomato",filled=true,
 				onClick  = {onClickHandler} 
 				className= {btnClass} 
 				disabled = {disabled}
-				style    = {{ margin: margin}}
+				style    = {{ margin: margin }}
 			>	
 				{
 					(innerImage && iconClass !== null) 

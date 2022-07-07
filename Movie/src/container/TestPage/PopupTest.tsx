@@ -1,7 +1,4 @@
-
-import { useState } from 'react';
-import { Button, ComponentPanel, FullPanel, RelativePanel, SubFullPanel, Table, TabPanel, Tabs } from '../../common/components';
-import { Input } from '../../common/components';
+import { Button, ComponentPanel, FullPanel, RelativePanel, SubFullPanel } from '../../common/components';
 import { sh_evnt_return } from '../../common/components/TypeInterfaces';
 
 export const PopupTest = (props:any) => {  

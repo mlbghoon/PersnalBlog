@@ -1,27 +1,20 @@
-import { sh_Table_pt } from '../TypeInterfaces';
-
+import { sh_Table_pt, sh_tbl_data_pt } from '../TypeInterfaces';
 
 export const Table =({colGrp,tbData,head,footer,width}:sh_Table_pt) => { 
-	const setColGroup = (colGrp: { width: string }[]) => {
-	
-	
+	const setColGroup = (colGrp: Array<{ width: string }>) => {	
 		return colGrp.map((colGrp, index) => {
 			return (<col key={'col_' + index} style={{width: colGrp.width}}></col>)
 		});		
 	}
 
-	const setBody = (tbData: {type: string, value: React.ReactNode, colSpan?: number, rowSpan?: number, req?:boolean}[][]) => {
-		return setRow(tbData);
-		
-	}
-
-	const setRow = (rowArray: {type: string, value: React.ReactNode, colSpan?: number, rowSpan?: number, req?:boolean}[][]) => {
-		return rowArray.map((colArray, index) => {
+	const setBody = (tbData: Array<sh_tbl_data_pt>) => {
+		return tbData.map((colArray, index) => {
 			return (<tr key={'tr_' + index}>{setColumn(colArray)}</tr>)
 		});
 		
 	}
-	const setColumn = (colArray: {type: string, value: React.ReactNode, colSpan?: number, rowSpan?: number, req?:boolean}[]) => {
+
+	const setColumn = (colArray: sh_tbl_data_pt) => {
 		return colArray.map((colJson, index) => {
 			let th = 'sh-table-th';
 			if (colJson.req) {

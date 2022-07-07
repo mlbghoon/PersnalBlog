@@ -8,7 +8,7 @@ import Root from './container/Root';
 // const history = createBrowserHistory();
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as Element
 );
 root.render(
     <BrowserRouter><Routes><Route path='/'  element={<Root/>} /></Routes></BrowserRouter>

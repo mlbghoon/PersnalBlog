@@ -91,13 +91,12 @@ export const ConfirmDialog =({message="", onClose, headerColor="dodgerblue"}:sh_
 	);
 }
 
-
 export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColor,popupdivid="",title,url,options}:sh_popup_dialog_pt) => { 
 	const [bound, setBound] = useState({ top: 0, left : 0, right : 0, bottom : 0}); 	
 	useEffect(() => {
-		let eleDiv = document.getElementById(popupdivid + "_inner_div") as HTMLDivElement;
+		const eleDiv = document.getElementById(popupdivid + "_inner_div") as HTMLDivElement;
 		
-		let bound = { 
+		const bound = { 
 			top   : -(eleDiv.getBoundingClientRect().top),
 			left  : -(eleDiv.getBoundingClientRect().left) - eleDiv.getBoundingClientRect().width + 100,
 			right :   eleDiv.getBoundingClientRect().left  + eleDiv.getBoundingClientRect().width - 100,
@@ -114,13 +113,13 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 
 	const onFocus = (e:React.FocusEvent<HTMLDivElement>) => {
 		const target: HTMLDivElement = e.target;
-		let current = target.parentElement?.parentElement as HTMLElement;
+		const current = target.parentElement?.parentElement as HTMLElement;
 		current.style.zIndex = '9992'
 	
 	}
 	const onBlur = (e:React.FocusEvent<HTMLDivElement>) => {
 		const target: HTMLDivElement = e.target;
-		let current = target.parentElement?.parentElement as HTMLElement;
+		const current = target.parentElement?.parentElement as HTMLElement;
 		current.style.zIndex = '9991'
 	}
 
@@ -130,7 +129,7 @@ export const PopupDialog =({modaless=false,position={x:0,y:0},onClose,headerColo
 	
 	const useMinimize = () => {
 		addPop({POP_ID: popupdivid, POP_NM: title});		
-		let ele = document.getElementById(popupdivid) as HTMLDivElement;
+		const ele = document.getElementById(popupdivid) as HTMLDivElement;
 		ele.hidden = true;
 
 	}

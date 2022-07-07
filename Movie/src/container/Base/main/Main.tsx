@@ -8,7 +8,7 @@ const Main = (props:any) => {
 		<>
 			<TrayPanel>
 				<LFloatPanel>
-					<TrayDiv id={"_mainTrayDiv"} tray={props.openedMenu} selected={props.selected} onClose={props.delTray} onSelect={props.selectTray}/>
+					<TrayDiv id={"_mainTrayDiv"} tray={props.openedMenu} selected={props.selected} delTray={props.delTray} selectTray={props.selectTray}/>
 				</LFloatPanel>
 				<RFloatPanel>
 					<div className="sh-tray-btn-div" id = "_trayBtnPanel">

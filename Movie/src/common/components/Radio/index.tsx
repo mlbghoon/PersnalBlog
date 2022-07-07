@@ -19,7 +19,7 @@ export const Radio =({id,readOnly,disabled,onChange,width,dataset,defaultSelecte
 	}
 
 	const setRadio = () => {
-		let colGrp: { width: string }[] = [];
+		let colGrp: Array<{ width: string }> = [];
 		
 		if (perRow === 1) {
 			colGrp = [{ width: '100%' }];
@@ -37,11 +37,13 @@ export const Radio =({id,readOnly,disabled,onChange,width,dataset,defaultSelecte
 			colGrp = [{ width: '20%' }, { width: '20%' }, { width: '20%' }, { width: '20%' }, { width: '20%' }];
 			
 		}
-	
-		let tbData: any[][] = [];
-		let rowData: { type: string; value: JSX.Element; }[] = [];		
 		
-		dataset.map((item: {cd: string, nm: string}, i) => {			
+		type rowData_tp = {type: string, value: JSX.Element}
+		
+		let tbData: Array<Array<rowData_tp>> = [];
+		let rowData: Array<rowData_tp> = [];		
+		
+		dataset.map((item, i) => {			
 			rowData.push({ type: 'D', value: <div key={'radio_div_' + i} className ='sh-radio-div'>								
 								<input	
 									id       = {id + "_radio_" + item.cd}

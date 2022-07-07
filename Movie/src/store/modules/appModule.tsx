@@ -11,7 +11,7 @@ A.PGM_PATH
 A.MNU_TP
 */
 
-type menu_tp = {
+export type menu_tp = {
 	MNU_ID: string; MNU_NM:string; PARE_MNU_ID: string; PGM_PATH: string;
 }
 
@@ -135,9 +135,7 @@ type commCode_tp = {
 	LAG_CD: string; MDM_CD:string; SML_CD:string; SML_NM: string; CD_VAL:string;
 }
 
-type menuList_tp = {
-	MSG_CD: string; MSG_CONT:string;
-}
+type menuList_tp = Array<menu_tp>;
 
 type msgCode_tp = {
 	MSG_CD: string; MSG_CONT:string;
@@ -150,24 +148,6 @@ export type comm_tp = {
 };
 
 
-/*
-{id: "TestPage", nm:"test페이지", pare_id: "", path: ""}
-,{id: "ButtonTest", nm:"버튼", pare_id: "TestPage", path: "/TestPage/ButtonTest"}
-,{id: "CheckTest", nm:"체크박스", pare_id: "TestPage", path: "/TestPage/CheckTest"}
-,{id: "InputTest", nm:"인풋", pare_id: "TestPage", path: "/TestPage/InputTest"}
-,{id: "ComponentTest", nm:"컴포넌트", pare_id: "TestPage", path: "/TestPage/ComponentTest"}
-
-ComLib.setSession('gdsUserInfo',	res.data.dsUserInfo);
-ComLib.setSession('gdsCommCode',	res.data.dsCommCodeInfo);
-
-ComLib.setSession('gdsMenu', 		res.data.dsMenuInfo);
-ComLib.setSession('gdsCentStndVl',	res.data.dsCentStvlInfo);
-ComLib.setSession('gdsCentList',	res.data.dsCentList);
-ComLib.setSession('gdsTeamList',	res.data.dsTeamList);
-ComLib.setSession('gdsUserList',	res.data.dsUserList);
-ComLib.setSession('gdsMsgList',		res.data.dsMsgList);
-ComLib.setSession('gdsConstList',	res.data.dsConstList);
-*/
 
 export const { addTray, delTray, delAllTray, selectTray, prevTray, nextTray, addPop, deletePop, deleteAllPop, selectPop } = menusSlice.actions
 export default combineReducers ({ menusSlice: menusSlice.reducer });

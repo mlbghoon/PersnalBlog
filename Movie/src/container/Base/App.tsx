@@ -10,17 +10,17 @@ import { useState } from 'react';
 
 function App() {
 	const dispatch = useDispatch();
-	const addTray = (menu: any) => dispatch(appModuleActions.addTray(menu));
-	const delTray = (menu: any) => {dispatch(appModuleActions.delTray(menu))};
+	const addTray = (menu: appModuleActions.menu_tp) => dispatch(appModuleActions.addTray(menu));
+	const delTray = (menu: appModuleActions.menu_tp) => {dispatch(appModuleActions.delTray(menu))};
 	const delAllTray = () => dispatch(appModuleActions.delAllTray());
-	const selectTray = (menu: any) => dispatch(appModuleActions.selectTray(menu));
-	const prevTray = (menu: any) => dispatch(appModuleActions.prevTray(menu));
-	const nextTray = (menu: any) => dispatch(appModuleActions.nextTray(menu));
+	const selectTray = (menu: appModuleActions.menu_tp) => dispatch(appModuleActions.selectTray(menu));
+	const prevTray = (menu: appModuleActions.menu_tp) => dispatch(appModuleActions.prevTray(menu));
+	const nextTray = (menu: appModuleActions.menu_tp) => dispatch(appModuleActions.nextTray(menu));
 
-	const addPop = (pop:any) => dispatch(appModuleActions.addPop(pop))
-	const deletePop = (pop:any) => dispatch(appModuleActions.deletePop(pop))
-	const deleteAllPop = (pop:any) => dispatch(appModuleActions.deleteAllPop())
-	const selectPop = (pop:any) => dispatch(appModuleActions.selectPop(pop))
+	
+	const deletePop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.deletePop(pop))
+	const deleteAllPop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.deleteAllPop())
+	const selectPop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.selectPop(pop))
 
 	type RootState = ReturnType<typeof store.getState>
 	
@@ -49,7 +49,6 @@ function App() {
 					<Main
 						openedMenu  = {openedMenu}
 						selected   = {selected}
-						addTray    = {addTray}
 						delTray    = {delTray}
 						prevTray   = {prevTray}
 						nextTray   = {nextTray}

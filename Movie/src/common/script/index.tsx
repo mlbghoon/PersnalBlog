@@ -181,7 +181,7 @@ const useStateWithDataSet = (initialState: any) => {
   
 	return [state, initState, setStateCB, setStateValue];
 };
-type record_tp<key extends string = string>  = Record<key, string | number>;
+type records_tp<key extends string = string>  = Record<key, string | number>;
 
 const DataLib = {
 	/*----------------------------------------------------------------------------------------
@@ -215,9 +215,9 @@ const DataLib = {
 		return {[strDatasetId]: objDs};
 	},
 	datalist: {
-		records: [] as record_tp[],
-		orgrecords: [] as record_tp[], 
-		header: {} as record_tp, 
+		records: [] as records_tp[],
+		orgrecords: [] as records_tp[], 
+		header: {} as records_tp, 
 		size: function() {return this.records.length;},
 		getRecords: function() {
 			return JSON.parse(JSON.stringify(this.records));
@@ -236,14 +236,14 @@ const DataLib = {
 			}
 			return arrRecords;
 		},
-		setRecords: function(records: record_tp[]) {
+		setRecords: function(records: records_tp[]) {
 			this.records = records;
 		},
-		appendRecords: function(records:record_tp[]) {
+		appendRecords: function(records:records_tp[]) {
 			this.records = this.records.concat(records);
 			this.orgrecords = this.orgrecords.concat(JSON.parse(JSON.stringify(records)));
 		},
-		initRecords: function(records:record_tp[]) {
+		initRecords: function(records:records_tp[]) {
 			records = records || [{}];
 			if (records.length !== undefined) {
 				this.initialize(records);
@@ -339,7 +339,7 @@ const DataLib = {
 			if (this.records.filter(obj => obj.rowtype !== newScrmObj.constants.rowtype.READ).length > 0) return true;
 			else return false;
 		},
-		initialize: function(records:record_tp[]) {
+		initialize: function(records:records_tp[]) {
 			for (var idx = 0; idx < records.length; idx++) {
 				if (!records[idx].hasOwnProperty("recid")) records[idx].recid = idx + 1;
 				if (!records[idx].hasOwnProperty("rowtype")) records[idx].rowtype = newScrmObj.constants.rowtype.READ;

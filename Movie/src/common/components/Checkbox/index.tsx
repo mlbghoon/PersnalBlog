@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { sh_chk_pt, sh_evnt_return, sh_multi_chk_pt } from '../TypeInterfaces';
 
 export const Checkbox =({size="md",id,disabled,checked,value,onChange,onClick,color="black"}:sh_chk_pt) => { 
-	let checkBoxRef = useRef<HTMLInputElement>(null);
+	const checkBoxRef = useRef<HTMLInputElement>(null);
 
 	const onClickHandler = (e:React.MouseEvent<HTMLInputElement>) => {
 		const target: HTMLInputElement = e.currentTarget;
