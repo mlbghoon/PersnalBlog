@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { sh_evnt_return, sh_ipt_pt } from '../TypeInterfaces';
 
 export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width="99%",size="md",color="black",value,placeholder,minLength,maxLength,onChange,onKeyPress=(e:sh_evnt_return)=>{return;},onBlur=(e:sh_evnt_return)=>{return;},onKeyUp=(e:sh_evnt_return)=>{return;},focusOnRender=false}:sh_ipt_pt) => { 
-	let inputRef = useRef<HTMLInputElement>(null);	
+	const inputRef = useRef<HTMLInputElement>(null);	
 
 	useEffect(() => {
 		if (focusOnRender) {
@@ -29,7 +29,7 @@ export const Input =({alertEmpty,type,id,margin,disabled=false,readOnly,width="9
 		}
 	}
 	
-	let inputDIvClass = "sh-input-div " + size;
+	const inputDIvClass = "sh-input-div " + size;
 	let inputClass = size + " color-" + color;
 
 	if (alertEmpty) {

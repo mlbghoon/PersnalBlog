@@ -2,7 +2,7 @@ import { HeaderMenu, LFloatPanel, RFloatPanel } from '../../../common/components
 
 const Header = (props:any) => {
 	const onClickHandler = () => {
-
+		console.log("추후 작업예정")
 	}
 	return (
 		<>

@@ -1,7 +1,7 @@
 
 interface PropTypes {
 	children: React.ReactNode | React.ReactNode[];
-};
+}
 
 export const AppPanel = ({children}:PropTypes) => {
 	return ( <div className = "app-panel"> {children} </div>)

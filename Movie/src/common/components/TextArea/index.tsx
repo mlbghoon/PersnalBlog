@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { sh_evnt_return, sh_textarea_pt } from '../TypeInterfaces';
 
 export const TextArea =({color="black", size="md",margin,alertEmpty,rows,type,id,disabled,readOnly,width,value,placeholder,minLength,maxLength,onChange,onKeyPress=(e:sh_evnt_return)=>{return;},onBlur=(e:sh_evnt_return)=>{return;},onKeyUp=(e:sh_evnt_return)=>{return;},focusOnRender,resize=false }:sh_textarea_pt) => { 
-	let inputRef = useRef<HTMLTextAreaElement>(null);
+	const inputRef = useRef<HTMLTextAreaElement>(null);
 
 	useEffect(() => {
 		if (focusOnRender) {

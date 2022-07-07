@@ -40,7 +40,7 @@ export const Radio =({id,readOnly,disabled,onChange,width,dataset,defaultSelecte
 		
 		type rowData_tp = {type: string, value: JSX.Element}
 		
-		let tbData: Array<Array<rowData_tp>> = [];
+		const tbData: Array<Array<rowData_tp>> = [];
 		let rowData: Array<rowData_tp> = [];		
 		
 		dataset.map((item, i) => {			

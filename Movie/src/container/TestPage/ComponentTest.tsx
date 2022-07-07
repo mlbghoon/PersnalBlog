@@ -31,19 +31,19 @@ export const ComponentTest = () => {
   }
  
   const buttonOnClick2 = (e:sh_evnt_return) => {
-    let param = {id:"modaless", data: "test"};
-    let option2= { width: '600px', height: '830px', param: param, headerColor: "red"};
+    const param = {id:"modaless", data: "test"};
+    const option2= { width: '600px', height: '830px', param: param, headerColor: "red"};
 
     ComLib.openPop("PopupTest", "팝업테스트 modaless", option2, testsss)
   }
   
   const buttonOnClick3 = (e:sh_evnt_return) => {
-    let newRecords = dataSet.dataSetTest;
+    const newRecords = dataSet.dataSetTest;
    
     setDataSetValue("dataSetTest", 0, "test", newRecords.records[0].test + 1)
   }
   const buttonOnClick4 = (e:sh_evnt_return) => {
-    let dataSetTest = dataSet.dataSetTest;
+    const dataSetTest = dataSet.dataSetTest;
 
     dataSetTest.addRow(1);
     console.log(dataSetTest)
@@ -110,8 +110,8 @@ export const ComponentTest = () => {
       case "Checkbox":
         setChecked(prev=>!prev)
         break;
-      case "MultiCheckbox":
-        let newmultiChecked = [...multiChecked];
+      case "MultiCheckbox": {
+        const newmultiChecked = [...multiChecked];
 
         for (let i = 0; i < newmultiChecked.length; i ++) {
           if (newmultiChecked[i].cd === e.key) {
@@ -123,6 +123,7 @@ export const ComponentTest = () => {
 
         setMultiChecked(newmultiChecked);
         break;
+      }
       default: break;
     }
   }

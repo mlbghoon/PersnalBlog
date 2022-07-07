@@ -14,10 +14,10 @@ export const Tabs =({onClick=(e:number)=>{return;},tabWidth="100%",height="",chi
 				<ul className ='sh-tabs-ul'>
 					{
 						React.Children.toArray(children).filter(child => {
-							let tab = child as ReactElement;
+							const tab = child as ReactElement;
 							return tab.props.display !== 'none';
 						}).map((child) => {
-							let tab = child as ReactElement 							
+							const tab = child as ReactElement 							
 							return (
 								<Tab tabWidth= {tabWidth} active ={active} key={tab.props.index} index= {tab.props.index} label = {tab.props.label} onClick = {onClickTab} color={color} size={size}/>
 							)
@@ -28,10 +28,10 @@ export const Tabs =({onClick=(e:number)=>{return;},tabWidth="100%",height="",chi
 			<div className='sh-tab-container' style={{height: height}}>
 				{   
 					React.Children.toArray(children).filter(child => {
-							let tab = child as ReactElement;
+							const tab = child as ReactElement;
 							return tab.props.display !== 'none';
 						}).map((child) => {
-							let tab = child as ReactElement;
+							const tab = child as ReactElement;
 							if (tab.props.index !== active) return undefined;
 							return tab.props.children;
 					})

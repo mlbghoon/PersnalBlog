@@ -27,7 +27,7 @@ const newScrmObj = {
 const ComLib = {
 	isJson: (data: any) => {
 		try {
-			let json = JSON.parse(data);
+			const json = JSON.parse(data);
 			return (typeof json === 'object');
 		} catch (e) {
 			return false;
@@ -73,13 +73,13 @@ const ComLib = {
 	},
 	
 	openPop : (url: string, title: string, options: option, callbackFunc: (e: any) => void) => {
-		let arrPopTag = Object.values(document.body.children).filter(
+		const arrPopTag = Object.values(document.body.children).filter(
 			tag => tag.tagName === 'DIV'
 		).filter(
 			item => item.id.substring(0, newScrmObj.constants.mdi.POP_UP.length) === newScrmObj.constants.mdi.POP_UP
 		);
 		
-		let popDiv = document.createElement('div');
+		const popDiv = document.createElement('div');
 		let position = {x: 0, y: 0};
 
 		if (arrPopTag.length === 0) {
@@ -147,9 +147,9 @@ const ComLib = {
 		// ComLib.openDialog("A", "SYSI0010", ["복사 되엇습니다."]);
 	},
 	writeTxtFile : (strData: string, strFileName: string) => {
-		let file = new Blob([strData], {type: 'text/plain'});
+		const file = new Blob([strData], {type: 'text/plain'});
 
-		let element = document.createElement("a");
+		const element = document.createElement("a");
 		element.href = window.URL.createObjectURL(file);
 		element.download = strFileName;
 		element.click();
@@ -161,19 +161,19 @@ const useStateWithDataSet = (initialState: any) => {
 	const [state, setState] = useState(initialState);
 	
 	const initState = (strDatasetId: string, newState: any) => {
-		let objDs = state[strDatasetId];
+		const objDs = state[strDatasetId];
 		objDs.initRecords(newState);
 	
 		setState({...state, [strDatasetId]: objDs});
 	};
 	const setStateCB = (strDatasetId: string, newState: any) => {
-	  	let objDs = state[strDatasetId];
+		const objDs = state[strDatasetId];
 		objDs.setRecords(newState);
   
 	  	setState({...state, [strDatasetId]: objDs});
 	};
 	const setStateValue = (strDatasetId: string, nRowIndex: number, strColumnId: string, strValue: string | number) => {
-		let objDs = state[strDatasetId];
+		const objDs = state[strDatasetId];
 		objDs.setValue(nRowIndex, strColumnId, strValue);
 	
 		setState({...state, [strDatasetId]: objDs});
@@ -195,7 +195,7 @@ const DataLib = {
 					   실패 => 없음
 	*--------------------------------------------------------------------------------------*/
 	setRecordsToDs: (prevState: any, strDatasetId: string, arrRecords: any) => {
-		let objDs = prevState[strDatasetId];
+		const objDs = prevState[strDatasetId];
 		objDs.setRecords(arrRecords);
 		return {[strDatasetId]: objDs};
 	},
@@ -210,7 +210,7 @@ const DataLib = {
 					   실패 => 없음
 	*--------------------------------------------------------------------------------------*/
 	initRecordsToDs: (prevState: any, strDatasetId: string, arrRecords: any) => {
-		let objDs = prevState[strDatasetId];
+		const objDs = prevState[strDatasetId];
 		objDs.initRecords(arrRecords);
 		return {[strDatasetId]: objDs};
 	},
@@ -223,14 +223,14 @@ const DataLib = {
 			return JSON.parse(JSON.stringify(this.records));
 		},
 		getTransRecords: function(strRowType: string) {
-			var arrRecords = JSON.parse(JSON.stringify(this.records));
-			var arrOrgRecs = this.orgrecords;
+			let arrRecords = JSON.parse(JSON.stringify(this.records));
+			const arrOrgRecs = this.orgrecords;
 
 			if (strRowType !== null && (strRowType === newScrmObj.constants.rowtype.CREATE_OR_UPDATE)) arrRecords = arrRecords.filter((item:any) => item.rowtype === newScrmObj.constants.rowtype.CREATE || item.rowtype === newScrmObj.constants.rowtype.UPDATE);
 			else if (strRowType !== null) arrRecords = arrRecords.filter((item:any) => item.rowtype === strRowType);
 			
-			for (var idxA = 0; idxA < arrRecords.length; idxA++) {
-				for (var idxB = 0; idxB < arrOrgRecs.length; idxB++) {
+			for (let idxA = 0; idxA < arrRecords.length; idxA++) {
+				for (let idxB = 0; idxB < arrOrgRecs.length; idxB++) {
 					if (arrRecords[idxA].recid === arrOrgRecs[idxB].recid) arrRecords[idxA].orgdata = arrOrgRecs[idxB];
 				}
 			}
@@ -253,14 +253,14 @@ const DataLib = {
 		},
 		getValue: function(index:number, column:string) {return this.records[index][column];},
 		setValue: function(index:number, column:string, value:string | number) {
-			var blnModified = false;
+			let blnModified = false;
 			this.records[index][column] = value;
 			if (this.records[index].rowtype !== newScrmObj.constants.rowtype.CREATE && this.records[index].rowtype !== newScrmObj.constants.rowtype.DESTROY) {
-				var recid = this.records[index].recid;
-				var arrCol = Object.keys(this.header);
-				for (var idxA = 0; idxA < this.orgrecords.length; idxA++) {
+				const recid = this.records[index].recid;
+				const arrCol = Object.keys(this.header);
+				for (let idxA = 0; idxA < this.orgrecords.length; idxA++) {
 					if (this.orgrecords[idxA].recid === recid) {
-						for (var idxB = 0; idxB < arrCol.length; idxB++) {
+						for (let idxB = 0; idxB < arrCol.length; idxB++) {
 							if (this.records[index][arrCol[idxB]] !== this.orgrecords[idxA][arrCol[idxB]]) {
 								blnModified = true;
 								break;
@@ -274,10 +274,10 @@ const DataLib = {
 		},
 		getValueByRecId: function(recid: number, column: string) {return this.records[this.indexOf("recid", recid)][column];},
 		setValueByRecId: function(recid: number, column: string, value: string | number) {
-			var index = this.indexOf("recid", recid);
+			const index = this.indexOf("recid", recid);
 			this.records[index][column] = value;
 			if (this.records[index].rowtype !== newScrmObj.constants.rowtype.CREATE && this.records[index].rowtype !== newScrmObj.constants.rowtype.DESTROY) {
-				for (var idx = 0; idx < this.orgrecords.length; idx++) {
+				for (let idx = 0; idx < this.orgrecords.length; idx++) {
 					if (this.orgrecords[idx].recid === recid) {
 						if (this.orgrecords[idx][column] === value) this.records[index].rowtype = "r";
 						else if (this.orgrecords[idx][column] !== value) this.records[index].rowtype = "u";
@@ -303,8 +303,8 @@ const DataLib = {
 			else return [];
 		},
 		indexOf: function(column: string, value: string | number) {
-			var index = -1;
-			for (var i = 0; i < this.records.length; i++) {
+			let index = -1;
+			for (let i = 0; i < this.records.length; i++) {
 				if (this.records[i][column] === value) {
 					index = i;
 					break;
@@ -313,8 +313,8 @@ const DataLib = {
 			return index;
 		},
 		lastIndexOf: function(column: string, value: string | number) {
-			var index = -1;
-			for (var i = this.records.length; i >=0; i--) {
+			let index = -1;
+			for (let i = this.records.length; i >=0; i--) {
 				if (this.records[i][column] === value) {
 					index = i;
 					break;
@@ -332,7 +332,7 @@ const DataLib = {
 			return this.getRow(this.lastIndexOf(column, value));
 		},
 		lookup: function(column: string, value: string | number, target: string) {
-			var record = this.findFirst(column, value);
+			const record = this.findFirst(column, value);
 			return record === undefined ? undefined : record[target];
 		},
 		isUpdated: function() {
@@ -340,13 +340,13 @@ const DataLib = {
 			else return false;
 		},
 		initialize: function(records:records_tp[]) {
-			for (var idx = 0; idx < records.length; idx++) {
-				if (!records[idx].hasOwnProperty("recid")) records[idx].recid = idx + 1;
-				if (!records[idx].hasOwnProperty("rowtype")) records[idx].rowtype = newScrmObj.constants.rowtype.READ;
+			for (let idx = 0; idx < records.length; idx++) {
+				if (!records[idx].prototype.hasOwnProperty.call(records[idx], "recid")) records[idx].recid = idx + 1;
+				if (!records[idx].prototype.hasOwnProperty.call(records[idx], "rowtype")) records[idx].rowtype = newScrmObj.constants.rowtype.READ;
 			}
 			if (records.length > 0) {
-				var arrCol = Object.keys(records[0]);
-				for (var idx = 0; idx < arrCol.length; idx++) {
+				const arrCol = Object.keys(records[0]);
+				for (let idx = 0; idx < arrCol.length; idx++) {
 					this.header[arrCol[idx]] = "";
 				}
 			} else {

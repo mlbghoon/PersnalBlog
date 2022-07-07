@@ -20,7 +20,7 @@ export const ButtonTest = () => {
 
   const makeTbData = () => {
 	
-		let tbData: any[][] = [];
+		const tbData: any[][] = [];
 		let rowData: { type: string; value: JSX.Element; }[] = [];		
     
     color.map((item, i) => {			
@@ -43,7 +43,7 @@ export const ButtonTest = () => {
   }
   const makeTbData2 = () => {
 	
-		let tbData: any[][] = [];
+		const tbData: any[][] = [];
 		let rowData: { type: string; value: JSX.Element; }[] = [];		
     
     color.map((item, i) => {			

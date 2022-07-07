@@ -4,7 +4,7 @@ const Footer = (props:any) => {
 	const closeAllhander = () => {
 		props.deleteAllPop();
 		props.popupList.forEach((element: { MNU_ID: string; }) => {
-			let target = document.getElementById(element.MNU_ID) as HTMLElement;
+			const target = document.getElementById(element.MNU_ID) as HTMLElement;
 			document.body.removeChild(target);
 
 		});
@@ -18,7 +18,7 @@ const Footer = (props:any) => {
 					{
 						props.popupList.map((item: { POP_ID: string; POP_NM: string; }) => { return (
 								<li className="scrm-footer-pop-li" key={item.POP_ID}>
-									<div onClick={e => {let pop = document.getElementById(item.POP_ID) as HTMLElement; pop.hidden = false; props.selectPop(item)}}>
+									<div onClick={e => {const pop = document.getElementById(item.POP_ID) as HTMLElement; pop.hidden = false; props.selectPop(item)}}>
 										{item.POP_NM}
 									</div>
 								</li>
