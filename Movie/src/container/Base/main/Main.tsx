@@ -20,7 +20,7 @@ const Main = (props:any) => {
 			</TrayPanel>
 			<div className={'sh-main-view-Panel'}>
 				{
-					props.openedMenu.map((item:{MNU_ID: string, MNU_NM:string, PARE_MNU_ID: string, PGM_PATH: string}) => {
+					props.openedMenu.map((item:{MNU_ID: string, MNU_NM:string, PARE_MNU_ID: string}) => {
 						return (
 							<div id={item.MNU_ID} style={{display : (props.selected?.MNU_ID === item.MNU_ID) ? 'block' : 'none'}} key={'_menu_div_' + item.MNU_ID}>
 								{

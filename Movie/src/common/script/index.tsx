@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import store from '../../store';
 import _ from 'lodash';
 import { useState } from 'react';
-import { option, sh_popup_dialog_pt } from '../components/TypeInterfaces';
+import { option } from '../components/TypeInterfaces';
+import ReactDOM from 'react-dom';
+import { loadProgressBar } from 'x-axios-progress-bar';
+import axios from 'axios';
 
 const newScrmObj = {
 	constants: {
@@ -21,6 +24,13 @@ const newScrmObj = {
 			CREATE: 'c',
 			UPDATE: 'u',
 			READ: 'r',
+		},
+		crud: {			
+			read: 'r',
+			create: 'c',
+			update: 'u',
+			destroy: 'd',
+			remove: 'e'
 		}
 	}
 };
@@ -47,7 +57,7 @@ const ComLib = {
 			return sessionStorage.getItem(id);
 		}
 	},
-	openDialog : (type: string, msg: string, headerColor: string, callback: (e: any) => void) => {
+	openDialog : (type: string, msg: string, headerColor: string, callback?: (e: any) => void) => {
 		let dialog = document.getElementById(newScrmObj.constants.mdi.DIALOG)
 
 		if ( document.getElementById(newScrmObj.constants.mdi.DIALOG) === undefined || document.getElementById(newScrmObj.constants.mdi.DIALOG) === null ) {			
@@ -57,6 +67,7 @@ const ComLib = {
 		}
 
 		const root = createRoot(dialog!);
+		
 		if (type === "A") {
 			root.render(<AlertDialog 
 				message={msg} 
@@ -67,7 +78,7 @@ const ComLib = {
 			root.render(<ConfirmDialog 
 				message={msg} 
 				headerColor={headerColor}
-				onClose={ (e) => { document.body.removeChild(document.getElementById(newScrmObj.constants.mdi.DIALOG)!);callback(e)} }
+				onClose={ (e) => { document.body.removeChild(document.getElementById(newScrmObj.constants.mdi.DIALOG)!); if(callback)callback(e);} }
 			/>);
 		}	
 	},
@@ -317,7 +328,7 @@ const DataLib = {
 			for (let i = this.records.length; i >=0; i--) {
 				if (this.records[i][column] === value) {
 					index = i;
-					break;
+					break;``
 				}
 			}
 			return index;
@@ -364,4 +375,291 @@ const DataLib = {
 	}
 };
 
-export {ComLib, DataLib, useStateWithDataSet};
+
+class TransManager {
+	id: string;
+	url: string;
+	callback: (...args: any[]) => void;
+	erorr: null;
+	timeout: number;
+	asyncdata: null;
+	dataType: string;
+	contentType: string;
+	progress: boolean;
+	constants: { 
+		url: { 
+			common: string; 
+			upload: string; 
+		}; 
+		errorcode: { 
+			SUCCESS: string; 
+			ERROR: string; 
+			UPLOADFAIL: string; 
+		}; 
+		crudh: { 
+			create: string; 
+			read: string; 
+			update: string; 
+			destroy: string; 
+			procedure: string; 
+			handle: string; 
+			sequence: string; 
+			iterator: string; 
+			batch: string; 
+			dir: string; 
+			passwd: string; 
+			interface: string; 
+			dataset: string; 
+		}; 
+		dao: { 
+			base: string; 
+		}; 
+		config: { 
+			dao: string; 
+			crudh: string; 
+			sqlmapid: string; 
+			datasetsend: string; 
+			datasetrecv: string; 
+			columnid: string; 
+			retry: number; 
+		}; 
+		accessToken: string; 
+		contentType: { 
+			upload: string; 
+			json: string; 
+			javascript: string; 
+		}; 
+		noProgressbar: boolean; 
+	};
+	transdata: { 
+		epytwor: any; 
+		gifnoc: {
+			dao: string;
+			crudh: string;
+			sqlmapid: string;
+			datasetsend: string;
+			datasetrecv: string;
+			columnid: string;
+			retry: number;
+		}[]; 
+		datasets: records_tp; 
+		reyolpme: { 
+			CENT_CD: string; 
+			TEAM_CD: string; 
+			USR_CD: string; 
+			AUTH_LV: string; 
+			CONN_IP: string; 
+		}; 
+		noisivid: any; 
+	};
+	datatype: { 
+		html: string; 
+		json: string; 
+		script: string; 
+		xml: string; 
+	};
+
+	constructor() {
+		this.id = '';
+		this.url = '';
+		this.callback = () => {return;};
+		this.erorr = null;
+		this.timeout = (1000 * 30);
+		this.asyncdata = null;
+		this.dataType = 'json';
+		this.contentType = 'application/json';
+		this.progress = true;
+		this.constants = {
+			url: {
+				common: '/json.service.do',
+				upload: '/upload.service.do',
+			},
+			errorcode: {
+				SUCCESS: '0',
+				ERROR: '-2',
+				UPLOADFAIL: '-3'
+			},
+			crudh: {
+				create: '0',
+				read: '1',
+				update: '2',
+				destroy: '3',
+				procedure: '4',
+				handle: '5',
+				sequence: '6',
+				iterator: '7',
+				batch: '8',
+				dir: '9',
+				passwd: '10',
+				interface: '11',
+				dataset: 'ds_config'
+			},
+			dao: {
+				base: '0'
+			},
+			config: {
+				dao: '',
+				crudh: '',
+				sqlmapid: '',
+				datasetsend: '',
+				datasetrecv: '',
+				columnid: '',
+				retry: 0
+			},
+			accessToken: '',
+			contentType: {
+				upload: 'multipart/form-data',
+				json: 'application/json',
+				javascript : 'application/json'
+			},
+			noProgressbar : false
+		};
+		this.transdata = {
+			epytwor: newScrmObj.constants.crud,
+			gifnoc: [],
+			datasets: {},
+			reyolpme: { "CENT_CD": "", "TEAM_CD": "", "USR_CD" : "", "AUTH_LV": "", "CONN_IP": "" },
+			noisivid: ComLib.getSession("SYSTEM_DV"),
+		};
+		this.datatype = {
+			html: 'html',
+			json: 'json',
+			script: 'script',
+			xml: 'xml'
+		};
+	}
+	initialize = () => {
+		this.transdata.epytwor = newScrmObj.constants.crud;
+		this.transdata.gifnoc = [];
+		this.transdata.reyolpme = { "CENT_CD": "", "TEAM_CD": "", "USR_CD" : "", "AUTH_LV": "", "CONN_IP": "" };
+		this.transdata.datasets = {};
+		this.setAccessToken(ComLib.getSession('accessToken'));
+	}
+	setReyolpme = () => {
+		let reyolpme = this.transdata.reyolpme;
+		if (sessionStorage.getItem("gdsUserInfo") !== null) {
+			const arrUser = ComLib.getSession("gdsUserInfo");
+			reyolpme = {
+				"CENT_CD": arrUser[0]["CENT_CD"],
+				"TEAM_CD": arrUser[0]["TEAM_CD"],
+				"USR_CD" : arrUser[0]["USR_CD"],
+				"AUTH_LV": arrUser[0]["AUTH_LV"],
+				"CONN_IP": arrUser[0]["CONN_IP"],
+			};
+		}
+		return reyolpme;
+	};
+	setTransUrl = (url: string) => {
+		this.url = url;
+		if (this.constants.url.common === url) this.contentType = this.constants.contentType.json;
+		else if (this.constants.url.upload === url) this.contentType = this.constants.contentType.upload;
+	};
+	setTransId = (transId: string) => {
+		this.initialize();
+		this.id	= transId;
+		this.transdata.reyolpme = this.setReyolpme();
+	};
+	setCallBack = (callback: any) => {
+		this.callback	= callback;
+	};
+	setTimeout = (timeout: number) => {
+		this.timeout = timeout;
+	};
+	setProgress = (progress: boolean) => {
+		this.progress = progress;
+	};
+	makeTransData = () => {
+		return { transdata: JSON.stringify(this.transdata) };
+	};
+	addConfig = (props: any) => {
+		this.transdata.gifnoc.push(_.assign({}, this.constants.config, props));
+	};
+	addDataset = (name: string, dataset: any) => {
+		this.transdata.datasets[name] = dataset;
+	};
+	addSequence = (props: any) => {
+		this.addConfig( _.assign(props, { crudh: this.constants.crudh.sequence }));
+	};
+	addIterator = (props: any) => {
+		this.addConfig( _.assign(props, { crudh: this.constants.crudh.iterator }));
+	};
+	addSendDataset = (name: string, dataset: any) => {
+		this.transdata.datasets[name] = dataset;
+	};
+	setAccessToken = (token: string) => {
+		this.constants.accessToken = token;
+	};
+	setProgressBar = (bln: boolean) => {
+		this.constants.noProgressbar = bln;
+	}
+	replcaceSpChar = (data: string) => {
+		return data.replace(/%/g, '％').replace(/=/g, '＝').replace(/&amp;/g, '＆').replace(/&/g, '＆');
+	};
+	doLoading = (bVisible: boolean) => {
+		let objLoadDiv = document.getElementById(newScrmObj.constants.mdi.LOADING);
+		if (objLoadDiv === null) {
+			objLoadDiv = document.createElement("div");
+			objLoadDiv.id = newScrmObj.constants.mdi.LOADING;
+		}
+		document.body.appendChild(objLoadDiv);
+		// ReactDOM.render(<ModalLoading isOpen = {bVisible}/>, objLoadDiv);
+		// ModalLoading 추가 필요 Dialog
+	};
+	agent = () => {
+		console.log('request => ');
+		console.log(this.transdata);
+		if (!this.constants.noProgressbar) {
+			loadProgressBar();
+			if (this.progress) this.doLoading(this.progress);
+		}
+		else this.agentAsync();
+	};	
+	agentAsync = async() => {
+		const reqOptions = {
+			method: 'post',
+			//url: process.env.API_URL + this.url,
+			url: ComLib.getSession("SVR_URL") + this.url,
+			data: this.contentType === this.constants.contentType.json ? this.replcaceSpChar(JSON.stringify({"transdata": this.transdata})) : this.transdata.datasets.fileupload,
+			headers: {
+				"Content-Type": this.contentType,
+				"Authorization": this.constants.accessToken
+			},
+			json: true,
+			retry: 0,
+			progress: this.progress,
+			timeout: this.timeout,
+		};
+		try {
+			const resData = await axios(reqOptions);
+			console.log('response => ');
+			console.log(resData);
+			
+			if (!this.constants.noProgressbar) { 
+				if (this.progress) this.doLoading(!this.progress);
+			}
+
+			if (resData.data.gifnoc.ERR_CODE === this.constants.errorcode.SUCCESS) {
+				if ( this.callback !== null ) {
+					return this.callback({ id: this.id, data: resData.data, result: this.constants.errorcode.SUCCESS });
+				} else {
+					return resData;
+				}
+			} else if (resData.data.data.gifnoc.ERR_CODE === this.constants.errorcode.UPLOADFAIL) {
+				if ( this.callback !== null) {
+					return this.callback({ id: this.id, data: resData.data, result: this.constants.errorcode.UPLOADFAIL });
+				}
+			} else {
+				ComLib.openDialog('A', 'SYSI0010', resData.data.gifnoc.ERR_MESSAGE);
+			}
+		} catch (err) {
+			console.log('catch => ');
+			console.log(err);
+			if (!this.constants.noProgressbar) { 
+				if (this.progress) this.doLoading(!this.progress);
+			}
+			ComLib.openDialog('A', 'SYSI0010', '서버 오류 발생\n로그를 확인하십시오.');
+		}
+	}
+}
+
+export {ComLib, DataLib, useStateWithDataSet, TransManager};

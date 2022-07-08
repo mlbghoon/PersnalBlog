@@ -23,6 +23,8 @@ module.exports = {
     ],
     "rules": {
         "no-mixed-spaces-and-tabs": 0,
-        "react/react-in-jsx-scope": 0
+        "react/react-in-jsx-scope": 0,
+        "typescript-eslint/no-explicit-any":0,
+        "typescript-eslint/no-non-null-assertion":0
     }
 }

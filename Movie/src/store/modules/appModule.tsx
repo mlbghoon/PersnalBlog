@@ -7,12 +7,10 @@ A.MNU_NM
 A.PARE_MNU_ID
 A.SORT_ORD
 A.USE_FLAG
-A.PGM_PATH
-A.MNU_TP
 */
 
 export type menu_tp = {
-	MNU_ID: string; MNU_NM:string; PARE_MNU_ID: string; PGM_PATH: string;
+	MNU_ID: string; MNU_NM:string; PARE_MNU_ID: string;
 }
 
 export type popup_tp = {
@@ -28,8 +26,8 @@ type menus_tp = {
 // selected는 로그인 성공시 세팅 되게 (화면 전환 전에) 변경 필요 (기본화면)
 
 const initState: menus_tp = {
-	selected : {MNU_ID: 'ButtonTest', MNU_NM:'버튼', PARE_MNU_ID: "", PGM_PATH: "/ButtonTest"},
-	openedMenu: [{MNU_ID: 'ButtonTest', MNU_NM:'버튼', PARE_MNU_ID: "", PGM_PATH: "/ButtonTest"}],
+	selected : {MNU_ID: 'ButtonTest', MNU_NM:'버튼', PARE_MNU_ID: ""},
+	openedMenu: [{MNU_ID: 'ButtonTest', MNU_NM:'버튼', PARE_MNU_ID: ""}],
 	popupList: []
 };
 
@@ -135,18 +133,47 @@ type commCode_tp = {
 	LAG_CD: string; MDM_CD:string; SML_CD:string; SML_NM: string; CD_VAL:string;
 }
 
-type menuList_tp = Array<menu_tp>;
+type standVal_tp = {
+	ORG_CD: string; STND_CD:string; STND_CD_NM:string; APY_YN:string; STND_VAL: string | number;
+}
+
+type orgLag_tp = {
+	ORG_CD: string; CODE_NM:string; 
+}
+
+type orgMdl_tp = {
+	ORG_CD: string; CODE_NM:string; 
+}
+
+type orgSml_tp = {
+	ORG_CD: string; CODE_NM:string; 
+}
+
+type user_tp = {
+	ORG_LAG_CD: string; ORG_MDL_CD: string; ORG_SML_CD: string; CODE:string; CODE_NM:string; AUTH_LV:string; 
+}
 
 type msgCode_tp = {
 	MSG_CD: string; MSG_CONT:string;
 }
 
 export type comm_tp = {
-	userInfo : userInfo_tp;
-	commCode : Array<commCode_tp>;
-	msgCode  : Array<msgCode_tp>;
+	userInfo  : userInfo_tp;
+	commCode  : Array<commCode_tp>;
+	menuList  : Array<menu_tp>;
+	standVal  : Array<standVal_tp>;
+	orgLagList: Array<orgLag_tp>;
+	orgMdlList: Array<orgMdl_tp>;
+	orgSmlList: Array<orgSml_tp>;
+	userList  : Array<user_tp>;
+	msgCode   : Array<msgCode_tp>;
+	systemDv  : string;
+	svrUrl    : string;
 };
 
+// ComLib.setSession('gdsConstList',	res.data.dsConstList);
+// ComLib.setSession("SYSTEM_DV", "P");
+// ComLib.setSession("SVR_URL", window.location.protocol + "//" + serverInfos.prod.domain + ":" + serverInfos.prod.domainPort);
 
 
 export const { addTray, delTray, delAllTray, selectTray, prevTray, nextTray, addPop, deletePop, deleteAllPop, selectPop } = menusSlice.actions
