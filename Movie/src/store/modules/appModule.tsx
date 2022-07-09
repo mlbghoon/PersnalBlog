@@ -157,7 +157,7 @@ type msgCode_tp = {
 	MSG_CD: string; MSG_CONT:string;
 }
 
-export type comm_tp = {
+type comm_tp = {
 	userInfo  : userInfo_tp;
 	commCode  : Array<commCode_tp>;
 	menuList  : Array<menu_tp>;
@@ -171,10 +171,105 @@ export type comm_tp = {
 	svrUrl    : string;
 };
 
-// ComLib.setSession('gdsConstList',	res.data.dsConstList);
-// ComLib.setSession("SYSTEM_DV", "P");
-// ComLib.setSession("SVR_URL", window.location.protocol + "//" + serverInfos.prod.domain + ":" + serverInfos.prod.domainPort);
+const initSession: comm_tp = {
+	userInfo: {
+		USR_ID: '',
+		USR_NM: '',
+		CENT_CD: '',
+		CENT_NM: '',
+		TEAM_CD: '',
+		TEAM_NM: '',
+		AUTH_LV: '',
+		AUTH_NM: '',
+		TOKEN: ''
+	},
+	commCode: [],
+	menuList: [],
+	standVal: [],
+	orgLagList: [],
+	orgMdlList: [],
+	orgSmlList: [],
+	userList: [],
+	msgCode: [],
+	systemDv: '',
+	svrUrl: ''
+};
 
+
+const sessionSlice = createSlice({
+	name: 'sessions',
+	initialState: initSession,
+	reducers: {
+	setUserInfo(state, action) {	
+		return {
+			...state,
+			userInfo : action.payload
+		}	
+	},
+	setCommCode(state, action) {	
+		return {
+			...state,
+			commCode : action.payload
+		}	
+	},
+	setMenuList(state, action) {	
+		return {
+			...state,
+			menuList : action.payload
+		}	
+	},
+	setStandVal(state, action) {	
+		return {
+			...state,
+			standVal : action.payload
+		}	
+	},
+	setOrgLagList(state, action) {	
+		return {
+			...state,
+			orgLagList : action.payload
+		}	
+	},
+	setOrgMdlList(state, action) {	
+		return {
+			...state,
+			orgMdlList : action.payload
+		}	
+	},
+	setOrgSmlList(state, action) {	
+		return {
+			...state,
+			orgSmlList : action.payload
+		}	
+	},	
+	setUserList(state, action) {	
+		return {
+			...state,
+			userList : action.payload
+		}	
+	},
+	setMsgCode(state, action) {	
+		return {
+			...state,
+			msgCode : action.payload
+		}	
+	},
+	setSystemDv(state, action) {	
+		return {
+			...state,
+			systemDv : action.payload
+		}	
+	},		
+	setSvrUrl(state, action) {	
+		return {
+			...state,
+			svrUrl : action.payload
+		}	
+	},	
+  }
+})
+
+export const { setUserInfo, setCommCode, setMenuList, setStandVal, setOrgLagList, setOrgMdlList, setOrgSmlList, setUserList, setMsgCode, setSystemDv, setSvrUrl } = sessionSlice.actions
 
 export const { addTray, delTray, delAllTray, selectTray, prevTray, nextTray, addPop, deletePop, deleteAllPop, selectPop } = menusSlice.actions
-export default combineReducers ({ menusSlice: menusSlice.reducer });
+export default combineReducers ({ menusSlice: menusSlice.reducer, sessionSlice: sessionSlice.reducer });

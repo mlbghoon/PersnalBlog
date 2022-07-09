@@ -3,7 +3,7 @@ import { ComponentPanel, FlexPanel, FullPanel, Label, LFloatPanel, RelativePanel
 import { Checkbox, MultiCheckBox, Button, Input, Radio } from '../../common/components';
 import { TabPanel, Tabs } from '../../common/components/Tabs';
 import { sh_evnt_return } from '../../common/components/TypeInterfaces';
-import { ComLib, DataLib, useStateWithDataSet } from '../../common/script';
+import { ComLib, DataLib, TransManager, useStateWithDataSet } from '../../common/script';
 
 
 
@@ -43,17 +43,38 @@ export const ComponentTest = () => {
     setDataSetValue("dataSetTest", 0, "test", newRecords.records[0].test + 1)
   }
   const buttonOnClick4 = (e:sh_evnt_return) => {
-    const dataSetTest = dataSet.dataSetTest;
+    // const dataSetTest = dataSet.dataSetTest;
 
-    dataSetTest.addRow(1);
-    console.log(dataSetTest)
+    // dataSetTest.addRow(1);
+    // console.log(dataSetTest)
     
 
-    // let records = dataSetTest.orgrecords;
+    // // let records = dataSetTest.orgrecords;
     
-    // setDataSet("dataSetTest", records)
+    // setDataSet("dataSetTest", dataSetTest.records);
+
+
+    const transManager = new TransManager();
+    
+		transManager.setTransId ("TEST0`");
+		transManager.setTransUrl(transManager.constants.url.common);
+		transManager.setCallBack(callbackTest);
+    transManager.addConfig({
+      dao: transManager.constants.dao.base,
+      crudh: transManager.constants.crudh.read,
+      sqlmapid:"COM.R_getMenuList",
+      datasetsend:"dsLogin",
+      datasetrecv:"dsRst",
+    });
+    transManager.addDataset('dsLogin', [{EMPTY: ""}]);
+    transManager.agent();
+
+    //
   }
-
+  const callbackTest = (res: any) => {
+    console.log(res)
+    
+  }
   
 
   // button Event Test //

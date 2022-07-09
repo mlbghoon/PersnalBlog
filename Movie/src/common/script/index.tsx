@@ -1,6 +1,6 @@
 import {createRoot} from 'react-dom/client';
 import { AlertDialog, ConfirmDialog, PopupDialog } from '../components/Dialog';
-import { Provider } from 'react-redux';
+import { Provider, TypedUseSelectorHook, useSelector } from 'react-redux';
 import store from '../../store';
 import _ from 'lodash';
 import { useState } from 'react';
@@ -8,6 +8,11 @@ import { option } from '../components/TypeInterfaces';
 import ReactDOM from 'react-dom';
 import { loadProgressBar } from 'x-axios-progress-bar';
 import axios from 'axios';
+
+// type RootState = ReturnType<typeof store.getState>;
+
+// const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+// const { userInfo, commCode, menuList, standVal, orgLagList, orgMdlList, orgSmlList, userList, msgCode, systemDv, svrUrl  } = useAppSelector((state) => state.reducers.sessionSlice);
 
 const newScrmObj = {
 	constants: {
@@ -256,6 +261,8 @@ const DataLib = {
 		},
 		initRecords: function(records:records_tp[]) {
 			records = records || [{}];
+			console.log("initRecords")
+			console.log(records)
 			if (records.length !== undefined) {
 				this.initialize(records);
 				this.records = records;
@@ -351,9 +358,11 @@ const DataLib = {
 			else return false;
 		},
 		initialize: function(records:records_tp[]) {
+			console.log(records)
 			for (let idx = 0; idx < records.length; idx++) {
-				if (!records[idx].prototype.hasOwnProperty.call(records[idx], "recid")) records[idx].recid = idx + 1;
-				if (!records[idx].prototype.hasOwnProperty.call(records[idx], "rowtype")) records[idx].rowtype = newScrmObj.constants.rowtype.READ;
+				console.log(records[idx])
+				if (!records[idx].hasOwnProperty.call(records[idx], "recid")) records[idx].recid = idx + 1;
+				if (!records[idx].hasOwnProperty.call(records[idx], "rowtype")) records[idx].rowtype = newScrmObj.constants.rowtype.READ;
 			}
 			if (records.length > 0) {
 				const arrCol = Object.keys(records[0]);

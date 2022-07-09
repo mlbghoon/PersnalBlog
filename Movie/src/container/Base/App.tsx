@@ -18,15 +18,15 @@ function App() {
 	const nextTray = (menu: appModuleActions.menu_tp) => dispatch(appModuleActions.nextTray(menu));
 
 	
-	const deletePop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.deletePop(pop))
-	const deleteAllPop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.deleteAllPop())
-	const selectPop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.selectPop(pop))
+	const deletePop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.deletePop(pop));
+	const deleteAllPop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.deleteAllPop());
+	const selectPop = (pop:appModuleActions.menu_tp) => dispatch(appModuleActions.selectPop(pop));
 
-	type RootState = ReturnType<typeof store.getState>
+	type RootState = ReturnType<typeof store.getState>;
 	
-	const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+	const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-	const { selected, openedMenu, popupList } = useAppSelector((state) => state.menus.menusSlice)
+	const { selected, openedMenu, popupList } = useAppSelector((state) => state.reducers.menusSlice);
 
 
 
@@ -34,7 +34,10 @@ function App() {
 									 ,{MNU_ID: "ButtonTest", MNU_NM:"버튼", PARE_MNU_ID: "TestPage"}
 									 ,{MNU_ID: "CheckTest", MNU_NM:"체크박스", PARE_MNU_ID: "TestPage"}
 									 ,{MNU_ID: "InputTest", MNU_NM:"인풋", PARE_MNU_ID: "TestPage"}
-									 ,{MNU_ID: "ComponentTest", MNU_NM:"컴포넌트", PARE_MNU_ID: "TestPage"}]); 	
+									 ,{MNU_ID: "ComponentTest", MNU_NM:"컴포넌트", PARE_MNU_ID: "TestPage"}
+									 ,{MNU_ID: "GridTest", MNU_NM:"그리드", PARE_MNU_ID: "GridTest"}]); 	
+
+									 
 
 	return (
 		<AppPanel>
